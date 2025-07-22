@@ -4,10 +4,10 @@ const About = () => {
     return (
         <section className="bg-white py-16 px-4 md:px-12 lg:px-24">
             <div className="max-w-5xl mx-auto">
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-gray-900">
+                <h2 className="text-6xl md:text-7xl pb-5   font-bold leading-tight mb-4 text-gray-900">
                     <span className="block"><span className="text-[#47216b]">What Defines GoDigitfy</span></span>
                     <span className="block mt-2 text-3xl md:text-4xl font-semibold text-gray-800">From Spark to Scale</span>
-                </h1>
+                </h2>
                 <p className="text-lg md:text-xl text-gray-700 mb-6 ">
                     We are innovators by instinct, designers by passion, and technologists by choice.<br />
                     At <span className="font-semibold text-[#47216b]">GoDigitfy</span>, we fuse creativity with code to craft bold, high-performance digital solutions that deliver measurable business results.<br />
