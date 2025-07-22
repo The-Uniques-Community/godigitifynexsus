@@ -1,6 +1,8 @@
 @import "tailwindcss";
+
 * {
     cursor: none;
+    font-family: "GT Flexa Lt";
 }
 
 
