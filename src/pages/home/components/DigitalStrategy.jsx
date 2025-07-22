@@ -1,6 +1,10 @@
 
 const Card = ({num, heading, description, bgColor})=>{
-    
+    return (
+        <div>
+            
+        </div>
+    )
 }
 const DigitalStrategy = () => {
   return (
