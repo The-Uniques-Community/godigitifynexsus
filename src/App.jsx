@@ -15,8 +15,13 @@ const RootLayout = () => {
 
   // Trigger page transition on route change
   useEffect(() => {
+    console.log(navigation.state)
     if (navigation.state === "loading") {
       setTransitionTrigger(true);
+    }
+
+    if(navigation.state === "idle"){
+      setTransitionTrigger(true)
     }
   }, [navigation.state]);
 
@@ -43,6 +48,10 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home />
+      },
+      {
+        path:'/about',
+        element:<About />
       }
     ]
   },

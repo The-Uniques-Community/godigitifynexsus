@@ -27,7 +27,7 @@ const TransitionOverlay = ({ trigger }) => {
   return (
     <div
       ref={overlayRef}
-      className="fixed top-0 left-0 w-full h-full bg-[#111] z-[998]"
+      className="fixed top-0 left-0 w-full h-full bg-[white] z-[998]"
     ></div>
   );
 };

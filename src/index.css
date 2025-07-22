@@ -1,9 +1,2 @@
 @import "tailwindcss";
-* {
-    cursor: none;
-}
 
-
-body {
-  overflow-x: hidden;
-}
