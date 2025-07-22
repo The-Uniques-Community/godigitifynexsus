@@ -33,7 +33,7 @@ const RootLayout = () => {
   }, [location.pathname, initialLoading]); // Removed triggerTransition from deps
 
   return (
-    <div className="relative">
+    <div className="relative ">
       {initialLoading ? (
         <InitialLoader onComplete={() => setInitialLoading(false)} />
       ) : (
@@ -120,6 +120,7 @@ export default function App() {
           elementUnderCursor.tagName === 'A' ||
           elementUnderCursor.tagName === 'IMG' ||
           elementUnderCursor.tagName === 'H2' ||
+          elementUnderCursor.tagName === 'H1' ||
           elementUnderCursor.tagName === 'INPUT' ||
           elementUnderCursor.tagName === 'TEXTAREA' ||
           elementUnderCursor.tagName === 'SELECT' ||
@@ -133,6 +134,7 @@ export default function App() {
           isInteractive = !!(
             elementUnderCursor.closest('a') ||
             elementUnderCursor.closest('h2') ||
+            elementUnderCursor.closest('h1') ||
             elementUnderCursor.closest('button') ||
             elementUnderCursor.closest('[role="button"]') ||
             elementUnderCursor.closest('.hover-target')
