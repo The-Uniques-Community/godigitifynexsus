@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from './pages/home'
+import About from "./pages/home/components/About";
 
 
 
@@ -19,7 +20,7 @@ import Home from './pages/home'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />  ,
+    element: <About />,
   },
 ]);
 

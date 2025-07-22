@@ -1,3 +1,5 @@
-*{
+* {
     cursor: none;
 }
+
+@import "tailwindcss";
