@@ -1,14 +1,40 @@
 import React, { useEffect, useRef } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import Home from './pages/home'
+
+
+
+
+
+
+
+
+
+
+// add page here
+
+
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div style={{
-      height:3000
-    }}>Hello World</div>,
+    element: <Home />  ,
   },
 ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const lerp = (start, end, amt) => start + (end - start) * amt;
 
