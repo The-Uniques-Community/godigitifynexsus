@@ -1,6 +1,8 @@
-*{
+* {
     cursor: none;
 }
+
+@import "tailwindcss";
 
 body {
   overflow-x: hidden;
