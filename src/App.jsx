@@ -2,43 +2,51 @@ import React, { useEffect, useRef , useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from './pages/home'
 import About from "./pages/home/components/About";
-import { useNavigation } from "react-router";
+import { useLocation } from "react-router-dom";
 import InitialLoader from "./utils/InitialLoader";
 import TransitionOverlay from "./utils/TransitionOverlay";
 import { Outlet } from "react-router";
-
+import { usePageTransition, PageTransitionProvider } from "./utils/PageTransitionProvider";
 
 const RootLayout = () => {
+  const location = useLocation();
+  const { triggerTransition } = usePageTransition();
   const [initialLoading, setInitialLoading] = useState(true);
-  const [transitionTrigger, setTransitionTrigger] = useState(false);
-  const navigation = useNavigation();
+  const [showContent, setShowContent] = useState(false);
 
-  // Trigger page transition on route change
+  // Run once on startup
   useEffect(() => {
-    console.log(navigation.state)
-    if (navigation.state === "loading") {
-      setTransitionTrigger(true);
-    }
+    const timeout = setTimeout(() => {
+      setInitialLoading(false);
+      setShowContent(true);
+    }, 1500);
+    return () => clearTimeout(timeout);
+  }, []);
 
-    if(navigation.state === "idle"){
-      setTransitionTrigger(true)
+  // Trigger overlay on every path change
+  useEffect(() => {
+    if (!initialLoading) {
+      setShowContent(false);
+      triggerTransition();
+      setTimeout(() => setShowContent(true), 800); // show content after animation
     }
-  }, [navigation.state]);
+  }, [location.pathname, initialLoading]); // Removed triggerTransition from deps
 
   return (
-    <>
-      {initialLoading && <InitialLoader onComplete={() => setInitialLoading(false)} />}
-      <TransitionOverlay trigger={transitionTrigger} />
-      {!initialLoading && <Outlet />}
-    </>
+    <div className="relative">
+      {initialLoading ? (
+        <InitialLoader onComplete={() => setInitialLoading(false)} />
+      ) : (
+        <>
+          <TransitionOverlay />
+          {showContent && <Outlet />}
+        </>
+      )}
+    </div>
   );
 };
 
-
 // add page here
-
-
-
 
 const router = createBrowserRouter([
   {
@@ -56,16 +64,6 @@ const router = createBrowserRouter([
     ]
   },
 ]);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -204,13 +202,13 @@ export default function App() {
   };
 
   return (
-    <>
+    <PageTransitionProvider>
       <div ref={cursorRef} style={cursorStyle} />
       <div ref={ringRef} style={ringStyle} />
       <div ref={scrollIndicatorRef} style={scrollIndicatorContainer}>
         <div className="dot" style={scrollDotStyle} />
       </div>
       <RouterProvider router={router} />
-    </>
+    </PageTransitionProvider>
   );
 }
