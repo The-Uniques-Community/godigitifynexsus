@@ -1,14 +1,31 @@
 import React, { useEffect, useRef } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from './pages/home'
+import { useNavigation } from "react-router";
+import InitialLoader from "./utils/InitialLoader";
+import TransitionOverlay from "./utils/TransitionOverlay";
 
 
+const RootLayout = () => {
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [transitionTrigger, setTransitionTrigger] = useState(false);
+  const navigation = useNavigation();
 
+  // Trigger page transition on route change
+  useEffect(() => {
+    if (navigation.state === "loading") {
+      setTransitionTrigger(true);
+    }
+  }, [navigation.state]);
 
-
-
-
-
+  return (
+    <>
+      {initialLoading && <InitialLoader onComplete={() => setInitialLoading(false)} />}
+      <TransitionOverlay trigger={transitionTrigger} />
+      {!initialLoading && <Outlet />}
+    </>
+  );
+};
 
 
 // add page here
@@ -19,7 +36,13 @@ import Home from './pages/home'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />  ,
+    element: <RootLayout />  ,
+    children:[
+      {
+        path:'/',
+        element:<Home />
+      }
+    ]
   },
 ]);
 
