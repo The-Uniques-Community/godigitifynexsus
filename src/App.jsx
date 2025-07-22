@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef , useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from './pages/home'
 import About from "./pages/home/components/About";
 import { useNavigation } from "react-router";
 import InitialLoader from "./utils/InitialLoader";
 import TransitionOverlay from "./utils/TransitionOverlay";
+import { Outlet } from "react-router";
 
 
 const RootLayout = () => {
