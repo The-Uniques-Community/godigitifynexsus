@@ -2,11 +2,11 @@ import React from 'react'
 
 const About = () => {
     return (
-        <section className="bg-white py-16 px-4 md:px-12 lg:px-24">
-            <div className="max-w-5xl mx-auto">
-                <h2 className="text-6xl md:text-7xl pb-5   font-bold leading-tight mb-4 text-gray-900">
+        <section className="bg-white py-16 container mx-auto">
+            <div className="mx-auto">
+                <h2 className="text-4xl md:text-7xl pb-5 w-max  font-bold leading-tight mb-4 text-gray-900">
                     <span className="block"><span className="text-[#47216b]">What Defines GoDigitfy</span></span>
-                    <span className="block mt-2 text-3xl md:text-4xl font-semibold text-gray-800">From Spark to Scale</span>
+                    <div className="flex justify-start items-center mt-2 w-full text-xl md:text-4xl gap-3 font-semibold text-gray-800">From Spark to Scale <div className='w-full max-w-[100px] md:max-w-[400px] flex bg-[#47216b] h-[2px]'></div> </div>
                 </h2>
                 <p className="text-lg md:text-xl text-gray-700 mb-6 ">
                     We are innovators by instinct, designers by passion, and technologists by choice.<br />
