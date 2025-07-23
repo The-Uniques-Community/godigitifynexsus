@@ -58,7 +58,7 @@ const Hero = () => {
 
 
       {/* Hero Content */}
-      <section className="py-36 container mx-auto">
+      <section className="py-16 sm:py-24 md:py-32 lg:py-36 container mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
         <div className=" mx-auto">
           <div className="grid lg:grid-cols-7 gap-12 items-center">
             {/* Left Content - 4 columns */}
