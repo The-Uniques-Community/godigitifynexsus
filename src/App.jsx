@@ -210,7 +210,7 @@ export default function App() {
         // dot moves up/down
         const dot = scrollIndicatorRef.current.querySelector(".dot");
         if (dot) {
-          dot.style.transform = `translateY(${scrollDir.current * 5}px)`;
+          dot.style.transform = `translateY(${scrollDir.current * 20}px)`;
         }
         // fade out - slower fade for better visibility
         scrollFade.current = lerp(scrollFade.current, 0, 0.03);
