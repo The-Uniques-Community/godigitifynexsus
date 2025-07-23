@@ -6,6 +6,7 @@ import Navbar from "../../utils/Navbar";
 import Blog from "./components/Blog";
 import Service from "./components/Service";
 import CompanyLogos from "./components/CompanyLogos";
+import DigitalStrategy from "./components/DigitalStrategy";
 
 const index = () => {
   return (
@@ -13,6 +14,7 @@ const index = () => {
       <Navbar />
       <Hero />
       <About />
+      <DigitalStrategy/>
       <Blog />
       <Service />
       <CompanyLogos/>
