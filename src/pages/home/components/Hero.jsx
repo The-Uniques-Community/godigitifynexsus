@@ -3,111 +3,58 @@ import { gsap } from 'gsap'
 import Img from '../../../assets/heroimg1.png'
 
 const Hero = () => {
-  const [email, setEmail] = useState('')
-  const imgRef = useRef(null)
-  const containerRef = useRef(null)
-
-  useEffect(() => {
-    const img = imgRef.current
-    const container = containerRef.current
-    
-    if (!img || !container) return
-
-    const handleMouseMove = (e) => {
-      const rect = container.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-      
-      const deltaX = e.clientX - centerX
-      const deltaY = e.clientY - centerY
-      
-      // Calculate rotation values (reduced for subtle effect)
-      const rotateX = (deltaY / rect.height) * -15
-      const rotateY = (deltaX / rect.width) * 15
-      
-      gsap.to(img, {
-        duration: 0.6,
-        rotationX: rotateX,
-        rotationY: rotateY,
-        transformOrigin: "center center",
-        ease: "power2.out"
-      })
-    }
-
-    const handleMouseLeave = () => {
-      gsap.to(img, {
-        duration: 0.8,
-        rotationX: 0,
-        rotationY: 0,
-        ease: "power2.out"
-      })
-    }
-
-    container.addEventListener('mousemove', handleMouseMove)
-    container.addEventListener('mouseleave', handleMouseLeave)
-
-    return () => {
-      container.removeEventListener('mousemove', handleMouseMove)
-      container.removeEventListener('mouseleave', handleMouseLeave)
-    }
-  }, [])
-
+  
   return (
-    <div className=" bg-gray-50 relative overflow-hidden">
-      {/* Navigation */}
-
-
+    <div className="bg-gray-50 relative overflow-hidden">
       {/* Hero Content */}
-      <section className="py-36 container mx-auto">
-        <div className=" mx-auto">
-          <div className="grid lg:grid-cols-7 gap-12 items-center">
-            {/* Left Content - 4 columns */}
-            <div className="lg:col-span-4 ">
-              <div className="space-y-6">
-                <h1 className="text-5xl w-max md:text-8xl
-                 text-[#47216b] font-bold leading-tight">
-                  We Build <span className="font-medium text-black">digital</span> Futures
+      <section className="py-16 md:py-24 lg:py-36">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 lg:gap-12 items-center">
+            {/* Left Content - Takes full width on mobile, 4/6 on desktop */}
+            <div className="lg:col-span-4 text-center lg:text-left">
+              <div className="space-y-4 md:space-y-6">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#47216b] font-bold leading-tight">
+                  Build<span className="font-medium text-black"> your</span> Brand
                 </h1>
-                <p className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed py-6 max-w-3xl">
+                <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed py-4 md:py-6 max-w-none lg:max-w-3xl mx-auto lg:mx-0">
                   From content to code, strategy to execution — <span className="font-semibold text-[#47216b]">GoDigitfy is your one-stop solution </span> creative, tech, and digital marketing partner. We help startups and enterprises unlock scalable growth with future-ready digital solutions.
                 </p>
               </div>
 
-              {/* CTA Button */}
-              <div className="flex pt-8 flex-col sm:flex-row gap-4 max-w-md">
-                <button className="px-8 py-4 bg-[#47216b] text-white rounded-full font-semibold shadow hover:bg-black transition">
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-6 md:pt-8 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+                <button className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#47216b] text-white rounded-full font-semibold shadow hover:bg-black transition-colors duration-300">
                   Get Started
                 </button>
-                <button className="px-8 py-4 border border-[#47216b] text-[#47216b] rounded-full font-semibold hover:bg-[#47216b] hover:text-white transition">
+                <button className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border border-[#47216b] text-[#47216b] rounded-full font-semibold hover:bg-[#47216b] hover:text-white transition-colors duration-300">
                   Learn More
                 </button>
               </div>
 
               {/* Statistics */}
-              <div className="grid grid-cols-3 gap-6 pt-20">
-                <div>
-                  <div className="text-3xl font-bold text-[#47216b] mb-2">500+</div>
-                  <div className="text-gray-600 text-sm">Projects Delivered</div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-12 md:pt-16 lg:pt-20 text-center lg:text-left">
+                <div className="space-y-1">
+                  <div className="text-2xl md:text-3xl font-bold text-[#47216b]">500+</div>
+                  <div className="text-gray-600 text-sm md:text-base">Projects Delivered</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#47216b] mb-2">100+</div>
-                  <div className="text-gray-600 text-sm">Happy Clients</div>
+                <div className="space-y-1">
+                  <div className="text-2xl md:text-3xl font-bold text-[#47216b]">100+</div>
+                  <div className="text-gray-600 text-sm md:text-base">Happy Clients</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#47216b] mb-2">99%</div>
-                  <div className="text-gray-600 text-sm">Success Rate</div>
+                <div className="space-y-1">
+                  <div className="text-2xl md:text-3xl font-bold text-[#47216b]">99%</div>
+                  <div className="text-gray-600 text-sm md:text-base">Success Rate</div>
                 </div>
               </div>
             </div>
 
-            {/* Right Illustration - 3 columns */}
-            <div className="lg:col-span-3 relative" ref={containerRef}>
-              <div className="relative top-16 z-10" style={{ perspective: '1000px' }}>
+            {/* Right Illustration - Takes full width on mobile, 2/6 on desktop */}
+            <div className="lg:col-span-2 relative order-last lg:order-last" >
+              <div className="relative z-10 mx-auto scale-110 lg:scale-125" >
                 <img 
-                  ref={imgRef}
                   className='w-full h-auto' 
                   src={Img}
-                  style={{ transformStyle: 'preserve-3d' }}
+                  alt="Hero Illustration"
                 />
               </div>
             </div>
