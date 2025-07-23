@@ -31,23 +31,16 @@ const Navbar = () => {
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-2">
             <div
-              className={`rounded-sm flex items-center justify-center relative overflow-hidden group cursor-pointer transition-all duration-300 ${
+              className={`rounded-sm flex items-center justify-center relative overflow-hidden cursor-pointer transition-all duration-300 ${
                 isScrolled ? "w-32 sm:w-40 h-auto" : "w-40 sm:w-52 h-auto"
               }`}
             >
               <img
                 src={Logo}
                 alt="Godigitify Nexus"
-                className="relative z-10 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                className="relative z-10 transition-all duration-300 "
               />
-              {/* Wipe effect rectangle */}
-              <div className="absolute inset-0 bg-[#47216b] transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-600 ease-out"></div>
-              {/* White logo that appears during wipe */}
-              <img
-                src={Logo}
-                alt="Godigitify Nexus"
-                className="absolute inset-0 w-full h-full object-contain z-20 brightness-0 invert opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300"
-              />
+        
             </div>
           </div>
 
