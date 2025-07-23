@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Navbar from "../../utils/Navbar";
+import Blog from "./components/Blog";
 
 const index = () => {
   return (
@@ -10,6 +11,7 @@ const index = () => {
       <Navbar />
       <Hero />
       <About />
+      <Blog />
     </div>
   );
 };
