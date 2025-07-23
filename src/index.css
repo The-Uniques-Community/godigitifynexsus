@@ -1,2 +1,11 @@
 @import "tailwindcss";
 
+* {
+    cursor: none;
+    font-family: "GT Flexa Lt";
+}
+
+
+body {
+  overflow-x: hidden;
+}
