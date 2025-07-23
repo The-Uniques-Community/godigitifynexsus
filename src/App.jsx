@@ -33,7 +33,7 @@ const RootLayout = () => {
   }, [location.pathname, initialLoading]); // Removed triggerTransition from deps
 
   return (
-    <div className="relative">
+    <div className="relative ">
       {initialLoading ? (
         <InitialLoader onComplete={() => setInitialLoading(false)} />
       ) : (
@@ -120,6 +120,7 @@ export default function App() {
           elementUnderCursor.tagName === 'A' ||
           elementUnderCursor.tagName === 'IMG' ||
           elementUnderCursor.tagName === 'H2' ||
+          elementUnderCursor.tagName === 'H1' ||
           elementUnderCursor.tagName === 'INPUT' ||
           elementUnderCursor.tagName === 'TEXTAREA' ||
           elementUnderCursor.tagName === 'SELECT' ||
@@ -133,6 +134,7 @@ export default function App() {
           isInteractive = !!(
             elementUnderCursor.closest('a') ||
             elementUnderCursor.closest('h2') ||
+            elementUnderCursor.closest('h1') ||
             elementUnderCursor.closest('button') ||
             elementUnderCursor.closest('[role="button"]') ||
             elementUnderCursor.closest('.hover-target')
@@ -208,7 +210,7 @@ export default function App() {
         // dot moves up/down
         const dot = scrollIndicatorRef.current.querySelector(".dot");
         if (dot) {
-          dot.style.transform = `translateY(${scrollDir.current * 5}px)`;
+          dot.style.transform = `translateY(${scrollDir.current * 20}px)`;
         }
         // fade out - slower fade for better visibility
         scrollFade.current = lerp(scrollFade.current, 0, 0.03);
@@ -263,6 +265,7 @@ export default function App() {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 9999,
   };
   const scrollDotStyle = {
     width: 8, // Slightly larger dot
@@ -270,6 +273,7 @@ export default function App() {
     backgroundColor: "#47216b",
     borderRadius: "50%",
     transition: "transform 0.15s ease-out", // Slightly slower
+    zIndex:9999
   };
 
   return (

@@ -9,3 +9,9 @@
 body {
   overflow-x: hidden;
 }
+/* For entire body */
+
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
