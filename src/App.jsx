@@ -265,6 +265,7 @@ export default function App() {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 9999,
   };
   const scrollDotStyle = {
     width: 8, // Slightly larger dot
@@ -272,6 +273,7 @@ export default function App() {
     backgroundColor: "#47216b",
     borderRadius: "50%",
     transition: "transform 0.15s ease-out", // Slightly slower
+    zIndex:9999
   };
 
   return (
