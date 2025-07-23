@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
+import DigitalStrategy from './components/DigitalStrategy'
 
 const index = () => {
   return (
-    <div>
-        <Link to='/about'>index</Link>
+    <div className=''>
+        <DigitalStrategy/>
     </div>
   )
 }
