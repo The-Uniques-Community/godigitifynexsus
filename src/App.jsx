@@ -10,6 +10,8 @@ import { usePageTransition, PageTransitionProvider } from "./utils/PageTransitio
 import Contact from "./pages/contact";
 import Navbar from "./utils/Navbar";
 import Footer from "./utils/Footer";
+import Blog from "./pages/blog/Blog";
+import AboutPage from "./pages/about";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -69,8 +71,16 @@ const router = createBrowserRouter([
         element:<Home />
       },
       {
+        path:'/about',
+        element:<AboutPage/>
+      },
+      {
         path:'/contact',
         element:<Contact/>
+      },
+      {
+        path:'/blog',
+        element:<Blog/>
       }
     ]
   },
