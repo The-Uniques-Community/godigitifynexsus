@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import Img from '../../../assets/heroimg1.png'
+import Img from '../../../assets/heroimg2.png'
 
 const Hero = () => {
   

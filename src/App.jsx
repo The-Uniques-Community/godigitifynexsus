@@ -7,6 +7,11 @@ import InitialLoader from "./utils/InitialLoader";
 import TransitionOverlay from "./utils/TransitionOverlay";
 import { Outlet } from "react-router";
 import { usePageTransition, PageTransitionProvider } from "./utils/PageTransitionProvider";
+import Contact from "./pages/contact";
+import Navbar from "./utils/Navbar";
+import Footer from "./utils/Footer";
+import Blog from "./pages/blog/Blog";
+import AboutPage from "./pages/about";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -38,8 +43,16 @@ const RootLayout = () => {
         <InitialLoader onComplete={() => setInitialLoading(false)} />
       ) : (
         <>
+          <Navbar />
           <TransitionOverlay />
-          {showContent && <Outlet />}
+          {showContent && (
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-grow pt-20">
+                <Outlet />
+              </main>
+              <Footer />
+            </div>
+          )}
         </>
       )}
     </div>
@@ -59,7 +72,15 @@ const router = createBrowserRouter([
       },
       {
         path:'/about',
-        element:<About />
+        element:<AboutPage/>
+      },
+      {
+        path:'/contact',
+        element:<Contact/>
+      },
+      {
+        path:'/blog',
+        element:<Blog/>
       }
     ]
   },
