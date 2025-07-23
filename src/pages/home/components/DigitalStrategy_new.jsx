@@ -1,9 +1,3 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 const strategySteps = [
   {
     number: "01",
@@ -37,7 +31,7 @@ const strategySteps = [
     description:
       "Our team transforms insights into ideas — crafting creative and data-backed strategies that align with your brand's voice and market needs.",
     image:
-      "https://clictadigital.com/wp-content/uploads/2020/05/digital-marketing-strategy-FI.png"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCd8ZK8zBC9CRlh0NMDTfIBZMeY93VCXGzIA&s"
   },
   {
     number: "03",
@@ -54,7 +48,7 @@ const strategySteps = [
     description:
       "Just tell us what your event or campaign is about — and we handle it all. From digital branding, website creation, social media management, to printables and complete event execution, we bring your vision to life with zero hassle.",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcQYwPNGc0PgYM2dbx9W5RPRD4R1OxeA83iQ&s"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxE3KjvB7GV1wIxM1ZtdOaw8mDY6Rn_8GEIQ&s"
   },
   {
     number: "04",
@@ -71,55 +65,14 @@ const strategySteps = [
     description:
       "We track every touchpoint, evaluate performance, and continuously optimize your digital presence — ensuring results that grow with your brand.",
     image:
-      "https://s44783.pcdn.co/wp-content/uploads/2023/05/a3-4.png"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR20dO3Q3v5JZwPo0vTAZMCeLZRLJWV5hFd2A&s"
   }
 ];
 
 
-const Card = ({ number, titleStart, titleHighlight, keywords, description, image, index }) => {
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    // Set initial state - cards start from right side, rotated and invisible
-    gsap.set(card, {
-      x: 300,
-      y: -100,
-      rotation: 15,
-      opacity: 0,
-      scale: 0.8
-    });
-
-    // Create scroll trigger animation
-    gsap.to(card, {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
-        end: "top 20%",
-        scrub: 1.5,
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    return () => {
-      ScrollTrigger.killAll();
-    };
-  }, []);
-
+const Card = ({ number, titleStart, titleHighlight, keywords, description, image }) => {
   return (
-    <div 
-      ref={cardRef}
-      className="lg:grid lg:grid-cols-10 md:grid md:grid-cols-8 sm:grid sm:grid-cols-6 grid grid-cols-1 min-h-44 p-2 gap-x-9 border-t border-slate-600 mx-auto shadow-md relative"
-    >
+    <div className="lg:grid lg:grid-cols-10 md:grid md:grid-cols-8 sm:grid sm:grid-cols-6 grid grid-cols-1 min-h-40 p-2 gap-x-9 border-t border-slate-600 mx-auto shadow-md relative">
       
       {/* Number - Left Side for Large Screens */}
       <div className="lg:col-span-1 md:col-span-1 sm:hidden hidden lg:block md:block">
@@ -199,9 +152,9 @@ const Card = ({ number, titleStart, titleHighlight, keywords, description, image
 
 const DigitalStrategy = () => {
   return (
-    <div className="overflow-hidden">
-      {strategySteps.map((step, index) => (
-        <Card key={step.number} {...step} index={index} />
+    <div>
+      {strategySteps.map((step) => (
+        <Card key={step.number} {...step} />
       ))}
     </div>
   )
