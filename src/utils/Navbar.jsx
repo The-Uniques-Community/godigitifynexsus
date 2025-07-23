@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/GodigitifyCrop.png";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,47 +36,48 @@ const Navbar = () => {
                 isScrolled ? "w-32 sm:w-40 h-auto" : "w-40 sm:w-52 h-auto"
               }`}
             >
+            <Link to={'/'}>
               <img
                 src={Logo}
                 alt="Godigitify Nexus"
                 className="relative z-10 transition-all duration-300 "
-              />
+              /></Link>
         
             </div>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-6">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-gray-700 hover:text-[#47216b] transition-colors duration-300"
             >
               Work
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="text-gray-700 hover:text-[#47216b] transition-colors duration-300"
             >
               Solution
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="text-gray-700 hover:text-[#47216b] transition-colors duration-300"
             >
               About
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="text-gray-700 hover:text-[#47216b] transition-colors duration-300"
             >
               Blog
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/contact"
               className="text-gray-700 hover:text-[#47216b] transition-colors duration-300"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -146,36 +148,36 @@ const Navbar = () => {
         >
           <div className="p-6 pt-20">
             <div className="space-y-6">
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="block text-gray-700 hover:text-[#47216b] transition-colors duration-300"
               >
                 Work
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="block text-gray-700 hover:text-[#47216b] transition-colors duration-300"
               >
                 Solution
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="block text-gray-700 hover:text-[#47216b] transition-colors duration-300"
               >
                 About
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="block text-gray-700 hover:text-[#47216b] transition-colors duration-300"
               >
                 Blog
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="block text-gray-700 hover:text-[#47216b] transition-colors duration-300"
               >
                 Contact
-              </a>
+              </Link>
 
               <div className="pt-6 border-t border-gray-200 space-y-4">
                 <button className="w-full px-4 py-2 border border-[#47216b] text-[#47216b] rounded-lg hover:bg-[#47216b] hover:text-white transition-all duration-300">
