@@ -82,13 +82,26 @@ const handleOpenModal = (post) => {
     return desc.length > maxLength ? desc.slice(0, maxLength) + "..." : desc
   }
 
+  // Counter click: go to that blog
+  const handleCounterClick = (idx) => {
+    setCurrentPostIndex(idx);
+  };
+
+  // Next/Prev navigation
+  const handlePrev = () => {
+    setCurrentPostIndex((prev) => (prev - 1 + blogPosts.length) % blogPosts.length);
+  };
+  const handleNext = () => {
+    setCurrentPostIndex((prev) => (prev + 1) % blogPosts.length);
+  };
+
   return (
-    <section className="w-full py-16 md:py-24 lg:py-32 bg-gray-50">
+    <section className="w-full py-16 mb-4 md:py-24 lg:py-32 bg-gray-50">
       <div className="container px-4 md:px-6 lg:px-8  mx-auto">
         {/* Top Section: Headings and Description */}
         <div className="max-w-5xl mb-12 md:mb-20">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">OUR BLOG</h3>
-          <h1 className="text-4xl md:text-7xl pb-5 w-max  font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-2 text-[#47216b]">
+          <h1 className="text-4xl md:text-7xl pb-5 w-full font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-2 text-[#47216b]">
             Insights and Innovations
           </h1>
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
@@ -103,13 +116,16 @@ const handleOpenModal = (post) => {
         {/* Main Content Section: Counter and Blog Card */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-x-6 items-start">
           {/* Counter/Timeline Section */}
-          <div className="md:col-span-2 flex flex-row md:flex-col justify-center md:justify-start items-start md:items-start relative overflow-x-auto pb-2 md:pb-0">
+          <div className="hidden md:col-span-2 md:flex flex-row md:flex-col justify-center md:justify-start items-start md:items-start relative overflow-x-auto pb-2 md:pb-0">
             {/* Vertical line for desktop */}
             <div className="hidden md:block absolute left-[20px] top-0 bottom-0 w-0.5 bg-gray-300 -translate-x-1/2" />
             {blogPosts.map((post, index) => (
-              <div
+             <button
                 key={post.id}
-                className="relative z-10 flex flex-col items-center flex-shrink-0 mb-0 md:mb-8 mr-4 md:mr-0 last:mr-0"
+                onClick={() => handleCounterClick(index)}
+                className="relative z-10 flex flex-col items-center flex-shrink-0 mb-0 md:mb-8 mr-4 md:mr-0 last:mr-0 focus:outline-none"
+                aria-label={`Go to blog ${post.title}`}
+                type="button"
               >
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold transition-colors duration-300 ${
@@ -122,7 +138,7 @@ const handleOpenModal = (post) => {
                 >
                   {post.id}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -154,6 +170,29 @@ const handleOpenModal = (post) => {
                 </button>
               </div>
             </div>
+            {/* Prev/Next navigation */}
+            <div className="flex justify-center items-center gap-8 mt-6">
+              <button
+                onClick={handlePrev}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-[#47216b] hover:text-white text-[#47216b] transition-colors duration-200"
+                aria-label="Previous Blog"
+                type="button"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={handleNext}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-[#47216b] hover:text-white text-[#47216b] transition-colors duration-200"
+                aria-label="Next Blog"
+                type="button"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -161,7 +200,7 @@ const handleOpenModal = (post) => {
         {/* Modal */}
       {modalOpen && modalPost && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 transition-all duration-300">
-          <div className="bg-white rounded-2xl shadow-2xl w-10/12 max-w-5xl mx-auto p-6 md:p-10 relative animate-fadeIn">
+          <div className="bg-white rounded-2xl shadow-2xl w-11/12 max-w-xl md:max-w-3xl lg:max-w-5xl mx-auto p-6 md:p-10 relative animate-fadeIn">
             <button
               className="absolute top-4 right-4 text-gray-400 hover:text-[#47216b] text-2xl font-bold transition"
               onClick={handleCloseModal}
