@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
     return (
-        <section className="bg-white py-12 px-4 md:px-6 lg:px-8 container mx-auto">
+        <section className="bg-white py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-8 container mx-auto">
             <div className="mx-auto">
                 <h2 className="text-4xl md:text-7xl pb-5 font-bold leading-tight mb-4 text-gray-900">
                     <span className="block"><span className="text-[#47216b]">What Defines GoDigitfy</span></span>

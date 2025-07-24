@@ -8,6 +8,10 @@ import AboutPage from "../pages/about";
 import Contact from "../pages/contact";
 import Blog from "../pages/blog/Blog";
 import BlogDetail from "../pages/blog/BlogDetail";
+import DBA from "../pages/dba/index"
+import CustomSolution from "../pages/custom-solutions/index"
+import OurProduct from "../pages/our-products/index"
+
 
 // CMS pages (you can create these later)
 import CMSBlogs from "../pages/cms/CMSBlogs";
@@ -15,6 +19,7 @@ import CMSContact from "../pages/cms/CMSContact";
 import CMSServices from "../pages/cms/CMSServices";
 import BlogEditPage from "../pages/cms/BlogEditPage";
 import BlogDetailPage from "../pages/cms/BlogDetailPage";
+
 
 const CMSDashboard = () => (
   <div>
@@ -36,12 +41,6 @@ const CMSDashboard = () => (
   </div>
 );
 
-
-
-
-
-
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -49,61 +48,72 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "/about",
-        element: <AboutPage />
+        element: <AboutPage />,
       },
       {
         path: "/contact",
-        element: <Contact />
+        element: <Contact />,
       },
       {
         path: "/blog",
-        element: <Blog />
+        element: <Blog />,
+      },
+      {
+        path: "/services/dba",
+        element: <DBA />,
+      },
+      {
+        path: "/solutions/our-products",
+        element: <OurProduct />,
+      },
+      {
+        path: "/solutions/custom-solutions",
+        element: <CustomSolution />,
       },
       {
         path: "/blog/:id",
-        element: <BlogDetail />
-      }
-    ]
+        element: <BlogDetail />,
+      },
+    ],
   },
   {
-  path: "/cms",
-  element: <CMSLayout />,
-  children: [
-    {
-      path: "", 
-      element: <CMSDashboard />
-    },
-    {
-      path: "dashboard",
-      element: <CMSDashboard />
-    },
-    {
-      path: "manage-queries",
-      element: <CMSContact />
-    },
-    {
-      path: "blogs",
-      element: <CMSBlogs />
-    },
-    {
-      path: "blogs/:id",             
-      element: <BlogDetailPage/>
-    },
-    {
-      path: "blogs/:id/edit",        
-      element: <BlogEditPage/>
-    },
-    {
-      path: "manage-services",
-      element: <CMSServices />
-    }
-  ]
-}
-
+    path: "/cms",
+    element: <CMSLayout />,
+    children: [
+      {
+        path: "",
+        element: <CMSDashboard />,
+      },
+      {
+        path: "dashboard",
+        element: <CMSDashboard />,
+      },
+      {
+        path: "manage-queries",
+        element: <CMSContact />,
+      },
+      {
+        path: "blogs",
+        element: <CMSBlogs />,
+      },
+      {
+        path: "blogs/:id",
+        element: <BlogDetailPage />,
+      },
+      {
+        path: "blogs/:id/edit",
+        element: <BlogEditPage />,
+      },
+      {
+        path: "manage-services",
+        element: <CMSServices />,
+      },
+    ],
+  },
 ]);
 
 export default router;
