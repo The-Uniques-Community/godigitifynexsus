@@ -13,6 +13,7 @@ const MainLayout = () => {
   const { triggerTransition } = usePageTransition();
   const [initialLoading, setInitialLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
   // Cursor refs
   const cursorRef = useRef(null);
@@ -41,18 +42,21 @@ const MainLayout = () => {
     const timeout = setTimeout(() => {
       setInitialLoading(false);
       setShowContent(true);
-    }, 1500);
+      setInitialLoadComplete(true); // Mark initial load as complete
+    }, 8200); // 7s for video + 1.2s for transition
     return () => clearTimeout(timeout);
   }, []);
 
-  // Trigger overlay on every path change
+  // Trigger overlay ONLY on path change, not initial load
   useEffect(() => {
-    if (!initialLoading) {
+    if (!initialLoading && initialLoadComplete) {
+      // Only trigger transition after initial load is complete
+      // and when route changes
       setShowContent(false);
       triggerTransition();
       setTimeout(() => setShowContent(true), 800); // show content after animation
     }
-  }, [location.pathname, initialLoading]); // Removed triggerTransition from deps
+  }, [location.pathname]); // Only depend on location changes
 
   // Cursor animation effect
   useEffect(() => {

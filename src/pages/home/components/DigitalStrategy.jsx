@@ -89,30 +89,43 @@ const Card = ({
     const card = cardRef.current;
     if (!card) return;
 
-    // Set initial state - cards start from left side, rotated and invisible
+    // Set initial state - cards start invisible
     gsap.set(card, {
-      x: -300,
-      y: -100,
-      rotation: -15,
       opacity: 0,
-      scale: 0.8,
     });
 
-    // Create scroll trigger animation
-    gsap.to(card, {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
-        end: "top 20%",
-        scrub: 1.5,
-        toggleActions: "play none none reverse",
+    // Create smooth scroll trigger animation with fade in/out effect
+    ScrollTrigger.create({
+      trigger: card,
+      start: "top 70%",
+      end: "bottom 20%",
+      onEnter: () => {
+        gsap.to(card, { 
+          opacity: 1, 
+          duration: 1.5, 
+          ease: "power3.out" 
+        });
+      },
+      onLeave: () => {
+        gsap.to(card, { 
+          opacity: 0.2, 
+          duration: 1.2, 
+          ease: "power3.inOut" 
+        });
+      },
+      onEnterBack: () => {
+        gsap.to(card, { 
+          opacity: 1, 
+          duration: 1.5, 
+          ease: "power3.out" 
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(card, { 
+          opacity: 0, 
+          duration: 1.2, 
+          ease: "power3.inOut" 
+        });
       },
     });
 
@@ -219,12 +232,12 @@ const Card = ({
 
 const DigitalStrategy = () => {
   return (
-    <div className="overflow-hidden py-12 px-4">
+    <div className="overflow-hidden container mx-auto px-4 md:px-6 lg:px-8">
       {/* <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">
         OUR BLOG
       </h3> */}
-      <h2 className="text-4xl md:text-7xl pb-5 w-max font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-5 text-[#47216b]">
-         How We Work at <br/> GoDigitfy
+      <h2 className="text-4xl md:text-7xl pb-5 w-max font-bold leading-tight  mb-32 text-[#47216b]">
+         How We Work at GoDigitfy
       </h2>
       {/* <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
         Stay updated with our latest articles, industry trends, and expert
