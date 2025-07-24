@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import vision from '../../../assets/images/vision.png'
+import impact from '../../../assets/images/impact.png'
+import seamless from '../../../assets/images/seamless.png'
 gsap.registerPlugin(ScrollTrigger);
 
 const strategySteps = [
@@ -19,8 +21,8 @@ const strategySteps = [
     ],
     description:
       "We begin by understanding your brand’s goals, audience, and purpose. Every digital journey starts with clarity — so we listen, learn, and uncover what success looks like for you.",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgD5_Zgh8ImkFoA47L_A3_o7O4O752D_8LA&s",
+    image: vision
+      
   },
   {
     number: "02",
@@ -36,8 +38,7 @@ const strategySteps = [
     ],
     description:
       "Our team transforms insights into ideas — crafting creative and data-backed strategies that align with your brand's voice and market needs.",
-    image:
-      "https://clictadigital.com/wp-content/uploads/2020/05/digital-marketing-strategy-FI.png",
+    image: impact
   },
   {
     number: "03",
@@ -53,8 +54,7 @@ const strategySteps = [
     ],
     description:
       "Just tell us what your event or campaign is about — and we handle it all. From digital branding, website creation, social media management, to printables and complete event execution, we bring your vision to life with zero hassle.",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcQYwPNGc0PgYM2dbx9W5RPRD4R1OxeA83iQ&s",
+    image: seamless
   },
   {
     number: "04",
@@ -223,8 +223,8 @@ const DigitalStrategy = () => {
       {/* <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">
         OUR BLOG
       </h3> */}
-      <h2 className="text-4xl md:text-7xl pb-5 w-max  font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-5 text-[#47216b]">
-         How We Work at GoDigitfy
+      <h2 className="text-4xl md:text-7xl pb-5 w-max font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-5 text-[#47216b]">
+         How We Work at <br/> GoDigitfy
       </h2>
       {/* <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
         Stay updated with our latest articles, industry trends, and expert
