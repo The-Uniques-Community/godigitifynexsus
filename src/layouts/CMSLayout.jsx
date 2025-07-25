@@ -1,12 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Outlet, useLocation, Link } from "react-router-dom";
+import { logoutAdmin, getAdminInfo } from "../utils/auth";
 import logo from '../assets/GodigitifyCrop.png'
 const lerp = (start, end, amt) => start + (end - start) * amt;
 
 const CMSLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [adminInfo, setAdminInfo] = useState(null);
   const location = useLocation();
 
+  // Get admin info on component mount
+  useEffect(() => {
+    const info = getAdminInfo();
+    setAdminInfo(info);
+  }, []);
   // Helper function to check if a route is active
   const isActiveRoute = (path) => {
     return location.pathname === path || location.pathname.startsWith(path + '/');
@@ -327,13 +334,36 @@ const CMSLayout = () => {
 
                 {/* Bottom Section - Fixed at bottom */}
                 <div className="flex-shrink-0 p-4 border-t border-gray-200 bg-white">
-                  <div className="px-4 py-3 bg-purple-50 rounded-lg">
-                    <p className="text-xs text-purple-700 font-medium">Need Help?</p>
-                    <p className="text-xs text-purple-600 mt-1">Check our documentation</p>
-                    <button className="mt-2 w-full text-xs bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition-colors duration-200">
-                      Get Support
-                    </button>
-                  </div>
+                  {/* Admin Info */}
+                  {adminInfo && (
+                    <div className="px-4 py-3 bg-gray-50 rounded-lg mb-3">
+                      <div className="flex items-center">
+                        <div className="w-8 h-8 bg-gradient-to-br from-[#47216b] to-purple-600 rounded-full flex items-center justify-center">
+                          <span className="text-white text-sm font-medium">
+                            {adminInfo.name ? adminInfo.name.charAt(0).toUpperCase() : 'A'}
+                          </span>
+                        </div>
+                        <div className="ml-3 flex-1">
+                          <p className="text-xs font-medium text-gray-900">{adminInfo.name || 'Admin'}</p>
+                          <p className="text-xs text-gray-500 truncate">{adminInfo.email}</p>
+                        </div>
+                      </div>
+                      
+                      {/* Logout Button */}
+                      <button 
+                        onClick={logoutAdmin}
+                        className="mt-3 w-full text-xs bg-red-600 hover:bg-red-700 text-white py-2 rounded-md transition-colors duration-200 flex items-center justify-center"
+                      >
+                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                  
+                  {/* Help Section */}
+                  
                 </div>
               </div>
             </aside>
