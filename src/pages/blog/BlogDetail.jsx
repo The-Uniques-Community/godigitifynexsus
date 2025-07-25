@@ -17,7 +17,7 @@ const BlogDetail = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`http://localhost:5000/api/blogs/get-blog/${id}`);
+        const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-blog/${id}`);
         if (response.data.success) {
           setBlog(response.data.blog);
         } else {
@@ -42,7 +42,7 @@ const BlogDetail = () => {
       
       try {
         setRelatedLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/blogs/${id}/related?page=1&limit=3`);
+        const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/${id}/related?page=1&limit=3`);
         if (response.data.success) {
           setRelatedBlogs(response.data.relatedBlogs);
         }
