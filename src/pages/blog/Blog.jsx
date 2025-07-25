@@ -17,7 +17,7 @@ const Blog = () => {
     const fetchBlogs = async () => {
       try {
         setLoading(true)
-        const response = await axios.get(`http://localhost:5000/api/blogs/get-all-blogs?page=${currentPage}&limit=6`)
+        const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?page=${currentPage}&limit=6`)
         if (response.data.success) {
           setBlogs(response.data.blogs)
           setTotalPages(response.data.totalPages)

@@ -18,7 +18,7 @@ const CMSQueryDetail = () => {
   const fetchQuery = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/contact/get-query/${id}`, {
+      const response = await axios.get(`https://godigitify-backend.vercel.app/api/contact/get-query/${id}`, {
         withCredentials: true
       });
 
@@ -43,7 +43,7 @@ const CMSQueryDetail = () => {
 
     try {
       setDeleting(true);
-      const response = await axios.delete(`http://localhost:5000/api/contact/delete-query/${id}`, {
+      const response = await axios.delete(`https://godigitify-backend.vercel.app/api/contact/delete-query/${id}`, {
         withCredentials: true
       });
 

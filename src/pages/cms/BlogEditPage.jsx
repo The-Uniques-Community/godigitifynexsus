@@ -11,7 +11,7 @@ const BlogEditPage = () => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/blogs/get-blog/${id}`)
+    axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-blog/${id}`)
       .then(res => setBlog(res.data.blog))
       .catch(err => console.error(err));
   }, [id]);
@@ -35,7 +35,7 @@ const BlogEditPage = () => {
   const handleUpdate = async () => {
     try {
       setLoading(true);
-      const res = await axios.put(`http://localhost:5000/api/blogs/update/${id}`, blog);
+      const res = await axios.put(`https://godigitify-backend.vercel.app/api/blogs/update/${id}`, blog);
       setLoading(false);
       alert("Blog updated successfully!");
       navigate("/cms/blogs");
@@ -48,7 +48,7 @@ const BlogEditPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/blogs/delete-blog/${id}`);
+      await axios.delete(`https://godigitify-backend.vercel.app/api/blogs/delete-blog/${id}`);
       alert("Blog deleted successfully!");
       navigate("/cms/blogs");
     } catch (err) {

@@ -74,7 +74,7 @@ The GoDigitify Team`,
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:5000/api/contact/get-query/${id}`,
+        `https://godigitify-backend.vercel.app/api/contact/get-query/${id}`,
         {
           withCredentials: true,
         }
@@ -150,7 +150,7 @@ The GoDigitify Team`,
       setError("");
 
       const response = await axios.post(
-        `http://localhost:5000/api/contact/respond-query/${id}`,
+        `https://godigitify-backend.vercel.app/api/contact/respond-query/${id}`,
         {
           subject: responseData.subject.trim(),
           content: responseData.content.trim(),

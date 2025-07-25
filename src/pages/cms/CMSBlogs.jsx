@@ -174,7 +174,7 @@ const CMSBlogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/blogs/get-all-blogs?page=1&limit=3')
+    axios.get('https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?page=1&limit=3')
       .then(res => setBlogs(res.data.blogs))
       .catch(err => console.error(err));
   }, []);

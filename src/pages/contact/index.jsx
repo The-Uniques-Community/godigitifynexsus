@@ -87,7 +87,7 @@ const Contact = () => {
     try {
       setLoading(true)
       
-      const response = await axios.post('http://localhost:5000/api/contact/create', {
+      const response = await axios.post('https://godigitify-backend.vercel.app/api/contact/create', {
         name: formData.name.trim(),
         organization: formData.organization.trim(),
         email: formData.email.trim().toLowerCase(),

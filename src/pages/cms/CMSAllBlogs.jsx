@@ -40,7 +40,7 @@ const CMSAllBlogs = () => {
         ...Object.fromEntries(Object.entries(filters).filter(([_, value]) => value))
       });
 
-      const response = await axios.get(`http://localhost:5000/api/blogs/get-all-blogs?${queryParams}`, {
+      const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?${queryParams}`, {
         withCredentials: true
       });
 
@@ -93,7 +93,7 @@ const CMSAllBlogs = () => {
 
     try {
       setDeleting(blogId);
-      const response = await axios.delete(`http://localhost:5000/api/blogs/delete/${blogId}`, {
+      const response = await axios.delete(`https://godigitify-backend.vercel.app/api/blogs/delete/${blogId}`, {
         withCredentials: true
       });
 

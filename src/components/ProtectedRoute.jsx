@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
 
         // Verify session with backend
         try {
-          const response = await axios.get('http://localhost:5000/api/admin/verify-session', {
+          const response = await axios.get('https://godigitify-backend.vercel.app/api/admin/verify-session', {
             withCredentials: true // Important for session cookie
           });
 

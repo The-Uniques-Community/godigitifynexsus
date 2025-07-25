@@ -11,14 +11,14 @@ const BlogDetailPage = () => {
   const [showTooltip, setShowTooltip] = useState({ edit: false, delete: false });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/blogs/get-blog/${id}`)
+    axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-blog/${id}`)
       .then(res => setBlog(res.data.blog))
       .catch(err => console.error(err));
   }, [id]);
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/blogs/delete-blog/${id}`);
+      await axios.delete(`https://godigitify-backend.vercel.app/api/blogs/delete-blog/${id}`);
       setShowDeleteConfirm(false);
       navigate('/cms/blogs'); // Redirect to blogs list
     } catch (error) {
