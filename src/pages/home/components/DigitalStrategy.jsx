@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import vision from '../../../assets/images/vision.png'
+import impact from '../../../assets/images/impact.png'
+import seamless from '../../../assets/images/seamless.png'
 gsap.registerPlugin(ScrollTrigger);
 
 const strategySteps = [
@@ -19,8 +21,8 @@ const strategySteps = [
     ],
     description:
       "We begin by understanding your brand’s goals, audience, and purpose. Every digital journey starts with clarity — so we listen, learn, and uncover what success looks like for you.",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgD5_Zgh8ImkFoA47L_A3_o7O4O752D_8LA&s",
+    image: vision
+      
   },
   {
     number: "02",
@@ -36,8 +38,7 @@ const strategySteps = [
     ],
     description:
       "Our team transforms insights into ideas — crafting creative and data-backed strategies that align with your brand's voice and market needs.",
-    image:
-      "https://clictadigital.com/wp-content/uploads/2020/05/digital-marketing-strategy-FI.png",
+    image: impact
   },
   {
     number: "03",
@@ -53,8 +54,7 @@ const strategySteps = [
     ],
     description:
       "Just tell us what your event or campaign is about — and we handle it all. From digital branding, website creation, social media management, to printables and complete event execution, we bring your vision to life with zero hassle.",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcQYwPNGc0PgYM2dbx9W5RPRD4R1OxeA83iQ&s",
+    image: seamless
   },
   {
     number: "04",
@@ -89,30 +89,43 @@ const Card = ({
     const card = cardRef.current;
     if (!card) return;
 
-    // Set initial state - cards start from left side, rotated and invisible
+    // Set initial state - cards start invisible
     gsap.set(card, {
-      x: -300,
-      y: -100,
-      rotation: -15,
       opacity: 0,
-      scale: 0.8,
     });
 
-    // Create scroll trigger animation
-    gsap.to(card, {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
-        end: "top 20%",
-        scrub: 1.5,
-        toggleActions: "play none none reverse",
+    // Create smooth scroll trigger animation with fade in/out effect
+    ScrollTrigger.create({
+      trigger: card,
+      start: "top 70%",
+      end: "bottom 20%",
+      onEnter: () => {
+        gsap.to(card, { 
+          opacity: 1, 
+          duration: 1.5, 
+          ease: "power3.out" 
+        });
+      },
+      onLeave: () => {
+        gsap.to(card, { 
+          opacity: 0.2, 
+          duration: 1.2, 
+          ease: "power3.inOut" 
+        });
+      },
+      onEnterBack: () => {
+        gsap.to(card, { 
+          opacity: 1, 
+          duration: 1.5, 
+          ease: "power3.out" 
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(card, { 
+          opacity: 0, 
+          duration: 1.2, 
+          ease: "power3.inOut" 
+        });
       },
     });
 
@@ -219,11 +232,11 @@ const Card = ({
 
 const DigitalStrategy = () => {
   return (
-    <div className="overflow-hidden py-12 px-4">
+    <div className="overflow-hidden container mx-auto px-4 md:px-6 lg:px-8">
       {/* <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">
         OUR BLOG
       </h3> */}
-      <h2 className="text-4xl md:text-7xl pb-5 w-max  font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-5 text-[#47216b]">
+      <h2 className="text-4xl md:text-7xl pb-5 w-max font-bold leading-tight  mb-32 text-[#47216b]">
          How We Work at GoDigitfy
       </h2>
       {/* <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">

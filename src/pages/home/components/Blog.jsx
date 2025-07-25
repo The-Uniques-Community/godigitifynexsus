@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-
+import Blogmain from '../../../assets/innovation.png'
 const blogPosts = [
   {
     id: "01",
