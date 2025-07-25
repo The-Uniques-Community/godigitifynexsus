@@ -7,6 +7,11 @@ import InitialLoader from "./utils/InitialLoader";
 import TransitionOverlay from "./utils/TransitionOverlay";
 import { Outlet } from "react-router";
 import { usePageTransition, PageTransitionProvider } from "./utils/PageTransitionProvider";
+import Contact from "./pages/contact";
+import Navbar from "./utils/Navbar";
+import Footer from "./utils/Footer";
+import Blog from "./pages/blog/Blog";
+import AboutPage from "./pages/about";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -38,8 +43,16 @@ const RootLayout = () => {
         <InitialLoader onComplete={() => setInitialLoading(false)} />
       ) : (
         <>
+          <Navbar />
           <TransitionOverlay />
-          {showContent && <Outlet />}
+          {showContent && (
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-grow pt-20">
+                <Outlet />
+              </main>
+              <Footer />
+            </div>
+          )}
         </>
       )}
     </div>
@@ -59,7 +72,15 @@ const router = createBrowserRouter([
       },
       {
         path:'/about',
-        element:<About />
+        element:<AboutPage/>
+      },
+      {
+        path:'/contact',
+        element:<Contact/>
+      },
+      {
+        path:'/blog',
+        element:<Blog/>
       }
     ]
   },
@@ -210,7 +231,7 @@ export default function App() {
         // dot moves up/down
         const dot = scrollIndicatorRef.current.querySelector(".dot");
         if (dot) {
-          dot.style.transform = `translateY(${scrollDir.current * 5}px)`;
+          dot.style.transform = `translateY(${scrollDir.current * 20}px)`;
         }
         // fade out - slower fade for better visibility
         scrollFade.current = lerp(scrollFade.current, 0, 0.03);
@@ -265,6 +286,7 @@ export default function App() {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 9999,
   };
   const scrollDotStyle = {
     width: 8, // Slightly larger dot
@@ -272,6 +294,7 @@ export default function App() {
     backgroundColor: "#47216b",
     borderRadius: "50%",
     transition: "transform 0.15s ease-out", // Slightly slower
+    zIndex:9999
   };
 
   return (
