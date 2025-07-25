@@ -238,11 +238,7 @@ const CMSLayout = () => {
                 <h1 className="text-xl font-semibold text-gray-900">CMS</h1>
               </div>
               
-              <div className="flex items-center space-x-4">
-                <button className="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 transition-colors duration-200">
-                  Logout
-                </button>
-              </div>
+              
             </div>
           </header>
 
