@@ -80,10 +80,6 @@ export const router = createBrowserRouter([
     element: <AdminLogin />
   },
   {
-    path: "/auth",
-    element: <AdminLogin />
-  },
-  {
       path: "/cms",
       element: (
       <SimpleProtectedRoute>
