@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import BlogImg from '../../assets/innovation.png'
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -56,29 +57,43 @@ const Blog = () => {
       {/* Hero Section */}
       <section className="bg-gray-50 py-16 md:py-24 lg:py-32">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-4">OUR BLOG</h3>
-            <h1 className="text-4xl md:text-7xl font-bold leading-tight text-[#47216b] mb-6">
-              Insights & <span className="text-gray-900">Innovations</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl">
-              Stay ahead of the curve with our latest articles, industry insights, and expert opinions. 
-              We share our knowledge to help you navigate the evolving landscape of technology and business.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 lg:gap-12 items-center">
+            {/* Content Section - 5/8 */}
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-4">OUR BLOG</h3>
+              <h1 className="text-4xl md:text-7xl font-bold leading-tight text-[#47216b] mb-6">
+                Insights & <span className="text-gray-900">Innovations</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl">
+                Stay ahead of the curve with our latest articles, industry insights, and expert opinions. 
+                We share our knowledge to help you navigate the evolving landscape of technology and business.
+              </p>
+              
+              {/* Statistics */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-bold text-[#47216b]">{totalBlogs}+</div>
+                  <div className="text-gray-600">Articles Published</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-bold text-[#47216b]">50K+</div>
+                  <div className="text-gray-600">Monthly Readers</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-bold text-[#47216b]">25+</div>
+                  <div className="text-gray-600">Expert Contributors</div>
+                </div>
+              </div>
+            </div>
             
-            {/* Statistics */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
-              <div className="text-center lg:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-[#47216b]">{totalBlogs}+</div>
-                <div className="text-gray-600">Articles Published</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-[#47216b]">50K+</div>
-                <div className="text-gray-600">Monthly Readers</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-[#47216b]">25+</div>
-                <div className="text-gray-600">Expert Contributors</div>
+            {/* Image Section - 3/8 */}
+            <div className="lg:col-span-3 order-1 lg:order-2">
+              <div className="relative">
+                <img 
+                  src={BlogImg} 
+                  alt="Innovation and Insights" 
+                  className="w-full h-auto "
+                />
               </div>
             </div>
           </div>

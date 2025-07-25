@@ -10,6 +10,10 @@ import AboutPage from "../pages/about";
 import Contact from "../pages/contact";
 import Blog from "../pages/blog/Blog";
 import BlogDetail from "../pages/blog/BlogDetail";
+import DBA from "../pages/dba/index"
+import CustomSolution from "../pages/custom-solutions/index"
+import OurProduct from "../pages/our-products/index"
+
 
 // Auth pages
 import AdminLogin from "../pages/auth/AdminLogin";
@@ -24,18 +28,13 @@ import CMSServices from "../pages/cms/CMSServices";
 import BlogEditPage from "../pages/cms/BlogEditPage";
 import BlogDetailPage from "../pages/cms/BlogDetailPage";
 
+
 const CMSDashboard = () => (
   <div>
     <h2 className="text-2xl font-bold text-gray-900 mb-6">Dashboard</h2>
     <p className="text-center lg:text-7xl md:text-5xl text-4xl text-slate-300 font-bold py-16">Coming Soon</p>
   </div>
 );
-
-
-
-
-
-
 
 export const router = createBrowserRouter([
   {
@@ -44,52 +43,68 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "/about",
-        element: <AboutPage />
+        element: <AboutPage />,
       },
       {
         path: "/contact",
-        element: <Contact />
+        element: <Contact />,
       },
       {
         path: "/blog",
-        element: <Blog />
+        element: <Blog />,
+      },
+      {
+        path: "/services/dba",
+        element: <DBA />,
+      },
+      {
+        path: "/solutions/our-products",
+        element: <OurProduct />,
+      },
+      {
+        path: "/solutions/custom-solutions",
+        element: <CustomSolution />,
       },
       {
         path: "/blog/:id",
-        element: <BlogDetail />
-      }
-    ]
+        element: <BlogDetail />,
+      },
+    ],
   },
   {
     path: "/auth",
     element: <AdminLogin />
   },
   {
-    path: "/cms",
-    element: (
+    path: "/auth",
+    element: <AdminLogin />
+  },
+  {
+      path: "/cms",
+      element: (
       <SimpleProtectedRoute>
         <CMSLayout />
       </SimpleProtectedRoute>
     ),
-    children: [
+      children: [
+      {
+        path: "",
+        element: <CMSDashboard />,
+      },
+      
     {
-      path: "", 
-      element: <CMSDashboard />
-    },
-    
-    {
-      path: "dashboard",
-      element: <CMSDashboard />
-    },
-    {
-      path: "manage-queries",
-      element: <CMSContact />
-    },
-    {
+        path: "dashboard",
+        element: <CMSDashboard />,
+      },
+      {
+        path: "manage-queries",
+        element: <CMSContact />,
+      },
+      {
       path: "query/:id",
       element: <CMSQueryDetail />
     },
@@ -98,28 +113,27 @@ export const router = createBrowserRouter([
       element: <CMSQueryResponse />
     },
     {
-      path: "blogs",
-      element: <CMSBlogs />
-    },
-    {
+        path: "blogs",
+        element: <CMSBlogs />,
+      },
+      {
       path: "all-blogs",
       element: <CMSAllBlogs />
     },
     {
-      path: "blogs/:id",             
-      element: <BlogDetailPage/>
-    },
-    {
-      path: "blogs/:id/edit",        
-      element: <BlogEditPage/>
-    },
-    {
-      path: "manage-services",
-      element: <CMSServices />
-    }
-  ]
-}
-
+        path: "blogs/:id",
+        element: <BlogDetailPage />,
+      },
+      {
+        path: "blogs/:id/edit",
+        element: <BlogEditPage />,
+      },
+      {
+        path: "manage-services",
+        element: <CMSServices />,
+      },
+    ],
+  },
 ]);
 
 export default router;
