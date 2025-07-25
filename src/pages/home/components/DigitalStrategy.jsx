@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import vision from '../../../assets/images/vision.png'
 import impact from '../../../assets/images/impact.png'
 import seamless from '../../../assets/images/seamless.png'
+import growth from '../../../assets/last.png'
 gsap.registerPlugin(ScrollTrigger);
 
 const strategySteps = [
@@ -70,7 +71,7 @@ const strategySteps = [
     ],
     description:
       "We track every touchpoint, evaluate performance, and continuously optimize your digital presence — ensuring results that grow with your brand.",
-    image: "https://s44783.pcdn.co/wp-content/uploads/2023/05/a3-4.png",
+    image: growth,
   },
 ];
 
