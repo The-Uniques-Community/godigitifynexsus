@@ -11,14 +11,14 @@ const BlogDetailPage = () => {
   const [showTooltip, setShowTooltip] = useState({ edit: false, delete: false });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/blogs/get-blog/${id}`)
+    axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-blog/${id}`)
       .then(res => setBlog(res.data.blog))
       .catch(err => console.error(err));
   }, [id]);
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/blogs/delete-blog/${id}`);
+      await axios.delete(`https://godigitify-backend.vercel.app/api/blogs/delete-blog/${id}`);
       setShowDeleteConfirm(false);
       navigate('/cms/blogs'); // Redirect to blogs list
     } catch (error) {
@@ -40,7 +40,7 @@ const BlogDetailPage = () => {
   return (
     <div className="min-h-screen bg-[#ffffff]">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-[#47216b] to-[#001330] text-white">
+      <div className="relative bg-gradient-to-br max-w-3xl mx-auto from-[#47216b] to-[#001330] text-white">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative max-w-4xl mx-auto px-4 py-16 lg:py-24">
           {/* Action Buttons - Floating */}
@@ -83,7 +83,7 @@ const BlogDetailPage = () => {
           </div>
 
           {/* Title and Meta */}
-          <div className="space-y-6">
+          <div className="space-y-6 ">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               {blog.mainHeading}
             </h1>
@@ -113,11 +113,11 @@ const BlogDetailPage = () => {
 
       {/* Cover Image */}
       {blog.coverImage && (
-        <div className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+        <div className="relative max-w-3xl mx-auto h-64 md:h-80 lg:h-96 overflow-hidden">
           <img 
             src={blog.coverImage} 
             alt="Article cover" 
-            className="w-full h-full object-contain object-center"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
         </div>
