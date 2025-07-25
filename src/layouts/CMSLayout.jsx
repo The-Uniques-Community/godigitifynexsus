@@ -295,7 +295,7 @@ const CMSLayout = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 011 .22l4 2a1 1 0 01.78.97V18a2 2 0 01-2 2z" />
                       </svg>
                       Blogs
-                      <span className="ml-auto bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full">12</span>
+                      
                     </Link>
 
                     {/* Contact Query */}
@@ -311,7 +311,7 @@ const CMSLayout = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                       </svg>
                       Contact Query
-                      <span className="ml-auto bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">5</span>
+                      
                     </Link>
 
                     {/* Add Services */}
