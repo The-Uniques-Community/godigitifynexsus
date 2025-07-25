@@ -1,33 +1,66 @@
 // components/InitialLoader.jsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import LoadingLogo from "../assets/logoanime.mp4";
 
 const InitialLoader = ({ onComplete }) => {
   const loaderRef = useRef();
+  const videoRef = useRef();
+  const [started, setStarted] = useState(false);
 
+  // Once "started" flips to true, play video (with sound) and kick off GSAP.
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: onComplete,
+    if (!started) return;
+
+    // Unmute & play
+    videoRef.current.muted = false;
+    videoRef.current.volume = 1.0;
+    videoRef.current.play().catch(() => {
+      console.warn("Playback still blocked?");
     });
 
-    tl.fromTo(
-      loaderRef.current,
-      { y: 0 },
-      {
-        y: "-100%",
-        delay: 2,
-        duration: 1.2,
-        ease: "power2.inOut",
-      }
-    );
-  }, [onComplete]);
+    // Animate loader off after videoDuration seconds
+    const videoDuration = 7; // seconds
+    const tl = gsap.timeline({ onComplete });
+    tl.to(loaderRef.current, {
+      y: "-100%",
+      delay: videoDuration,
+      duration: 1.2,
+      ease: "power2.inOut",
+    });
 
+    // Fallback to ensure onComplete fires
+    const fallback = setTimeout(onComplete, (videoDuration + 1) * 1000);
+    return () => clearTimeout(fallback);
+  }, [started, onComplete]);
+
+  // Render a one‑time overlay when not started
+  if (!started) {
+    return (
+      <div
+        className="fixed inset-0 bg-black text-white flex items-center justify-center z-[9999] cursor-pointer"
+        onClick={() => setStarted(true)}
+      >
+        <p className="text-2xl">Tap anywhere to begin</p>
+      </div>
+    );
+  }
+
+  // Once started, show the actual loader video
   return (
     <div
       ref={loaderRef}
-      className="fixed top-0 left-0 w-full h-full bg-black text-white flex items-center justify-center text-4xl z-[999]"
+      className="fixed inset-0 bg-black flex items-center justify-center z-[999]"
     >
-      YourBrand Loading...
+      <video
+        ref={videoRef}
+        src={LoadingLogo}
+        autoPlay
+        playsInline
+        muted={true}       // start muted until user gesture
+        preload="auto"
+        className="max-w-full max-h-full object-contain"
+      />
     </div>
   );
 };
