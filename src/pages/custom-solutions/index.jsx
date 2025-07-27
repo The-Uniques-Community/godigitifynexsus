@@ -870,119 +870,141 @@ const CustomSolutions = () => {
         </div>
       </section>
 
-      {/* Section 4 - Full Width Modern Why Choose GoDigitfy */}
-      <section className="py-24 bg-[#47216b] relative overflow-hidden">
-        {/* Abstract background elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#47216b]/30 -skew-x-12 transform z-0"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-white/5 blur-3xl z-0"></div>
+      {/* Section 4 - Modern Minimalistic Why Choose Section */}
+      <section className="relative py-24 overflow-hidden">
+        {/* Minimal background element */}
+        <div className="absolute inset-0 w-full h-full">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-gray-50"></div>
+          <div className="absolute bottom-0 right-0 w-full h-1/2 bg-[#47216b] clip-diagonal"></div>
+        </div>
         
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <motion.div 
-              className="text-center mb-16"
+              className="mb-16 text-center"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                Why Choose GoDigitfy?
+              <h2 className="text-4xl md:text-6xl font-bold mb-4">
+                Why Choose <span className="text-[#47216b]">GoDigitfy</span>
               </h2>
-              <div className="w-24 h-1 bg-white/30 mx-auto"></div>
+              <div className="w-16 h-1 bg-[#47216b] mx-auto"></div>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-              {/* Main feature */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {/* Left side - Why choose us points */}
               <motion.div 
-                className="md:col-span-12 bg-white/10 backdrop-blur-sm p-8 md:p-10 rounded-2xl text-white"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="space-y-10"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.6 }}
               >
-                <div className="flex flex-col md:flex-row items-center gap-8">
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                <div className="flex items-start gap-5">
+                  <div className="w-16 h-16 rounded-full bg-[#47216b]/10 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-8 h-8 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-4">One Vision, One Team</h3>
-                    <p className="text-white/80 text-lg mb-6">
-                      At GoDigitfy, you share your product vision once — we take care of the rest.
-                      From branding and website creation to media to full execution, everything is handled under one roof. 
-                      No stress. No scattered vendors.
-                    </p>
+                    <h3 className="text-xl font-bold mb-2">Single Team, Full Execution</h3>
+                    <p className="text-gray-600">Share your vision once — we handle everything from branding to development to execution under one roof.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-5">
+                  <div className="w-16 h-16 rounded-full bg-[#47216b]/10 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-8 h-8 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Speed & Clarity</h3>
+                    <p className="text-gray-600">Rapid execution with continuous updates. No confusion, no delays, just transparent progress.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-5">
+                  <div className="w-16 h-16 rounded-full bg-[#47216b]/10 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-8 h-8 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Focus on Core Business</h3>
+                    <p className="text-gray-600">You drive your business strategy. We handle every digital execution detail.</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Right side - CTA card */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="absolute -top-6 -left-6 w-20 h-20 bg-[#47216b]/10 rounded-full"></div>
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#47216b]/5 rounded-full"></div>
+                
+                <div className="relative p-10 md:p-12 bg-white rounded-2xl shadow-xl border border-gray-100 z-10">
+                  <h3 className="text-2xl font-bold text-[#47216b] mb-6">Ready to build your digital vision?</h3>
+                  <p className="text-gray-600 mb-8">
+                    Our end-to-end service ensures you're completely taken care of—from concept to execution and beyond.
+                  </p>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <p className="ml-3 text-gray-700">Single point of contact</p>
+                    </div>
+                    
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <p className="ml-3 text-gray-700">Complete confidentiality</p>
+                    </div>
+                    
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <p className="ml-3 text-gray-700">Ongoing technical support</p>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-10">
                     <a
                       href="#get-started"
-                      className="inline-flex items-center px-6 py-3 bg-white text-[#47216b] rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
+                      className="block w-full py-4 bg-[#47216b] text-white rounded-xl font-semibold text-center hover:bg-[#371955] transition-colors duration-300"
                     >
                       Start Your Project
-                      <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
                     </a>
                   </div>
                 </div>
               </motion.div>
-              
-              {/* Three feature columns */}
-              <motion.div 
-                className="md:col-span-4 bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-white"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-4">Speed & Communication</h3>
-                <p className="text-white/80">
-                  We move fast, keep you in the loop at every stage, and protect your ideas with full confidentiality and secure systems.
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="md:col-span-4 bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-white"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-4">Trust & Confidentiality</h3>
-                <p className="text-white/80">
-                  Your ideas are protected through complete confidentiality and secure systems built for protection and peace of mind.
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="md:col-span-4 bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-white"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-4">Focus on What Matters</h3>
-                <p className="text-white/80">
-                  You focus on your business — We Digitfy your entire experience — with trust, clarity, and creativity.
-                </p>
-              </motion.div>
             </div>
           </div>
         </div>
+        
+        {/* CSS for diagonal clip */}
+        <style jsx>{`
+          .clip-diagonal {
+            clip-path: polygon(0 100%, 100% 30%, 100% 100%, 0% 100%);
+          }
+        `}</style>
       </section>
     </div>
   );
