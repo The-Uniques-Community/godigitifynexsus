@@ -1,107 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import BlogImg from '../../assets/innovation.png'
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
-
-  const blogPosts = [
-    {
-      id: 1,
-      category: "Strategy",
-      title: "Building Digital Foundations: A Strategic Approach to Business Transformation",
-      excerpt: "Discover how to establish strong digital foundations that drive sustainable business growth and competitive advantage in today's digital landscape.",
-      content: "In today's rapidly evolving business environment, establishing strong digital foundations is crucial for long-term success. We explore strategic frameworks, implementation methodologies, and key considerations for businesses embarking on their digital transformation journey.",
-      image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80",
-      author: "GoDigitify Team",
-      date: "2025-01-15",
-      readTime: "8 min read",
-      tags: ["Strategy", "Digital Transformation", "Business Growth"]
-    },
-    {
-      id: 2,
-      category: "Development",
-      title: "Modern Web Development: Building Scalable Applications with React and Node.js",
-      excerpt: "Learn the best practices for creating high-performance, scalable web applications using modern JavaScript frameworks and technologies.",
-      content: "Modern web development requires a deep understanding of both frontend and backend technologies. This comprehensive guide covers React best practices, Node.js optimization, and scalable architecture patterns.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-      author: "Tech Team",
-      date: "2025-01-12",
-      readTime: "12 min read",
-      tags: ["Development", "React", "Node.js", "Web Development"]
-    },
-    {
-      id: 3,
-      category: "Design",
-      title: "UI/UX Design Trends 2025: Creating Engaging User Experiences",
-      excerpt: "Explore the latest design trends and principles that will shape user experiences in 2025 and beyond.",
-      content: "User experience design continues to evolve with new technologies and changing user expectations. We examine the key trends, tools, and methodologies that will define exceptional digital experiences in 2025.",
-      image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
-      author: "Design Team",
-      date: "2025-01-10",
-      readTime: "6 min read",
-      tags: ["Design", "UI/UX", "Trends", "User Experience"]
-    },
-    {
-      id: 4,
-      category: "Marketing",
-      title: "Digital Marketing Mastery: Leveraging Data-Driven Strategies for Growth",
-      excerpt: "Harness the power of data analytics and modern marketing tools to drive measurable business growth and customer engagement.",
-      content: "Data-driven marketing has become essential for business success. This article explores advanced analytics, automation tools, and strategic approaches to maximize your marketing ROI.",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-      author: "Marketing Team",
-      date: "2025-01-08",
-      readTime: "10 min read",
-      tags: ["Marketing", "Analytics", "Growth", "Digital Strategy"]
-    },
-    {
-      id: 5,
-      category: "Technology",
-      title: "AI Integration in Business: Practical Applications and Implementation Guide",
-      excerpt: "A comprehensive guide to integrating artificial intelligence into your business operations for enhanced efficiency and innovation.",
-      content: "Artificial intelligence is transforming how businesses operate. Learn practical approaches to AI integration, from automation to predictive analytics, and how to implement these technologies effectively.",
-      image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80",
-      author: "AI Team",
-      date: "2025-01-05",
-      readTime: "15 min read",
-      tags: ["Technology", "AI", "Innovation", "Business Intelligence"]
-    },
-    {
-      id: 6,
-      category: "Strategy",
-      title: "E-commerce Evolution: Building Future-Ready Online Stores",
-      excerpt: "Discover the latest e-commerce trends and technologies that will shape the future of online retail and customer experiences.",
-      content: "E-commerce continues to evolve with new technologies and changing consumer behaviors. Explore cutting-edge solutions, platform choices, and strategic considerations for building successful online stores.",
-      image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
-      author: "E-commerce Team",
-      date: "2025-01-03",
-      readTime: "9 min read",
-      tags: ["E-commerce", "Strategy", "Online Retail", "Digital Commerce"]
-    }
-  ]
+  const [blogs, setBlogs] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [totalBlogs, setTotalBlogs] = useState(0)
 
   const categories = ['All', 'Strategy', 'Development', 'Design', 'Marketing', 'Technology']
 
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-    return matchesCategory && matchesSearch
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        setLoading(true)
+        const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?page=${currentPage}&limit=6`)
+        if (response.data.success) {
+          setBlogs(response.data.blogs)
+          setTotalPages(response.data.totalPages)
+          setTotalBlogs(response.data.totalBlogs)
+        }
+      } catch (error) {
+        console.error('Failed to fetch blogs:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchBlogs()
+  }, [currentPage])
+
+  // Filter blogs based on search and category
+  const filteredBlogs = blogs.filter(blog => {
+    const matchesSearch = blog.mainHeading.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         blog.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         blog.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    
+    // For now, we'll filter by tags since the API doesn't return category field
+    const matchesCategory = selectedCategory === 'All' || 
+                           blog.tags?.some(tag => tag.toLowerCase().includes(selectedCategory.toLowerCase()))
+    
+    return matchesSearch && matchesCategory
   })
 
-  const [selectedPost, setSelectedPost] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const openModal = (post) => {
-    setSelectedPost(post)
-    setIsModalOpen(true)
-    document.body.style.overflow = 'hidden'
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
-    setSelectedPost(null)
-    document.body.style.overflow = ''
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
@@ -109,29 +57,43 @@ const Blog = () => {
       {/* Hero Section */}
       <section className="bg-gray-50 py-16 md:py-24 lg:py-32">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-4">OUR BLOG</h3>
-            <h1 className="text-4xl md:text-7xl font-bold leading-tight text-[#47216b] mb-6">
-              Insights & <span className="text-gray-900">Innovations</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl">
-              Stay ahead of the curve with our latest articles, industry insights, and expert opinions. 
-              We share our knowledge to help you navigate the evolving landscape of technology and business.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 lg:gap-12 items-center">
+            {/* Content Section - 5/8 */}
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-4">OUR BLOG</h3>
+              <h1 className="text-4xl md:text-7xl font-bold leading-tight text-[#47216b] mb-6">
+                Insights & <span className="text-gray-900">Innovations</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl">
+                Stay ahead of the curve with our latest articles, industry insights, and expert opinions. 
+                We share our knowledge to help you navigate the evolving landscape of technology and business.
+              </p>
+              
+              {/* Statistics */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-bold text-[#47216b]">{totalBlogs}+</div>
+                  <div className="text-gray-600">Articles Published</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-bold text-[#47216b]">50K+</div>
+                  <div className="text-gray-600">Monthly Readers</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-bold text-[#47216b]">25+</div>
+                  <div className="text-gray-600">Expert Contributors</div>
+                </div>
+              </div>
+            </div>
             
-            {/* Statistics */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
-              <div className="text-center lg:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-[#47216b]">150+</div>
-                <div className="text-gray-600">Articles Published</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-[#47216b]">50K+</div>
-                <div className="text-gray-600">Monthly Readers</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-[#47216b]">25+</div>
-                <div className="text-gray-600">Expert Contributors</div>
+            {/* Image Section - 3/8 */}
+            <div className="lg:col-span-3 order-1 lg:order-2">
+              <div className="relative">
+                <img 
+                  src={BlogImg} 
+                  alt="Innovation and Insights" 
+                  className="w-full h-auto "
+                />
               </div>
             </div>
           </div>
@@ -179,66 +141,133 @@ const Blog = () => {
       {/* Blog Posts Grid */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="relative">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-[#47216b] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {post.category}
-                    </span>
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
+                  <div className="h-48 bg-gray-300"></div>
+                  <div className="p-6">
+                    <div className="h-4 bg-gray-300 rounded mb-3"></div>
+                    <div className="h-6 bg-gray-300 rounded mb-3"></div>
+                    <div className="h-4 bg-gray-300 rounded mb-4"></div>
+                    <div className="flex gap-2">
+                      <div className="h-6 w-16 bg-gray-300 rounded"></div>
+                      <div className="h-6 w-16 bg-gray-300 rounded"></div>
+                    </div>
                   </div>
                 </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-3">
-                    <span>{post.author}</span>
-                    <span className="mx-2">•</span>
-                    <span>{post.date}</span>
-                    <span className="mx-2">•</span>
-                    <span>{post.readTime}</span>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredBlogs.map((blog) => (
+                <Link 
+                  key={blog._id} 
+                  to={`/blog/${blog._id}`}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                >
+                  <div className="relative">
+                    <img
+                      src={blog.coverImage || "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80"}
+                      alt={blog.mainHeading}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    {blog.tags && blog.tags[0] && (
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-[#47216b] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                          {blog.tags[0]}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-[#47216b] transition-colors duration-300">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.slice(0, 3).map((tag, index) => (
-                      <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="p-6">
+                    <div className="flex items-center text-sm text-gray-500 mb-3">
+                      <span>{blog.author}</span>
+                      <span className="mx-2">•</span>
+                      <span>{new Date(blog.publishedAt).toLocaleDateString()}</span>
+                      <span className="mx-2">•</span>
+                      <span>{blog.readTime} min read</span>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#47216b] transition-colors duration-300 line-clamp-2">
+                      {blog.mainHeading}
+                    </h3>
+                    
+                    <p className="text-gray-600 mb-4 line-clamp-3">
+                      {blog.description}
+                    </p>
+                    
+                    {blog.tags && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {blog.tags.slice(0, 3).map((tag, index) => (
+                          <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    
+                    <div className="flex items-center text-[#47216b] font-semibold group-hover:text-gray-900 transition-colors duration-300">
+                      Read More
+                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                  
-                  <button
-                    onClick={() => openModal(post)}
-                    className="flex items-center text-[#47216b] font-semibold hover:text-gray-900 transition-colors duration-300"
-                  >
-                    Read More
-                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          )}
 
-          {filteredPosts.length === 0 && (
+          {!loading && filteredBlogs.length === 0 && (
             <div className="text-center py-16">
               <div className="text-6xl mb-4">📝</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">No articles found</h3>
               <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {!loading && totalPages > 1 && (
+            <div className="flex justify-center items-center space-x-2 mt-12">
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
+                  currentPage === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
+                }`}
+              >
+                Previous
+              </button>
+              
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
+                    currentPage === page
+                      ? 'bg-[#47216b] text-white'
+                      : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+              
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
+                  currentPage === totalPages
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
+                }`}
+              >
+                Next
+              </button>
             </div>
           )}
         </div>
@@ -267,63 +296,6 @@ const Blog = () => {
           </div>
         </div>
       </section>
-
-      {/* Modal */}
-      {isModalOpen && selectedPost && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-            <div className="relative">
-              <img
-                src={selectedPost.image}
-                alt={selectedPost.title}
-                className="w-full h-64 object-cover rounded-t-2xl"
-              />
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 bg-white/80 hover:bg-white p-2 rounded-full transition-all duration-300"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            <div className="p-8">
-              <div className="flex items-center text-sm text-gray-500 mb-4">
-                <span className="bg-[#47216b] text-white px-3 py-1 rounded-full text-xs font-semibold mr-4">
-                  {selectedPost.category}
-                </span>
-                <span>{selectedPost.author}</span>
-                <span className="mx-2">•</span>
-                <span>{selectedPost.date}</span>
-                <span className="mx-2">•</span>
-                <span>{selectedPost.readTime}</span>
-              </div>
-              
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                {selectedPost.title}
-              </h1>
-              
-              <div className="prose prose-lg max-w-none">
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  {selectedPost.content}
-                </p>
-                <p className="text-gray-700 leading-relaxed">
-                  {selectedPost.excerpt}
-                </p>
-              </div>
-              
-              <div className="flex flex-wrap gap-2 mt-8">
-                {selectedPost.tags.map((tag, index) => (
-                  <span key={index} className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

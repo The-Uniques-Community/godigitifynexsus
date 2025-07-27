@@ -15,3 +15,15 @@ body {
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+.input {
+  @apply w-full px-4 py-2 mb-2 rounded border border-[#b4b4b4] bg-white text-[#001330] placeholder-[#b4b4b4] focus:outline-none focus:border-[#47216b];
+}
+
+.btn-primary {
+  @apply px-5 py-2 mt-2 rounded bg-[#47216b] text-white font-semibold hover:bg-[#34125b] transition;
+}
+
+.btn-secondary {
+  @apply px-4 py-1 rounded border border-[#b4b4b4] text-[#47216b] hover:text-white hover:bg-[#47216b] transition;
+}
