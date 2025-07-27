@@ -79,8 +79,8 @@ const About = () => {
                   Shaping<span className="font-medium text-black"> Digital</span> Futures
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed py-4 md:py-6">
-                  At <span className="font-semibold text-[#47216b]">GoDigitify Nexus</span>, we are more than just a digital agency. 
-                  We are your strategic partner in navigating the complex world of digital transformation, creating 
+                  At <span className="font-semibold text-[#47216b]">GoDigitify Nexus</span>, we are more than just a digital agency.
+                  We are your strategic partner in navigating the complex world of digital transformation, creating
                   innovative solutions that drive real business results.
                 </p>
               </div>
@@ -105,8 +105,8 @@ const About = () => {
             {/* Right Image */}
             <div className="lg:col-span-2 relative">
               <div className="relative z-10 mx-auto">
-                <img 
-                  className='w-full h-auto rounded-2xl shadow-2xl' 
+                <img
+                  className='w-full h-auto rounded-2xl shadow-2xl'
                   src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80"
                   alt="About Us Illustration"
                 />
@@ -130,11 +130,10 @@ const About = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 mx-2 mb-4 font-semibold transition-all duration-300 border-b-2 ${
-                    activeTab === tab.id
-                      ? 'text-[#47216b] border-[#47216b]'
-                      : 'text-gray-600 border-transparent hover:text-[#47216b]'
-                  }`}
+                  className={`px-6 py-3 mx-2 mb-4 font-semibold transition-all duration-300 border-b-2 ${activeTab === tab.id
+                    ? 'text-[#47216b] border-[#47216b]'
+                    : 'text-gray-600 border-transparent hover:text-[#47216b]'
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -148,18 +147,18 @@ const About = () => {
                   <div>
                     <h2 className="text-3xl md:text-5xl font-bold text-[#47216b] mb-6">Our Mission</h2>
                     <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                      To empower businesses with innovative digital solutions that drive growth, efficiency, and competitive advantage. 
+                      To empower businesses with innovative digital solutions that drive growth, efficiency, and competitive advantage.
                       We believe in transforming ideas into reality through cutting-edge technology and creative excellence.
                     </p>
                     <p className="text-md text-gray-600 leading-relaxed">
-                      Every project we undertake is guided by our commitment to deliver exceptional value, 
+                      Every project we undertake is guided by our commitment to deliver exceptional value,
                       exceed expectations, and build lasting partnerships with our clients.
                     </p>
                   </div>
                   <div className="relative">
-                    <img 
-                      src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80" 
-                      alt="Our Mission" 
+                    <img
+                      src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80"
+                      alt="Our Mission"
                       className="rounded-xl shadow-lg w-full h-auto"
                     />
                   </div>
@@ -169,20 +168,20 @@ const About = () => {
               {activeTab === 'vision' && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   <div className="order-2 lg:order-1">
-                    <img 
-                      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" 
-                      alt="Our Vision" 
+                    <img
+                      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                      alt="Our Vision"
                       className="rounded-xl shadow-lg w-full h-auto"
                     />
                   </div>
                   <div className="order-1 lg:order-2">
                     <h2 className="text-3xl md:text-5xl font-bold text-[#47216b] mb-6">Our Vision</h2>
                     <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                      To be the leading digital transformation partner that businesses trust to navigate the future. 
+                      To be the leading digital transformation partner that businesses trust to navigate the future.
                       We envision a world where technology seamlessly integrates with human creativity to solve complex challenges.
                     </p>
                     <p className="text-md text-gray-600 leading-relaxed">
-                      By 2030, we aim to be recognized globally as innovators who don't just follow trends—we create them, 
+                      By 2030, we aim to be recognized globally as innovators who don't just follow trends—we create them,
                       setting new standards for digital excellence and client satisfaction.
                     </p>
                   </div>
@@ -215,7 +214,7 @@ const About = () => {
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold text-[#47216b] mb-4">Why Choose Us</h2>
               <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                We combine expertise, innovation, and dedication to deliver exceptional digital solutions 
+                We combine expertise, innovation, and dedication to deliver exceptional digital solutions
                 that drive your business forward.
               </p>
             </div>
@@ -231,7 +230,7 @@ const About = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Lightning Fast Delivery</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Our agile development process ensures rapid delivery without compromising on quality. 
+                    Our agile development process ensures rapid delivery without compromising on quality.
                     Get your projects launched faster than ever.
                   </p>
                 </div>
@@ -247,7 +246,7 @@ const About = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Proven Track Record</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    With 500+ successful projects and 99% client satisfaction rate, our results speak for themselves. 
+                    With 500+ successful projects and 99% client satisfaction rate, our results speak for themselves.
                     Trust in our proven expertise.
                   </p>
                 </div>
@@ -263,7 +262,7 @@ const About = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Expert Team</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Our multidisciplinary team of designers, developers, and strategists brings diverse expertise 
+                    Our multidisciplinary team of designers, developers, and strategists brings diverse expertise
                     to every project we undertake.
                   </p>
                 </div>
@@ -279,7 +278,7 @@ const About = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">24/7 Support</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We're here when you need us. Our dedicated support team ensures your digital solutions 
+                    We're here when you need us. Our dedicated support team ensures your digital solutions
                     run smoothly around the clock.
                   </p>
                 </div>
@@ -295,7 +294,7 @@ const About = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Scalable Solutions</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Our solutions grow with your business. Built with scalability in mind to adapt to your 
+                    Our solutions grow with your business. Built with scalability in mind to adapt to your
                     evolving needs and market demands.
                   </p>
                 </div>
@@ -311,7 +310,7 @@ const About = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Cost-Effective</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Get maximum value for your investment. Our efficient processes and smart solutions 
+                    Get maximum value for your investment. Our efficient processes and smart solutions
                     deliver premium results within your budget.
                   </p>
                 </div>
@@ -328,7 +327,7 @@ const About = () => {
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold text-[#47216b] mb-4">Meet Our Team</h2>
               <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Our diverse team of experts brings together years of experience, creativity, and passion 
+                Our diverse team of experts brings together years of experience, creativity, and passion
                 to deliver exceptional results for our clients.
               </p>
             </div>
@@ -337,8 +336,8 @@ const About = () => {
               {teamMembers.map((member) => (
                 <div key={member.id} className="group text-center">
                   <div className="relative mb-6 overflow-hidden rounded-xl">
-                    <img 
-                      src={member.image} 
+                    <img
+                      src={member.image}
                       alt={member.name}
                       className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                     />
@@ -347,12 +346,12 @@ const About = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                   <p className="text-[#47216b] font-semibold mb-3">{member.role}</p>
                   <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
-                  <a 
+                  <a
                     href={member.linkedin}
                     className="inline-flex items-center text-[#47216b] hover:text-gray-900 transition-colors duration-300"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
                   </a>
                 </div>
@@ -368,7 +367,7 @@ const About = () => {
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Transform Your Business?</h2>
             <p className="text-lg md:text-xl mb-8 opacity-90">
-              Let's work together to create digital solutions that drive your business forward. 
+              Let's work together to create digital solutions that drive your business forward.
               Our team is ready to turn your vision into reality.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
