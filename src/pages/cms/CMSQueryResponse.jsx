@@ -454,10 +454,10 @@ The GoDigitify Team`,
                   placeholder="Enter your response message"
                 />
                 
-                <p className="text-xs text-gray-500 mt-1">
-                  Use {{ name }}, {{ organization }}, {{ services }}, for dynamic
+                {/* <p className="text-xs text-gray-500 mt-1">
+                  Use { name }, { organization?organization:"" }, { services }, for dynamic
                   content
-                </p>
+                </p> */}
               </div>
 
               {/* Actions */}
