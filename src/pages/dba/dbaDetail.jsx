@@ -8,7 +8,8 @@ import {
 import { fetchCategoryBySlug } from './data/apiService.js';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://godigitify-backend.vercel.app/api';
+
 
 const DBADetail = () => {
   const { slug } = useParams();
@@ -290,7 +291,7 @@ const DBADetail = () => {
                 Proven Results That Matter
               </h2>
               <p className="text-white/90 text-lg max-w-2xl mx-auto">
-                Our track record speaks for itself. Here's what we've achieved for our clients.
+                Our track record speaks for itself. Here's what we've achieved for our clients!
               </p>
             </motion.div>
 
