@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/api';
 
-const DbaDetailPage = () => {
+const DBADetail = () => {
   const { slug } = useParams();
   
   // Fallback data in case API fails
@@ -870,4 +870,4 @@ const DbaDetailPage = () => {
   );
 };
 
-export default DbaDetailPage;
+export default DBADetail;
