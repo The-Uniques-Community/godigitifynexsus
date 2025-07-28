@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import CMSLayout from "../layouts/CMSLayout";
-import ProtectedRoute from "../components/ProtectedRoute";
 import SimpleProtectedRoute from "../components/SimpleProtectedRoute";
 
 // Public pages
@@ -13,7 +12,7 @@ import BlogDetail from "../pages/blog/BlogDetail";
 import DBA from "../pages/dba/index.jsx"
 import CustomSolution from "../pages/custom-solutions/index"
 import OurProduct from "../pages/our-products/index"
-import DbaDetailPage from "../pages/dba/dbaDetail.jsx";
+import DbaDetailPage from "../pages/dba/dbadetail.jsx";
 
 // Auth pages
 import AdminLogin from "../pages/auth/AdminLogin";
