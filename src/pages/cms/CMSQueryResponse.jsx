@@ -14,6 +14,7 @@ const CMSQueryResponse = () => {
   const [responseData, setResponseData] = useState({
     subject: "",
     content: "",
+    rawContent: "",
     template: "custom",
   });
 
@@ -109,6 +110,7 @@ The GoDigitify Team`,
         template: "custom",
         subject: "",
         content: "",
+        rawContent: "",
       }));
     } else {
       const template = emailTemplates[templateKey];
@@ -125,16 +127,38 @@ The GoDigitify Team`,
         template: templateKey,
         subject: template.subject,
         content: processedContent,
+        rawContent: template.content,
       }));
     }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setResponseData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    
+    // If changing content, check for and process template variables
+    if (name === 'content') {
+      // Store the raw content with template variables intact
+      setResponseData((prev) => ({
+        ...prev,
+        [name]: value,
+        rawContent: value,
+      }));
+    } else {
+      setResponseData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  // Function to process custom template content with dynamic variables
+  const processCustomContent = (content) => {
+    if (!content) return '';
+    
+    return content
+      .replace(/{{name}}/g, query?.name || "Valued Client")
+      .replace(/{{services}}/g, query?.services?.join(", ") || "our services")
+      .replace(/{{organization}}/g, query?.organization || "your organization");
   };
 
   const handleSubmit = async (e) => {
@@ -148,12 +172,18 @@ The GoDigitify Team`,
     try {
       setSending(true);
       setError("");
+      
+      // Get the raw content or use the current content if no raw content exists
+      const contentToProcess = responseData.rawContent || responseData.content;
+      
+      // Process content to replace template variables
+      const processedContent = processCustomContent(contentToProcess);
 
       const response = await axios.post(
         `https://godigitify-backend.vercel.app/api/contact/respond-query/${id}`,
         {
           subject: responseData.subject.trim(),
-          content: responseData.content.trim(),
+          content: processedContent.trim(),
         },
         {
           withCredentials: true,
@@ -436,29 +466,28 @@ The GoDigitify Team`,
               </div>
 
               {/* Content */}
-              <div>
-                <label
-                  htmlFor="content"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Message Content *
-                </label>
-                <textarea
-                  id="content"
-                  name="content"
-                  rows="12"
-                  value={responseData.content}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#47216b] focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Enter your response message"
-                />
-                
-                <p className="text-xs text-gray-500 mt-1">
-                  Use {{ name }}, {{ organization }}, {{ services }}, for dynamic
-                  content
-                </p>
-              </div>
+                <div>
+                  <label
+                    htmlFor="content"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Message Content *
+                  </label>
+                  <textarea
+                    id="content"
+                    name="content"
+                    rows="12"
+                    value={responseData.content}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#47216b] focus:border-transparent transition-all duration-200 resize-none"
+                    placeholder="Enter your response message"
+                  />
+                  
+                  <div className="text-xs text-gray-500 mt-1">
+                    Use <span className="font-mono">{'{{name}}'}</span>, <span className="font-mono">{'{{organization}}'}</span>, <span className="font-mono">{'{{services}}'}</span> for dynamic content
+                  </div>
+                </div>
 
               {/* Actions */}
               <div className="flex items-center justify-between pt-4 border-t border-gray-200">

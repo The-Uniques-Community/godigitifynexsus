@@ -2,11 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  categories,
   categoryStats,
   serviceOfferings,
   getCategoryDescription
 } from './data/dbaData.js';
+import { 
+  fetchAllCategories, 
+  fetchCategoryBySlug,
+  mapApiToUiFormat
+} from './data/apiService.js';
 
 const Index = () => {
   const [openCategory, setOpenCategory] = useState(null);
@@ -16,6 +20,53 @@ const Index = () => {
   const solutionRefs = useRef({});
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [categoryDetails, setCategoryDetails] = useState({});
+
+  // Fetch categories from API
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchAllCategories();
+        setCategories(mapApiToUiFormat(data));
+        setError(null);
+      } catch (err) {
+        console.error('Failed to fetch categories:', err);
+        setError('Failed to load service categories. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getCategories();
+  }, []);
+
+  // Fetch category details when a category is opened
+  useEffect(() => {
+    if (openCategory) {
+      const getCategoryDetails = async () => {
+        try {
+          const data = await fetchCategoryBySlug(openCategory);
+          if (data) {
+            setCategoryDetails(prev => ({
+              ...prev,
+              [openCategory]: data
+            }));
+          }
+        } catch (err) {
+          console.error(`Failed to fetch details for ${openCategory}:`, err);
+        }
+      };
+
+      // Only fetch if we don't already have the details
+      if (!categoryDetails[openCategory]) {
+        getCategoryDetails();
+      }
+    }
+  }, [openCategory]);
 
   // Handle scroll progress
   useEffect(() => {
@@ -138,30 +189,75 @@ const Index = () => {
 
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Explore Our Services</h2>
 
-                  <div className="grid gap-4">
-                    {categories.map((category) => (
-                      <motion.div
-                        key={category.slug}
-                        onClick={() => handleCategoryClick(category.slug)}
-                        className="group flex items-center p-4 bg-gray-50 rounded-xl cursor-pointer border border-transparent hover:border-[#47216b]/20 hover:bg-white transition-all duration-300"
-                      >
+                  {loading ? (
+                    // Loading state
+                    <div className="py-4 space-y-4">
+                      <div className="flex items-center p-4 bg-gray-50 rounded-xl animate-pulse">
                         <div className="mr-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-[#47216b] to-[#8344c5] text-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
-                            {category.icon}
-                          </div>
+                          <div className="w-12 h-12 bg-gray-300 rounded-lg"></div>
                         </div>
                         <div className="flex-grow">
-                          <h3 className="font-semibold text-lg text-gray-900">{category.name}</h3>
-                          <p className="text-sm text-gray-600">{category.shortDesc.substring(0, 60)}...</p>
+                          <div className="h-5 bg-gray-300 rounded w-1/3 mb-2"></div>
+                          <div className="h-4 bg-gray-200 rounded w-2/3"></div>
                         </div>
-                        <div className="text-[#47216b]">
-                          <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
+                      </div>
+                      <div className="flex items-center p-4 bg-gray-50 rounded-xl animate-pulse">
+                        <div className="mr-4">
+                          <div className="w-12 h-12 bg-gray-300 rounded-lg"></div>
                         </div>
-                      </motion.div>
-                    ))}
-                  </div>
+                        <div className="flex-grow">
+                          <div className="h-5 bg-gray-300 rounded w-1/3 mb-2"></div>
+                          <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                        </div>
+                      </div>
+                      <div className="flex items-center p-4 bg-gray-50 rounded-xl animate-pulse">
+                        <div className="mr-4">
+                          <div className="w-12 h-12 bg-gray-300 rounded-lg"></div>
+                        </div>
+                        <div className="flex-grow">
+                          <div className="h-5 bg-gray-300 rounded w-1/3 mb-2"></div>
+                          <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : error ? (
+                    // Error state
+                    <div className="py-8 text-center bg-red-50 rounded-xl p-4">
+                      <div className="text-red-500 mb-2">⚠️ {error}</div>
+                      <button 
+                        onClick={() => window.location.reload()} 
+                        className="text-[#47216b] hover:underline text-sm"
+                      >
+                        Try again
+                      </button>
+                    </div>
+                  ) : (
+                    // Categories list
+                    <div className="grid gap-4">
+                      {categories.map((category) => (
+                        <motion.div
+                          key={category.slug}
+                          onClick={() => handleCategoryClick(category.slug)}
+                          className="group flex items-center p-4 bg-gray-50 rounded-xl cursor-pointer border border-transparent hover:border-[#47216b]/20 hover:bg-white transition-all duration-300"
+                        >
+                          <div className="mr-4">
+                            <div className="w-12 h-12 bg-gradient-to-br from-[#47216b] to-[#8344c5] text-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+                              {category.icon}
+                            </div>
+                          </div>
+                          <div className="flex-grow">
+                            <h3 className="font-semibold text-lg text-gray-900">{category.name}</h3>
+                            <p className="text-sm text-gray-600">{category.shortDesc?.substring(0, 60) || ""}...</p>
+                          </div>
+                          <div className="text-[#47216b]">
+                            <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -492,17 +588,47 @@ const Index = () => {
           </motion.div>
 
           <div className="max-w-5xl mx-auto space-y-6">
-            {categories.map((category, index) => (
-              <motion.div
-                key={category.slug}
-                ref={el => solutionRefs.current[category.slug] = el}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: index * 0.1 }}
-                className={`bg-white rounded-xl overflow-hidden transition-all duration-300 ease-out
-                  ${openCategory === category.slug ? 'shadow-xl ring-2 ring-[#47216b]/20' : 'shadow-md hover:shadow-lg'}`}
-              >
+            {loading ? (
+              // Loading skeleton
+              Array(3).fill(0).map((_, index) => (
+                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+                  <div className="p-6">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-gray-300 rounded-lg"></div>
+                      <div className="flex-1">
+                        <div className="h-5 bg-gray-300 rounded w-1/3 mb-2"></div>
+                        <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : error ? (
+              // Error state
+              <div className="text-center p-10 bg-white rounded-xl shadow-md">
+                <div className="text-red-500 mb-4 text-xl">⚠️ Could not load services</div>
+                <p className="text-gray-600 mb-4">{error}</p>
+                <button 
+                  onClick={() => window.location.reload()} 
+                  className="px-4 py-2 bg-[#47216b] text-white rounded-lg hover:bg-[#38134f] transition-colors"
+                >
+                  Try again
+                </button>
+              </div>
+            ) : (
+              // Actual categories
+              categories.map((category, index) => (
+                <motion.div
+                  key={category.slug}
+                  ref={el => solutionRefs.current[category.slug] = el}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`bg-white rounded-xl overflow-hidden transition-all duration-300 ease-out
+                    ${openCategory === category.slug ? 'shadow-xl ring-2 ring-[#47216b]/20' : 'shadow-md hover:shadow-lg'}`}
+                >
+                  {/* Rest of category content */}
                 {/* Header with smooth height animation */}
                 <div
                   onClick={() => handleCategoryClick(category.slug)}
@@ -771,7 +897,8 @@ const Index = () => {
                   )}
                 </AnimatePresence>
               </motion.div>
-            ))}
+            ))
+            )}
           </div>
         </div>
       </section>
