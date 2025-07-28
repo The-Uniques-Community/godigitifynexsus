@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import Placera from '../../assets/images/placera.png'
+import AlumLink from '../../assets/images/alumlink.png'
+import TechLearns from '../../assets/images/techlearns.png'
 
 const OurProducts = () => {
   const [products, setProducts] = useState([]);
@@ -16,8 +19,8 @@ const OurProducts = () => {
       name: 'Placera',
       tagline: 'Connecting colleges, students & recruiters seamlessly',
       description: 'Placera is a smart placement management platform designed for colleges and universities. It streamlines student profiles, recruiter access, interview scheduling, and performance analytics—all in one place.',
-      logo: 'https://placehold.co/100x100?text=Placera',
-      link: '/products/placera',
+      logo: Placera,
+      link: 'https://placera.vercel.app/',
       demoLink: '/request-demo/placera',
       usps: [
         'Streamlined campus placement management',
@@ -48,8 +51,8 @@ const OurProducts = () => {
       name: 'TechLearns',
       tagline: 'Future-ready learning for tomorrow\'s technologists',
       description: 'TechLearns provides an interactive learning platform for technical education, combining practical assignments, industry-relevant curriculum, and real-time progress tracking.',
-      logo: 'https://placehold.co/100x100?text=TechLearns',
-      link: '/products/techlearns',
+      logo: TechLearns,
+      link: 'https://tech-learns-project.vercel.app/',
       demoLink: '/request-demo/techlearns',
       usps: [
         'Industry-aligned curriculum',
@@ -80,8 +83,8 @@ const OurProducts = () => {
       name: 'AlumLink',
       tagline: 'Bridging graduates with their alma mater',
       description: 'AlumLink creates meaningful connections between institutions and their alumni through networking opportunities, event management, and donation facilitation.',
-      logo: 'https://placehold.co/100x100?text=AlumLink',
-      link: '/products/alumlink',
+      logo: AlumLink,
+      link: 'https://alumnlink.com/Landing',
       demoLink: '/request-demo/alumlink',
       usps: [
         'Unified alumni database',
@@ -192,20 +195,20 @@ const OurProducts = () => {
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-gray-50 rounded-2xl shadow-lg p-8 animate-pulse">
+                <div key={i} className="bg-white shadow-lg p-8 animate-pulse">
                   <div className="flex items-center justify-center mb-6">
-                    <div className="w-24 h-24 bg-gray-200 rounded-full"></div>
+                    <div className="w-24 h-24 bg-gray-200"></div>
                   </div>
-                  <div className="h-6 bg-gray-200 rounded-full mb-4 w-2/3 mx-auto"></div>
-                  <div className="h-4 bg-gray-200 rounded-full mb-2 w-5/6 mx-auto"></div>
-                  <div className="h-4 bg-gray-200 rounded-full mb-2 w-full mx-auto"></div>
-                  <div className="h-4 bg-gray-200 rounded-full mb-2 w-4/5 mx-auto"></div>
-                  <div className="h-10 bg-gray-200 rounded-full w-1/3 mx-auto mt-8"></div>
+                  <div className="h-6 bg-gray-200 mb-4 w-2/3 mx-auto"></div>
+                  <div className="h-4 bg-gray-200 mb-2 w-5/6 mx-auto"></div>
+                  <div className="h-4 bg-gray-200 mb-2 w-full mx-auto"></div>
+                  <div className="h-4 bg-gray-200 mb-2 w-4/5 mx-auto"></div>
+                  <div className="h-10 bg-gray-200 w-1/3 mx-auto mt-8"></div>
                 </div>
               ))}
             </div>
           ) : error && products.length === 0 ? (
-            <div className="bg-red-50 border border-red-200 text-red-700 p-6 rounded-lg text-center">
+            <div className="bg-red-50 border border-red-200 text-red-700 p-6 text-center">
               <p>Failed to load products. Please try again later.</p>
             </div>
           ) : (
@@ -218,17 +221,17 @@ const OurProducts = () => {
               {products.map((product, index) => (
                 <motion.div 
                   key={product.id} 
-                  className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100`}
+                  className="bg-white  overflow-hidden hover:shadow-sm transition-all duration-300 border border-gray-100"
                   variants={itemVariants}
                 >
                   {/* Product Header */}
-                  <div className={`p-8 ${index % 2 === 0 ? 'bg-[#47216b]/5' : 'bg-[#47216b]/10'}`}>
+                  <div className="p-8 bg-white">
                     <div className="flex flex-col md:flex-row items-center">
                       <div className="md:w-1/4 flex justify-center mb-6 md:mb-0">
                         <img 
                           src={product.logo} 
                           alt={`${product.name} logo`} 
-                          className="w-32 h-32 object-contain"
+                          className="w-full object-contain"
                         />
                       </div>
                       <div className="md:w-3/4 md:pl-8">
@@ -249,7 +252,7 @@ const OurProducts = () => {
                         <div className="flex flex-wrap gap-4">
                           <Link 
                             to={product.demoLink || '#'} 
-                            className="px-6 py-3 bg-[#47216b] text-white rounded-full font-semibold hover:bg-[#371955] transition-colors duration-300 inline-flex items-center"
+                            className="px-6 py-3 bg-[#47216b] text-white font-semibold hover:bg-[#371955] transition-colors duration-300 inline-flex items-center"
                           >
                             Get Demo
                             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -258,13 +261,14 @@ const OurProducts = () => {
                           </Link>
                           <Link 
                             to={product.link || '#'} 
-                            className="px-6 py-3 border-2 border-[#47216b] text-[#47216b] rounded-full font-semibold hover:bg-[#47216b]/5 transition-colors duration-300"
+                            target='_blank'
+                            className="px-6 py-3 border-2 border-[#47216b] text-[#47216b] font-semibold hover:bg-[#47216b]/5 transition-colors duration-300"
                           >
                             Learn More
                           </Link>
                           <button
                             onClick={() => toggleProductDetails(product.id)}
-                            className="px-6 py-3 bg-gray-100 text-gray-700 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300 flex items-center"
+                            className="px-6 py-3 bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 transition-colors duration-300 flex items-center"
                           >
                             {activeProductId === product.id ? 'Hide Details' : 'View Details'}
                             <svg 
@@ -294,7 +298,7 @@ const OurProducts = () => {
                         {/* USPs */}
                         <div>
                           <h4 className="text-xl font-bold text-[#47216b] mb-4 flex items-center">
-                            <span className="w-8 h-8 bg-[#47216b] text-white rounded-full flex items-center justify-center mr-2 text-sm">✓</span>
+                            <span className="w-8 h-8 bg-[#47216b] text-white flex items-center justify-center mr-2 text-sm">✓</span>
                             Key Features
                           </h4>
                           <ul className="space-y-3">
@@ -312,7 +316,7 @@ const OurProducts = () => {
                         {/* Services */}
                         <div>
                           <h4 className="text-xl font-bold text-[#47216b] mb-4 flex items-center">
-                            <span className="w-8 h-8 bg-[#47216b] text-white rounded-full flex items-center justify-center mr-2 text-sm">
+                            <span className="w-8 h-8 bg-[#47216b] text-white flex items-center justify-center mr-2 text-sm">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                               </svg>
@@ -321,7 +325,7 @@ const OurProducts = () => {
                           </h4>
                           <ul className="space-y-2 grid grid-cols-1 md:grid-cols-2 gap-2">
                             {product.services?.map((service, i) => (
-                              <li key={i} className="bg-gray-50 px-3 py-2 rounded-lg text-gray-700 text-sm">
+                              <li key={i} className="bg-gray-50 px-3 py-2 text-gray-700 text-sm">
                                 {service}
                               </li>
                             ))}
@@ -331,9 +335,9 @@ const OurProducts = () => {
                       
                       {/* Testimonial */}
                       {product.testimonial && (
-                        <div className="mt-8 bg-[#47216b]/5 p-6 rounded-xl">
+                        <div className="mt-8 bg-gray-50 p-6">
                           <div className="flex items-start">
-                            <svg className="w-10 h-10 text-[#47216b]/30 mr-4" fill="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-10 h-10 text-gray-300 mr-4" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
                             </svg>
                             <div>
@@ -353,7 +357,7 @@ const OurProducts = () => {
                         <div className="flex justify-center gap-4">
                           <Link 
                             to={product.demoLink || '#'} 
-                            className="px-8 py-3 bg-[#47216b] text-white rounded-full font-semibold hover:bg-[#371955] transition-colors duration-300"
+                            className="px-8 py-3 bg-[#47216b] text-white font-semibold hover:bg-[#371955] transition-colors duration-300"
                           >
                             Schedule a Demo
                           </Link>
@@ -371,10 +375,8 @@ const OurProducts = () => {
       {/* Enhanced Contact Section - Full Width, Modern & Minimalistic */}
       <section className="relative py-20 md:py-32 overflow-hidden border-t border-gray-100">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#47216b]/5 to-white pointer-events-none"></div>
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-[#47216b]/3 -skew-x-12 transform -translate-x-20 pointer-events-none"></div>
-        <div className="absolute left-20 top-20 w-64 h-64 rounded-full bg-[#47216b]/5 blur-3xl pointer-events-none"></div>
-        <div className="absolute right-20 bottom-20 w-80 h-80 rounded-full bg-[#47216b]/5 blur-3xl pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-white pointer-events-none"></div>
+        <div className="absolute right-0 top-0 w-1/2 h-full bg-gray-100 -skew-x-12 transform -translate-x-20 pointer-events-none"></div>
         
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -395,7 +397,7 @@ const OurProducts = () => {
               
               <div className="space-y-4 mb-10">
                 <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-[#47216b]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-10 h-10 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
                     <svg className="w-5 h-5 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
@@ -406,7 +408,7 @@ const OurProducts = () => {
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-[#47216b]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-10 h-10 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
                     <svg className="w-5 h-5 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
@@ -420,7 +422,7 @@ const OurProducts = () => {
               
               <Link 
                 to="/contact" 
-                className="inline-flex items-center px-8 py-4 bg-[#47216b] text-white rounded-full font-semibold text-lg hover:bg-black transition-colors duration-300 shadow-lg"
+                className="inline-flex items-center px-8 py-4 bg-[#47216b] text-white font-semibold text-lg hover:bg-black transition-colors duration-300 shadow-lg"
               >
                 Get in Touch
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -435,7 +437,7 @@ const OurProducts = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white p-8 md:p-10 rounded-2xl shadow-xl"
+              className="bg-white p-8 md:p-10 shadow-xl"
             >
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Tell us about your project</h3>
               <form className="space-y-5">
@@ -443,7 +445,7 @@ const OurProducts = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-[#47216b] focus:border-[#47216b] outline-none"
+                    className="w-full px-4 py-3 border border-gray-200 focus:ring-[#47216b] focus:border-[#47216b] outline-none"
                     placeholder="Your name"
                   />
                 </div>
@@ -451,21 +453,21 @@ const OurProducts = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                   <input 
                     type="email" 
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-[#47216b] focus:border-[#47216b] outline-none"
+                    className="w-full px-4 py-3 border border-gray-200 focus:ring-[#47216b] focus:border-[#47216b] outline-none"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">What are you looking for?</label>
                   <textarea 
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-[#47216b] focus:border-[#47216b] outline-none"
+                    className="w-full px-4 py-3 border border-gray-200 focus:ring-[#47216b] focus:border-[#47216b] outline-none"
                     rows={4}
                     placeholder="Briefly describe your project or requirements..."
                   ></textarea>
                 </div>
                 <button 
                   type="submit" 
-                  className="w-full py-3 px-4 bg-[#47216b] hover:bg-[#371955] text-white font-medium rounded-lg transition-colors duration-300 flex items-center justify-center"
+                  className="w-full py-3 px-4 bg-[#47216b] hover:bg-[#371955] text-white font-medium transition-colors duration-300 flex items-center justify-center"
                 >
                   Send Message
                   <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
