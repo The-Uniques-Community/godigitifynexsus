@@ -20,17 +20,17 @@ const InitialLoader = ({ onComplete }) => {
     });
 
     // Animate loader off after videoDuration seconds
-    const videoDuration = 7; // seconds
+    const videoDuration = 10; // Increased delay from 7 to 10 seconds
     const tl = gsap.timeline({ onComplete });
     tl.to(loaderRef.current, {
       y: "-100%",
       delay: videoDuration,
-      duration: 1.2,
+      duration: 1.2, // Increased transition duration from 1.2 to 3 seconds
       ease: "power2.inOut",
     });
 
     // Fallback to ensure onComplete fires
-    const fallback = setTimeout(onComplete, (videoDuration + 1) * 1000);
+    const fallback = setTimeout(onComplete, (videoDuration + 3.5) * 1000); // Updated fallback timing
     return () => clearTimeout(fallback);
   }, [started, onComplete]);
 
