@@ -1,70 +1,149 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { usePageTransition } from "../utils/PageTransitionProvider";
+import { usePageTransition } from "./PageTransitionProvider";
 
 const TransitionOverlay = () => {
   const overlayRef = useRef();
-  const maskRef = useRef();
+  const stripRefs = [useRef(), useRef(), useRef(), useRef()]; // 4 strip refs
   const { isTransitioning, transitionStage } = usePageTransition();
 
   useEffect(() => {
-    if (!isTransitioning) return;
+    if (!isTransitioning || !overlayRef.current) return;
+
+    // Check if all strips exist
+    if (stripRefs.some(ref => !ref.current)) return;
 
     const overlay = overlayRef.current;
-    const mask = maskRef.current;
-    
+    const strips = stripRefs.map(ref => ref.current);
+
     // Create timeline for the transition
     const tl = gsap.timeline();
 
     if (transitionStage === 'exit') {
-      // Phase 1: Fade in overlay mask
-      tl.set(overlay, { display: 'block' })
-        .set(mask, { opacity: 0, scale: 0.8 })
-        .to(mask, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.4,
-          ease: "power2.out"
+      // Setup overlay
+      gsap.set(overlay, {
+        display: 'block',
+        visibility: 'visible',
+        opacity: 1
+      });
+
+      // Setup initial strip positions - all off-screen left
+      strips.forEach((strip, index) => {
+        const delay = index * 0.08; // Stagger the strips
+
+        gsap.set(strip, {
+          left: '-120%',
+          top: `${index * 25}%`, // Each strip takes 25% of the height
+          height: '25%',        // Each strip is 25% of the viewport height
+          width: '100%',
+          scaleX: 0.2           // Thin strips to start
         });
+
+        // Animate each strip in with staggered timing
+        tl.to(strip, {
+          left: '0%',
+          scaleX: 1,
+          duration: 0.45,
+          ease: "power2.inOut",
+          delay: delay
+        }, index === 0 ? 0 : "<0.15"); // Slightly overlap animations
+      });
+
     } else if (transitionStage === 'enter') {
-      // Phase 2: Fade out overlay mask to reveal new page
-      tl.to(mask, {
-          opacity: 0,
-          scale: 1.1,
-          duration: 0.6,
-          ease: "power2.inOut"
-        })
-        .set(overlay, { display: 'none' });
+      // Animate strips continuing across screen with staggered timing
+      strips.forEach((strip, index) => {
+        const delay = index * 0.06; // Slightly faster staggering for exit
+
+        tl.to(strip, {
+          left: '120%',
+          duration: 0.5,
+          ease: "power2.inOut",
+          delay: delay
+        }, index === 0 ? 0 : "<0.12");
+      });
+
+      // Hide overlay after all strips are off-screen
+      tl.add(() => {
+        gsap.set(overlay, {
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0
+        });
+      }, ">-0.1");
     }
-    
   }, [isTransitioning, transitionStage]);
 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[998] pointer-events-none"
-      style={{ display: 'none' }}
+      className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden"
+      style={{
+        display: 'none',
+        visibility: 'hidden',
+        backgroundColor: 'transparent'
+      }}
     >
-      {/* Smooth gradient mask */}
+      {/* Strip 1 - Pure White */}
       <div
-        ref={maskRef}
-        className="absolute inset-0 bg-gradient-to-br from-[#47216b] via-[#47216b]/90 to-[#47216b]/80"
-        style={{ 
-          opacity: 0,
-          transform: 'scale(0.8)',
-          backdropFilter: 'blur(2px)'
+        ref={stripRefs[0]}
+        className="absolute"
+        style={{
+          position: 'absolute',
+          left: '-100%',
+          top: '0%',
+          height: '25%',
+          width: '100%',
+          backgroundColor: '#ffffff',
+          transformOrigin: 'center center'
         }}
       />
-      
-      {/* Optional: Loading indicator */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin opacity-50" />
-      </div>
+      {/* Strip 2 - Main Purple */}
+      <div
+        ref={stripRefs[1]}
+        className="absolute"
+        style={{
+          position: 'absolute',
+          left: '-100%',
+          top: '25%',
+          height: '25%',
+          width: '100%',
+          backgroundColor: '#47216b',
+          transformOrigin: 'center center'
+        }}
+      />
+      {/* Strip 3 - Light Purple */}
+      <div
+        ref={stripRefs[2]}
+        className="absolute"
+        style={{
+          position: 'absolute',
+          left: '-100%',
+          top: '50%',
+          height: '25%',
+          width: '100%',
+          backgroundColor: '#5a359b',
+          transformOrigin: 'center center'
+        }}
+      />
+      {/* Strip 4 - Off-white */}
+      <div
+        ref={stripRefs[3]}
+        className="absolute"
+        style={{
+          position: 'absolute',
+          left: '-100%',
+          top: '75%',
+          height: '25%',
+          width: '100%',
+          backgroundColor: '#f5f5f5',
+          transformOrigin: 'center center'
+        }}
+      />
     </div>
   );
 };
 
-// Enhanced page transition wrapper component
+// The PageTransition component remains unchanged
 export const PageTransition = ({ children, className = "" }) => {
   const pageRef = useRef();
   const { isTransitioning, transitionStage } = usePageTransition();
@@ -76,35 +155,31 @@ export const PageTransition = ({ children, className = "" }) => {
     const tl = gsap.timeline();
 
     if (transitionStage === 'exit') {
-      // Old page slides out and fades
+      // Old page fades out faster
       tl.to(page, {
-        x: -50,
         opacity: 0,
-        duration: 0.4,
-        ease: "power2.in"
+        duration: 0.3,
+        ease: "power1.in"
       });
     } else if (transitionStage === 'enter') {
-      // New page slides in and fades in
-      tl.set(page, { 
-          x: 50, 
-          opacity: 0 
-        })
+      // New page fades in with slight delay
+      tl.set(page, {
+        opacity: 0
+      })
         .to(page, {
-          x: 0,
           opacity: 1,
-          duration: 0.6,
-          ease: "power2.out",
-          delay: 0.2 // Slight delay for smoother transition
+          duration: 0.4,
+          ease: "power1.out",
+          delay: 0.3 // Slightly reduced delay
         });
     }
-
   }, [transitionStage]);
 
   return (
-    <div 
+    <div
       ref={pageRef}
       className={`transition-container ${className}`}
-      style={{ opacity: 1, transform: 'translateX(0)' }}
+      style={{ opacity: 1 }}
     >
       {children}
     </div>
