@@ -36,9 +36,9 @@ const About = () => {
                         </a>
                     </div>
                     <div>
-                        <button className="bg-[#47216b] text-white px-8 py-4 rounded-full font-semibold shadow hover:bg-black transition">
+                        <a href="/about" className="bg-[#47216b] text-white px-8 py-4 rounded-full font-semibold shadow hover:bg-black transition">
                             About us
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 relative">
