@@ -89,7 +89,7 @@ const Index = () => {
         <div className="absolute w-64 h-64 bg-[#8344c5]/5 rounded-full top-40 right-10 blur-3xl z-0"></div>
 
         <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 pt-32 pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-6 space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -121,8 +121,8 @@ const Index = () => {
 
             <div className="lg:col-span-6">
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative"
               >
@@ -142,8 +142,6 @@ const Index = () => {
                     {categories.map((category) => (
                       <motion.div
                         key={category.slug}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
                         onClick={() => handleCategoryClick(category.slug)}
                         className="group flex items-center p-4 bg-gray-50 rounded-xl cursor-pointer border border-transparent hover:border-[#47216b]/20 hover:bg-white transition-all duration-300"
                       >
@@ -760,7 +758,7 @@ const Index = () => {
                         <div className="text-center mt-10">
                           <Link
                             to={`/services/dba/${category.slug}`}
-                            className="px-8 py-4 bg-gradient-to-r from-[#47216b] to-[#8344c5] text-white rounded-full text-lg font-semibold shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-[1.02] inline-flex items-center"
+                            className="px-8 py-4 bg-gradient-to-r from-[#47216b] to-[#8344c5] text-white rounded-full text-lg font-semibold shadow-md transform transition-all duration-300 hover:shadow-lg inline-flex items-center"
                           >
                             Get Started with {category.name}
                             <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
