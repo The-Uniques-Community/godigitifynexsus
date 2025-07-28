@@ -10,31 +10,30 @@ const Project = () => {
   const titleRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Updated slide structure with title and description
+  // Updated slide structure with web URLs instead of images
   const slides = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      title: "Where brands go to reach premium audiences in India",
-      description: "Discover how brands are leveraging YouTube's Connected TV platform to reach high-value audiences across India's growing digital landscape.",
+      webUrl: "https://www.theuniques.in/",
+      title: "The Uniques - Premium Digital Solutions for Modern Businesses",
+      description: "Explore how The Uniques transforms businesses with innovative digital strategies, cutting-edge web solutions, and brand experiences that drive growth and engagement.",
       overlays: true
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      title: "How India's creators are reshaping beauty and fashion content",
-      description: "Explore the revolutionary impact of Indian content creators on beauty and fashion trends, and why brands are taking notice.",
+      webUrl: "https://www.metropolitanfence.ca/",
+      title: "Metropolitan Fence - Building Secure Boundaries with Quality",
+      description: "Discover how Metropolitan Fence combines craftsmanship with technology to deliver premium fencing solutions across Canada, setting new standards in the industry.",
       overlays: true
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      title: "How Nykaa helped people meet unique beauty needs with AI",
-      description: "Learn how personalized AI technology is transforming the beauty industry and creating meaningful customer experiences.",
+      webUrl: "https://www.sviet.ac.in/",
+      title: "SVIET - Shaping Future Leaders Through Excellence in Education",
+      description: "Learn how Swami Vivekanand Institute of Engineering & Technology is revolutionizing technical education with modern infrastructure and industry-focused curriculum.",
       overlays: true
     }
   ];
-
   const totalSlides = slides.length;
 
   useEffect(() => {
@@ -155,25 +154,34 @@ const Project = () => {
 
       const slideContent = (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
-          {/* Image Side */}
+          {/* Web Content Side */}
           <div className="rounded-3xl overflow-hidden h-full">
             <div className="relative w-full h-full">
-              <img 
-                src={slide.image} 
-                alt="Featured content" 
-                className="w-full h-full object-cover"
+              <iframe 
+                src={slide.webUrl}
+                className="w-full h-full border-0 rounded-3xl"
+                style={{ minHeight: '500px' }}
+                title={`Web content for ${slide.title}`}
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+                loading="lazy"
+                allowFullScreen
               />
+              
+              {/* Overlay for branding/controls */}
               {slide.overlays && (
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 pointer-events-none">
                   {/* Brand Logo */}
-                  <div className="absolute bottom-4 left-4 bg-black rounded-lg p-3 flex items-center justify-center">
+                  <div className="absolute bottom-4 left-4 bg-black/80 rounded-lg p-3 flex items-center justify-center backdrop-blur-sm">
                     <div className="w-5 h-5 bg-pink-500 transform rotate-45"></div>
                   </div>
                   
-                  {/* CTV Indicator */}
-                  <div className="absolute bottom-4 right-4 bg-pink-500 rounded-full px-4 py-2">
-                    <div className="w-6 h-3 bg-white/20 rounded-full"></div>
+                  {/* Web Indicator */}
+                  <div className="absolute top-4 right-4 bg-pink-500/90 rounded-full px-4 py-2 backdrop-blur-sm">
+                    <span className="text-white text-sm font-medium">Live Web</span>
                   </div>
+                  
+                  {/* Interactive overlay - allows clicking through */}
+                  <div className="absolute inset-4 pointer-events-auto cursor-pointer bg-transparent hover:bg-white/5 transition-colors duration-300 rounded-2xl"></div>
                 </div>
               )}
             </div>
@@ -181,7 +189,7 @@ const Project = () => {
           
           {/* Text Side */}
           <div className="bg-gray-100 rounded-3xl p-8 flex flex-col justify-center h-full">
-            {/* Main Title - Now Purple */}
+            {/* Main Title - Purple */}
             <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-6" style={{ color: '#47216b' }}>
               {slide.title}
             </h3>
@@ -191,7 +199,7 @@ const Project = () => {
               {slide.description}
             </p>
             
-            {/* Know More Button */}
+            {/* Visit Website Button */}
             <button 
               className="px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 hover:shadow-lg self-start"
               style={{ backgroundColor: '#47216b' }}
@@ -201,8 +209,9 @@ const Project = () => {
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = '#47216b';
               }}
+              onClick={() => window.open(slide.webUrl.replace('/embed/', '/watch?v='), '_blank')}
             >
-              Know More
+              Visit Website
             </button>
           </div>
         </div>
