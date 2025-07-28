@@ -5,11 +5,17 @@ import {
   servicePages,
   categories
 } from './data/dbaData.js';
+import { fetchCategoryBySlug } from './data/apiService.js';
+import axios from 'axios';
+
+const API_URL = 'http://localhost:5000/api';
 
 const DBADetail = () => {
   const { slug } = useParams();
+  
+  // Fallback data in case API fails
   const serviceData = servicePages[slug] || null;
-  const category = categories.find(cat => cat.slug === slug) || {
+  const categoryFallback = categories.find(cat => cat.slug === slug) || {
     slug: '',
     name: 'Service',
     color: '#47216b'
@@ -18,6 +24,42 @@ const DBADetail = () => {
   const [activeService, setActiveService] = useState(0); // First item open by default
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [category, setCategory] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch category data from API
+  useEffect(() => {
+    const getCategoryData = async () => {
+      try {
+        setLoading(true);
+        // Try to get data from the new API endpoint
+        const response = await axios.get(`${API_URL}/categories/${slug}`);
+        setCategory(response.data);
+        setError(null);
+      } catch (err) {
+        console.error('Failed to fetch category details from new API:', err);
+        
+        // Fallback to old API
+        try {
+          const data = await fetchCategoryBySlug(slug);
+          if (data) {
+            setCategory(data);
+          } else {
+            // If old API also fails, use static data
+            setCategory(categoryFallback);
+          }
+        } catch (fallbackErr) {
+          console.error('Fallback API also failed:', fallbackErr);
+          setCategory(categoryFallback);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getCategoryData();
+  }, [slug]);
 
   // Handle scroll progress
   useEffect(() => {
@@ -52,56 +94,65 @@ const DBADetail = () => {
     { name: 'React', logo: 'https://via.placeholder.com/120x60/47216b/ffffff?text=React' }
   ];
 
-  // Service list with details for hover effect
-  const serviceList = [
+  // Fallback service list if API data is not available
+  const fallbackServiceList = [
     {
+      id: 'custom-web-dev',
       title: 'Custom Web Development',
       description: 'Tailored web solutions that meet your specific business needs and objectives.',
       icon: 'code'
     },
     {
+      id: 'web-personalization',
       title: 'Web Personalization',
       description: 'Create unique user experiences based on visitor behavior and preferences.',
       icon: 'person'
     },
     {
+      id: 'ui-ux-design',
       title: 'UI/UX Design',
       description: 'Intuitive, user-centered design that enhances engagement and conversions.',
       icon: 'design'
     },
     {
+      id: 'seo',
       title: 'Search Engine Optimization',
       description: 'Improve your visibility online and drive more organic traffic to your website.',
       icon: 'search'
     },
     {
+      id: 'crm-erp',
       title: 'CRM & ERP Solutions',
       description: 'Streamline your business operations with integrated management systems.',
       icon: 'settings'
     },
     {
+      id: 'ecommerce',
       title: 'E-Commerce Development',
       description: 'Build powerful online stores that drive sales and improve customer experience.',
       icon: 'shopping'
     },
     {
+      id: 'email-marketing',
       title: 'Email Marketing',
       description: 'Connect with your audience through targeted, effective email campaigns.',
       icon: 'mail'
     },
     {
+      id: 'marketing-automation',
       title: 'Marketing Automation',
       description: 'Save time and increase efficiency with automated marketing workflows.',
       icon: 'automation'
     },
     {
+      id: 'ai-chatbots',
       title: 'AI-Powered Chatbots',
       description: 'Enhance customer service with intelligent, conversational AI solutions.',
       icon: 'chat'
     }
   ];
 
-  if (!serviceData) {
+  if (!serviceData && !apiCategory && !loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -118,24 +169,35 @@ const DBADetail = () => {
     );
   }
 
+  // Prioritize API data, fall back to static data
   const {
-    title = 'Service',
-    heroImage = 'https://via.placeholder.com/1200x500',
-    overview = 'Comprehensive solutions for your business needs.',
-    whyChooseUs = [],
-    process = [],
-    testimonials = [],
-    companies = [],
-    stats = []
-  } = serviceData;
+    title = apiCategory?.name || 'Service',
+    heroImage = apiCategory?.heroImage || 'https://via.placeholder.com/1200x500',
+    overview = apiCategory?.overview || 'Comprehensive solutions for your business needs.',
+    whyChooseUs = apiCategory?.whyChooseUs || [],
+    process = apiCategory?.process || [],
+    testimonials = apiCategory?.testimonials || [],
+    companies = apiCategory?.companies || [],
+    stats = apiCategory?.stats || []
+  } = serviceData || {};
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Scroll Progress Bar */}
-      {/* <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#47216b] to-[#8344c5] transform origin-left z-50"
-      // style={{ scaleX: scrollProgress / 100 }}
-      /> */}
+      {loading ? (
+        // Main loading skeleton
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-[#47216b] border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+            <h2 className="text-xl font-medium text-gray-700">Loading service details...</h2>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Scroll Progress Bar */}
+          {/* <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#47216b] to-[#8344c5] transform origin-left z-50"
+            style={{ scaleX: scrollProgress / 100 }}
+          /> */}
 
       {/* Back Button */}
       <div className={`fixed top-6 left-6 z-40 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-md' : ''}`}>
@@ -326,61 +388,90 @@ const DBADetail = () => {
                 <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-md p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Services</h3>
 
-                  <div className="space-y-3">
-                    {serviceList.map((service, index) => (
-                      <motion.div
-                        key={index}
-                        className="relative"
-                      >
-                        <div
-                          className={`p-5 rounded-sm transition-all duration-300 cursor-pointer flex items-center justify-between ${activeService === index
-                            ? 'bg-gradient-to-r from-[#47216b] to-[#8344c5] text-white shadow-lg'
-                            : 'bg-white text-gray-800 hover:bg-gray-50 shadow-sm hover:shadow-md'
-                            }`}
-                          onClick={() => setActiveService(activeService === index ? null : index)}
-                        >
-                          <span className="font-medium text-sm">{service.title}</span>
-                          <svg
-                            className={`w-5 h-5 transition-all duration-300 ${activeService === index
-                              ? 'transform rotate-90 text-white'
-                              : 'text-[#47216b]'
-                              }`}
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
+                  {loading ? (
+                    // Loading skeleton
+                    <div className="space-y-3">
+                      {[1, 2, 3, 4].map((_, i) => (
+                        <div key={i} className="bg-white p-5 rounded-sm shadow-sm animate-pulse">
+                          <div className="flex items-center justify-between">
+                            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                            <div className="w-5 h-5 bg-gray-200 rounded-full"></div>
+                          </div>
                         </div>
-
-                        <AnimatePresence>
-                          {activeService === index && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3, ease: "easeInOut" }}
-                              className="overflow-hidden"
+                      ))}
+                    </div>
+                  ) : error ? (
+                    // Error state
+                    <div className="bg-red-50 p-4 rounded-md text-center">
+                      <p className="text-red-500 mb-2">Could not load services</p>
+                      <button 
+                        onClick={() => window.location.reload()} 
+                        className="text-sm text-[#47216b] hover:underline"
+                      >
+                        Try again
+                      </button>
+                    </div>
+                  ) : (
+                    // Services from API or fallback
+                    <div className="space-y-3">
+                      {(category && category.services && category.services.length > 0 
+                        ? category.services 
+                        : fallbackServiceList
+                      ).map((service, index) => (
+                        <motion.div
+                          key={service.id || index}
+                          className="relative"
+                        >
+                          <div
+                            className={`p-5 rounded-sm transition-all duration-300 cursor-pointer flex items-center justify-between ${activeService === index
+                              ? 'bg-gradient-to-r from-[#47216b] to-[#8344c5] text-white shadow-lg'
+                              : 'bg-white text-gray-800 hover:bg-gray-50 shadow-sm hover:shadow-md'
+                              }`}
+                            onClick={() => setActiveService(activeService === index ? null : index)}
+                          >
+                            <span className="font-medium text-sm">{service.title}</span>
+                            <svg
+                              className={`w-5 h-5 transition-all duration-300 ${activeService === index
+                                ? 'transform rotate-90 text-white'
+                                : 'text-[#47216b]'
+                                }`}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
                             >
-                              <div className="bg-white p-6 rounded-sm shadow-xl border border-gray-100 mt-2">
-                                <h4 className="font-semibold text-[#47216b] mb-3 text-lg">{service.title}</h4>
-                                <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
-                                <Link
-                                  to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-                                  className="inline-flex items-center gap-2 text-[#47216b] font-medium hover:text-[#8344c5] transition-colors group"
-                                >
-                                  Learn more
-                                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                  </svg>
-                                </Link>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </motion.div>
-                    ))}
-                  </div>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+
+                          <AnimatePresence>
+                            {activeService === index && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                className="overflow-hidden"
+                              >
+                                <div className="bg-white p-6 rounded-sm shadow-xl border border-gray-100 mt-2">
+                                  <h4 className="font-semibold text-[#47216b] mb-3 text-lg">{service.title}</h4>
+                                  <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
+                                  <Link
+                                    to={`/services/${service.id || service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                                    className="inline-flex items-center gap-2 text-[#47216b] font-medium hover:text-[#8344c5] transition-colors group"
+                                  >
+                                    Learn more
+                                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                  </Link>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -757,7 +848,7 @@ const DBADetail = () => {
         </div>
       </section>
 
-      <style jsx>{`
+        <style jsx>{`
         @keyframes scroll {
           0% {
             transform: translateX(0);
@@ -773,6 +864,8 @@ const DBADetail = () => {
           animation-play-state: paused;
         }
       `}</style>
+        </>
+      )}
     </div>
   );
 };
