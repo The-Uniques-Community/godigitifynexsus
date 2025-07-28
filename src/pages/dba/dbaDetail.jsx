@@ -6,7 +6,7 @@ import {
   categories
 } from './data/dbaData.js';
 
-const DbaDetailPage = () => {
+const DBADetail = () => {
   const { slug } = useParams();
   const serviceData = servicePages[slug] || null;
   const category = categories.find(cat => cat.slug === slug) || {
@@ -777,4 +777,4 @@ const DbaDetailPage = () => {
   );
 };
 
-export default DbaDetailPage;
+export default DBADetail;

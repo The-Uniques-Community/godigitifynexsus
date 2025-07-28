@@ -12,7 +12,7 @@ import BlogDetail from "../pages/blog/BlogDetail";
 import DBA from "../pages/dba/index.jsx"
 import CustomSolution from "../pages/custom-solutions/index"
 import OurProduct from "../pages/our-products/index"
-import DbaDetailPage from "../pages/dba/dbadetail.jsx";
+import DBADetail from "../pages/dba/dbadetail.jsx";
 
 // Auth pages
 import AdminLogin from "../pages/auth/AdminLogin";
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/services/dba/:slug",
-        element: <DbaDetailPage />,
+        element: <DBADetail />,
       },
       {
         path: "/solutions/our-products",
