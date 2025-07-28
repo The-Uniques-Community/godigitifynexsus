@@ -10,10 +10,10 @@ import AboutPage from "../pages/about";
 import Contact from "../pages/contact";
 import Blog from "../pages/blog/Blog";
 import BlogDetail from "../pages/blog/BlogDetail";
-import DBA from "../pages/dba/index"
+import DBA from "../pages/dba/index.jsx"
 import CustomSolution from "../pages/custom-solutions/index"
 import OurProduct from "../pages/our-products/index"
-
+import DbaDetailPage from "../pages/dba/dbadetail";
 
 // Auth pages
 import AdminLogin from "../pages/auth/AdminLogin";
@@ -27,6 +27,7 @@ import CMSQueryResponse from "../pages/cms/CMSQueryResponse";
 import CMSServices from "../pages/cms/CMSServices";
 import BlogEditPage from "../pages/cms/BlogEditPage";
 import BlogDetailPage from "../pages/cms/BlogDetailPage";
+
 
 
 const CMSDashboard = () => (
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "/services/dba",
         element: <DBA />,
+      },
+      {
+        path: "/services/dba/:slug",
+        element: <DbaDetailPage />,
       },
       {
         path: "/solutions/our-products",
