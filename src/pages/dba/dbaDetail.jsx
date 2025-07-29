@@ -45,7 +45,7 @@ const DBADetail = () => {
             ...response.data,
             // Ensure all required properties exist, fill with defaults if not
             name: response.data.name || categoryFallback.name,
-            color: response.data.color || categoryFallback.color,
+            color: '#47216b',
             slug: response.data.slug || slug,
             services: response.data.services || fallbackServiceList,
             stats: response.data.stats || [],
@@ -269,9 +269,7 @@ const DBADetail = () => {
                 >
                   Get Started
                 </Link>
-                <button className="px-8 py-4 border border-[#47216b] text-[#47216b] rounded-full font-semibold transition-all duration-300 hover:bg-[#47216b]/5">
-                  Learn More
-                </button>
+               
               </div>
             </motion.div>
 
@@ -479,7 +477,7 @@ const DBADetail = () => {
                                 <div className="bg-white p-6 rounded-sm shadow-xl border border-gray-100 mt-2">
                                   <h4 className="font-semibold text-[#47216b] mb-3 text-lg">{service.title}</h4>
                                   <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
-                                  <Link
+                                  {/* <Link
                                     to={`/services/${service.id || service.title.toLowerCase().replace(/\s+/g, '-')}`}
                                     className="inline-flex items-center gap-2 text-[#47216b] font-medium hover:text-[#8344c5] transition-colors group"
                                   >
@@ -487,7 +485,7 @@ const DBADetail = () => {
                                     <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
-                                  </Link>
+                                  </Link> */}
                                 </div>
                               </motion.div>
                             )}
@@ -862,11 +860,7 @@ const DBADetail = () => {
                   </svg>
                 </span>
               </Link>
-              <motion.button
-                className="px-10 py-5 border-2 border-[#47216b] text-[#47216b] rounded-full font-bold hover:bg-[#47216b]/10 transition-all duration-300 backdrop-blur-sm text-lg"
-              >
-                View Our Portfolio
-              </motion.button>
+              
             </motion.div>
           </motion.div>
         </div>
