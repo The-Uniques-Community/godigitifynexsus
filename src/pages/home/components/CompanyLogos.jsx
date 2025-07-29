@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-
+import AisLogo from '../../../assets/aislogo.png'
 const CompanyLogos = () => {
   // Sample company logos - you can add more logos here and the grid will expand
   const companies = [
@@ -13,15 +13,15 @@ const CompanyLogos = () => {
     {
       id: 2,
       name: "Alliance",
-      logo: "https://ais.ac.in/Assets/Videos/all-3%20(1).gif",
+      logo: AisLogo,
       link: "https://ais.ac.in/",
     },
-    // {
-    //   id: 3,
-    //   name: "Company 3",
-    //   logo: "https://via.placeholder.com/120x60/cccccc/666666?text=Logo+3",
-    //   link:""
-    // },
+    {
+      id: 3,
+      name: "AbroadEducares",
+      logo: "https://abroadeducares.com/_next/static/media/blackLogo.667801bb.png",
+      link:"https://abroadeducares.com/"
+    },
     // {
     //   id: 4,
     //   name: "Company 4",
