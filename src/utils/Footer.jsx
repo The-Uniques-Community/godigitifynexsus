@@ -1,67 +1,52 @@
 import React from "react";
-import Logo from "../assets/GodigitifyCrop.png";
-import { Link } from "react-router";
+import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
+import Logo from '../assets/GodigitifyCropWhite.png';
 
-const links = [
-  [
-    { label: "Home", href: "/" },
-    { label: "Services", href: "/services/dba" },
-    // { label: "Terms of Service", href: "/terms" },
-  ],
-  [
-    { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" },
-    // { label: "Privacy Policy", href: "/privacy" },
-  ],
+const navLinks = [
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog", href: "/blog" },
+  { label: "Privacy", href: "/privacy" },
+];
+
+const socialLinks = [
+  { icon: <FaLinkedin />, href: "https://linkedin.com" },
+  { icon: <FaInstagram />, href: "https://instagram.com" },
+  { icon: <FaYoutube />, href: "https://youtube.com" },
+  { icon: <FaFacebook />, href: "https://facebook.com" },
 ];
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-200 pt-12 pb-4 relative">
-      <div className="container mx-auto px-4 md:px-12 lg:px-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          {/* Left: Logo and tagline */}
-          <div className="flex flex-col items-start space-y-6">
-            <div className="mb-2">
-              <img
-                src={Logo}
-                alt="Godigitify Nexus Logo"
-                className="md:w-82 w-60 h-auto"
-                style={{ filter: 'none' }}
-              />
-            </div>
-            <div>
-              <span className="block text-2xl md:text-3xl font-light text-gray-900 leading-tight">
-                Digital solutions that
-              </span>
-              <span className="block text-2xl md:text-3xl font-light text-gray-900 leading-tight">
-                <span className="italic text-[#47216b] font-normal">empower your business.</span>
-              </span>
-            </div>
-          </div>
-
-          {/* Right: Links grid */}
-          <div className="w-full flex flex-col items-start justify-center">
-            <div className="grid grid-cols-3 gap-x-8 gap-y-2 w-full">
-              {links.flat().map((link, idx) => (
-                <Link
-                  to={link.href}
-                  className="flex items-center text-gray-700 hover:text-[#47216b] text-base whitespace-nowrap group transition-colors"
-                >
-                  <span className="mr-1 text-lg group-hover:translate-x-1 transition-transform">→</span>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+    <footer className="w-full fixed bottom-0 z-0 bg-[#47216b] pt-16 pb-12 px-4 md:px-0 flex flex-col items-center" style={{minHeight: '340px'}}>
+      {/* Logo Image */}
+      <div className="flex justify-center items-center mb-8 md:mb-16 pt-32 md:pt-64">
+        <img src={Logo} alt="GoDigitify Logo" className="w-64 md:w-[1000px] h-auto object-contain" />
+      </div>
+      {/* Social + Nav */}
+      <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
+        {/* Social Icons */}
+        <div className="flex space-x-6 text-white text-2xl">
+          {socialLinks.map((s, i) => (
+            <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">
+              {s.icon}
+            </a>
+          ))}
+        </div>
+        {/* Nav Links */}
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-white text-base font-medium">
+          {navLinks.map((l) => (
+            <a key={l.label} href={l.href} className="hover:text-gray-200 transition-colors">
+              {l.label}
+            </a>
+          ))}
         </div>
       </div>
-      {/* Bottom right copyright */}
-      <div className="w-full flex justify-end mt-8 pr-6">
-        <div className="text-xs text-gray-400 text-right">
-          ALL RIGHTS RESERVED.<br />
-          © 2025 GODIGITIFY NEXUS.
-        </div>
+      {/* Bottom Text */}
+      <div className="w-full max-w-4xl flex flex-col md:flex-row items-center justify-between text-xs text-gray-200 opacity-80 gap-2">
+        <span>Proudly created in India.</span>
+        <span>All Right Reserved, All Wrong Reversed.</span>
       </div>
     </footer>
   );
