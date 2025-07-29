@@ -255,9 +255,7 @@ const Index = () => {
                   <Link to="/contact" className="px-8 py-4 bg-[#47216b] text-white rounded-full font-semibold shadow-md transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg">
                     Get in Touch
                   </Link>
-                  <button className="px-8 py-4 border border-[#47216b] text-[#47216b] rounded-full font-semibold transition-all duration-300 hover:bg-[#47216b]/5">
-                    Our Portfolio
-                  </button>
+                 
                 </div>
               </motion.div>
             </div>
