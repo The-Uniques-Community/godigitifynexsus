@@ -8,7 +8,7 @@ export const GraphicSolutionsImg = 'https://images.unsplash.com/photo-1432888498
 // Categories data
 export const categories = [
   { 
-    slug: 'branding', 
+    slug: 'branding-solutions', 
     name: 'Branding Solutions', 
     shortDesc: 'Create compelling brand identities that captivate and convert.',
     icon: 'B',
@@ -29,7 +29,7 @@ export const categories = [
     color: '#47216b'
   },
   { 
-    slug: 'app', 
+    slug: 'app-development', 
     name: 'App Solutions', 
     shortDesc: 'Mobile experiences that engage and retain users.',
     icon: 'A',
