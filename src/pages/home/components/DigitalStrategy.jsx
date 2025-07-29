@@ -237,7 +237,7 @@ const DigitalStrategy = () => {
       {/* <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">
         OUR BLOG
       </h3> */}
-      <h2 className="text-4xl md:text-7xl pb-5 w-max font-bold leading-tight  mb-32 text-[#47216b]">
+      <h2 className="text-3xl md:text-7xl pb-5 w-max font-bold leading-tight  mb-32 text-[#47216b]">
          How We Work at GoDigitfy
       </h2>
       {/* <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">

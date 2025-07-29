@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  categoryStats,
   serviceOfferings,
   getCategoryDescription,
   categories as fallbackCategories
@@ -12,6 +11,35 @@ import {
   fetchCategoryBySlug,
   mapApiToUiFormat
 } from './data/apiService.js';
+
+// Default category stats as a fallback
+const defaultCategoryStats = {
+  branding: [
+    { value: '50+', label: 'Brand Identities' },
+    { value: '85%', label: 'Increased Recognition' },
+    { value: '40+', label: 'Industries Served' }
+  ],
+  marketing: [
+    { value: '200+', label: 'Campaigns' },
+    { value: '35%', label: 'Average ROI Increase' },
+    { value: '1M+', label: 'Customer Reach' }
+  ],
+  web: [
+    { value: '100+', label: 'Websites Launched' },
+    { value: '45%', label: 'Conversion Rate Boost' },
+    { value: '99.9%', label: 'Uptime' }
+  ],
+  app: [
+    { value: '70+', label: 'Mobile Apps' },
+    { value: '4.8', label: 'Average Rating' },
+    { value: '50K+', label: 'Daily Active Users' }
+  ],
+  graphic: [
+    { value: '300+', label: 'Design Projects' },
+    { value: '90%', label: 'Client Satisfaction' },
+    { value: '25+', label: 'Design Awards' }
+  ]
+};
 
 const Index = () => {
   const [openCategory, setOpenCategory] = useState(null);
@@ -203,7 +231,7 @@ const Index = () => {
         <div className="absolute w-96 h-96 bg-[#47216b]/5 rounded-full -top-20 -left-20 blur-3xl z-0"></div>
         <div className="absolute w-64 h-64 bg-[#8344c5]/5 rounded-full top-40 right-10 blur-3xl z-0"></div>
 
-        <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 pt-32 pb-20">
+        <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 pt-20 md:pt-24 lg:pt-32 pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-6 space-y-8">
               <motion.div
@@ -760,7 +788,7 @@ const Index = () => {
 
                         {/* Stats cards */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-                          {categoryStats[category.slug].map((stat, idx) => (
+                          {(defaultCategoryStats[category.slug] || []).map((stat, idx) => (
                             <motion.div
                               key={idx}
                               initial={{ opacity: 0, y: 20 }}
