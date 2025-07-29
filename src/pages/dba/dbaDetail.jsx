@@ -8,8 +8,8 @@ import {
 import { fetchCategoryBySlug } from './data/apiService.js';
 import axios from 'axios';
 
-const API_URL = 'https://godigitify-backend.vercel.app/api';
-
+// API URL for services
+const API_URL = import.meta.env.VITE_API_URL || 'https://godigitify-backend.vercel.app/api/services';
 
 const DBADetail = () => {
   const { slug } = useParams();
@@ -34,10 +34,34 @@ const DBADetail = () => {
     const getCategoryData = async () => {
       try {
         setLoading(true);
-        // Try to get data from the new API endpoint
-        const response = await axios.get(`${API_URL}/categories/${slug}`);
-        setCategory(response.data);
         setError(null);
+        
+        // Try to get data from the API endpoint
+        const response = await axios.get(`${API_URL}/categories/${slug}`);
+        
+        if (response.data) {
+          // Process and enrich the data
+          const categoryData = {
+            ...response.data,
+            // Ensure all required properties exist, fill with defaults if not
+            name: response.data.name || categoryFallback.name,
+            color: response.data.color || categoryFallback.color,
+            slug: response.data.slug || slug,
+            services: response.data.services || fallbackServiceList,
+            stats: response.data.stats || [],
+            whyChooseUs: response.data.whyChooseUs || [
+              "Industry Expertise",
+              "Cutting-Edge Technology",
+              "Dedicated Support",
+              "Proven Results"
+            ],
+            testimonials: response.data.testimonials || []
+          };
+          
+          setCategory(categoryData);
+        } else {
+          throw new Error('API returned empty data');
+        }
       } catch (err) {
         console.error('Failed to fetch category details from new API:', err);
         
@@ -153,7 +177,7 @@ const DBADetail = () => {
     }
   ];
 
-  if (!serviceData && !apiCategory && !loading) {
+  if (!category && !loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -170,17 +194,16 @@ const DBADetail = () => {
     );
   }
 
-  // Prioritize API data, fall back to static data
-  const {
-    title = apiCategory?.name || 'Service',
-    heroImage = apiCategory?.heroImage || 'https://via.placeholder.com/1200x500',
-    overview = apiCategory?.overview || 'Comprehensive solutions for your business needs.',
-    whyChooseUs = apiCategory?.whyChooseUs || [],
-    process = apiCategory?.process || [],
-    testimonials = apiCategory?.testimonials || [],
-    companies = apiCategory?.companies || [],
-    stats = apiCategory?.stats || []
-  } = serviceData || {};
+  // Instead of relying on serviceData, directly use the category state
+  // which contains the API data or fallbacks
+  const title = category?.name || 'Service';
+  const heroImage = category?.heroImage || 'https://via.placeholder.com/1200x500';
+  const overview = category?.overview || 'Comprehensive solutions for your business needs.';
+  const whyChooseUs = category?.whyChooseUs || [];
+  const process = category?.process || [];
+  const testimonials = category?.testimonials || [];
+  const companies = category?.companies || [];
+  const stats = category?.stats || [];
 
   return (
     <div className="min-h-screen bg-white">
