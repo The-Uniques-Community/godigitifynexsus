@@ -256,7 +256,7 @@ const MainLayout = () => {
           <TransitionOverlay />
           {showContent && (
             <div className="min-h-screen flex flex-col">
-              <main className="flex-grow pt-20">
+              <main className="flex-grow pt-16 md:pt-20 lg:pt-20">
                 <Outlet />
               </main>
               <Footer />

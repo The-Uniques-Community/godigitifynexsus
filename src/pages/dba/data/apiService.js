@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base API URL - replace with environment variable in production
-const API_BASE_URL = 'https://godigitify-backend.vercel.app/api/services';
+const API_BASE_URL = 'http://localhost:5000/api/services';
 
 // Fetch all categories
 export const fetchAllCategories = async () => {
