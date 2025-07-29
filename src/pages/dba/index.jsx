@@ -231,7 +231,7 @@ const Index = () => {
         <div className="absolute w-96 h-96 bg-[#47216b]/5 rounded-full -top-20 -left-20 blur-3xl z-0"></div>
         <div className="absolute w-64 h-64 bg-[#8344c5]/5 rounded-full top-40 right-10 blur-3xl z-0"></div>
 
-        <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 pt-32 pb-20">
+        <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 pt-20 md:pt-24 lg:pt-32 pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-6 space-y-8">
               <motion.div

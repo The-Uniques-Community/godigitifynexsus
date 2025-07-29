@@ -27,3 +27,8 @@ body::-webkit-scrollbar {
 .btn-secondary {
   @apply px-4 py-1 rounded border border-[#b4b4b4] text-[#47216b] hover:text-white hover:bg-[#47216b] transition;
 }
+
+::selection{
+  background-color: #47216b;
+  color: #ffffff;
+}

@@ -40,21 +40,26 @@ const Navbar = () => {
       setSolutionDropdownOpen(false);
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   // Helper function to check if a route is active
   const isActiveRoute = (route) => {
-    if (route === '/' && location.pathname === '/') return true;
-    if (route !== '/' && location.pathname.startsWith(route)) return true;
+    if (route === "/" && location.pathname === "/") return true;
+    if (route !== "/" && location.pathname.startsWith(route)) return true;
     return false;
   };
 
   // Helper function to get link classes with active state
-  const getLinkClasses = (route, baseClasses = "text-gray-700 hover:text-[#47216b] transition-all duration-300") => {
+  const getLinkClasses = (
+    route,
+    baseClasses = "text-gray-700 hover:text-[#47216b] transition-all duration-300"
+  ) => {
     const isActive = isActiveRoute(route);
-    return `${baseClasses} ${isActive ? 'text-[#47216b] font-semibold relative' : ''}`;
+    return `${baseClasses} ${
+      isActive ? "text-[#47216b] font-semibold relative" : ""
+    }`;
   };
 
   return (
@@ -73,13 +78,13 @@ const Navbar = () => {
                 isScrolled ? "w-32 sm:w-40 h-auto" : "w-40 sm:w-52 h-auto"
               }`}
             >
-            <Link to={'/'}>
-              <img
-                src={Logo}
-                alt="Godigitify Nexus"
-                className="relative z-10 transition-all duration-300 "
-              /></Link>
-        
+              <Link to={"/"}>
+                <img
+                  src={Logo}
+                  alt="Godigitify Nexus"
+                  className="relative z-10 transition-all duration-300 "
+                />
+              </Link>
             </div>
           </div>
 
@@ -89,12 +94,14 @@ const Navbar = () => {
             <div className="relative" onClick={(e) => e.stopPropagation()}>
               <button
                 onClick={handleServiceDropdown}
-                className={`${getLinkClasses('/services')} flex items-center space-x-1`}
+                className={`${getLinkClasses(
+                  "/services"
+                )} flex items-center space-x-1`}
               >
                 <span>Service</span>
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${
-                    serviceDropdownOpen ? 'rotate-180' : ''
+                    serviceDropdownOpen ? "rotate-180" : ""
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -107,7 +114,7 @@ const Navbar = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-                {isActiveRoute('/services') && (
+                {isActiveRoute("/services") && (
                   <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#47216b] rounded-full animate-pulse"></div>
                 )}
               </button>
@@ -128,12 +135,14 @@ const Navbar = () => {
             <div className="relative" onClick={(e) => e.stopPropagation()}>
               <button
                 onClick={handleSolutionDropdown}
-                className={`${getLinkClasses('/solutions')} flex items-center space-x-1`}
+                className={`${getLinkClasses(
+                  "/solutions"
+                )} flex items-center space-x-1`}
               >
                 <span>Solution</span>
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${
-                    solutionDropdownOpen ? 'rotate-180' : ''
+                    solutionDropdownOpen ? "rotate-180" : ""
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -146,7 +155,7 @@ const Navbar = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-                {isActiveRoute('/solutions') && (
+                {isActiveRoute("/solutions") && (
                   <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#47216b] rounded-full animate-pulse"></div>
                 )}
               </button>
@@ -172,28 +181,25 @@ const Navbar = () => {
 
             <Link
               to="/about"
-              className={`${getLinkClasses('/about')} relative`}
+              className={`${getLinkClasses("/about")} relative`}
             >
               About
-              {isActiveRoute('/about') && (
+              {isActiveRoute("/about") && (
                 <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#47216b] rounded-full animate-pulse"></div>
               )}
             </Link>
-            <Link
-              to="/blog"
-              className={`${getLinkClasses('/blog')} relative`}
-            >
+            <Link to="/blog" className={`${getLinkClasses("/blog")} relative`}>
               Blog
-              {isActiveRoute('/blog') && (
+              {isActiveRoute("/blog") && (
                 <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#47216b] rounded-full animate-pulse"></div>
               )}
             </Link>
             <Link
               to="/contact"
-              className={`${getLinkClasses('/contact')} relative`}
+              className={`${getLinkClasses("/contact")} relative`}
             >
               Contact
-              {isActiveRoute('/contact') && (
+              {isActiveRoute("/contact") && (
                 <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#47216b] rounded-full animate-pulse"></div>
               )}
             </Link>
@@ -202,14 +208,15 @@ const Navbar = () => {
 
         {/* Desktop Right Side */}
         <div className="hidden md:flex items-center space-x-4">
-          <button
-            className={`px-4 py-2 border border-[#47216b] text-[#47216b] rounded-lg hover:bg-[#47216b] hover:text-white transition-all duration-300 ${
-              isScrolled ? "text-sm" : ""
-            }`}
-          >
-            Let us Think
-          </button>
-          
+          <Link to="/contact">
+            <button
+              className={`px-4 py-2 border border-[#47216b] text-[#47216b] rounded-lg hover:bg-[#47216b] hover:text-white transition-all duration-300 ${
+                isScrolled ? "text-sm" : ""
+              }`}
+            >
+              Let us Think
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -237,7 +244,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-90 lg:hidden transition-all duration-300 ${
           isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -246,100 +253,136 @@ const Navbar = () => {
           onClick={toggleMobileMenu}
         ></div>
         <div
-          className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl transform transition-transform duration-300 ${
+          className={`fixed top-0 right-0 h-full w-full max-w-xs sm:max-w-sm bg-white shadow-xl transform transition-transform duration-300 ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="p-6 pt-20">
-            <div className="space-y-6">
-              <Link
-                to="#"
-                className="block text-gray-700 hover:text-[#47216b] transition-colors duration-300"
-              >
-                Work
+          <div className="flex flex-col h-full">
+            {/* Header: Logo + Close Button */}
+            <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-100">
+              <Link to="/" onClick={toggleMobileMenu} className="flex items-center space-x-2">
+                <img src={Logo} alt="Godigitify Nexus" className="w-24 h-auto" />
               </Link>
-              
-              {/* Mobile Service Section */}
-              <div>
-                <div className={`font-medium mb-2 ${isActiveRoute('/services') ? 'text-[#47216b]' : 'text-gray-700'}`}>
-                  Service
-                  {isActiveRoute('/services') && (
-                    <div className="w-4 h-0.5 bg-[#47216b] rounded-full mt-1 animate-pulse"></div>
+              <button
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+                onClick={toggleMobileMenu}
+                aria-label="Close menu"
+              >
+                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            {/* Scrollable Nav Content */}
+            <div className="flex-1 overflow-y-auto px-6 py-4">
+              <nav className="space-y-2">
+                {/* Service Dropdown (Collapsible) */}
+                <div>
+                  <button
+                    type="button"
+                    className="w-full flex items-center justify-between px-2 py-3 text-gray-700 font-medium rounded hover:bg-gray-50 focus:outline-none"
+                    onClick={e => {
+                      e.stopPropagation();
+                      setServiceDropdownOpen(!serviceDropdownOpen);
+                      setSolutionDropdownOpen(false);
+                    }}
+                    aria-expanded={serviceDropdownOpen}
+                    aria-controls="mobile-service-dropdown"
+                  >
+                    <span>Service</span>
+                    <svg
+                      className={`w-5 h-5 ml-2 transition-transform ${serviceDropdownOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {serviceDropdownOpen && (
+                    <div id="mobile-service-dropdown" className="ml-4 mt-1 space-y-1">
+                      <Link
+                        to="/services/dba"
+                        className="block px-2 py-2 text-gray-600 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
+                        onClick={toggleMobileMenu}
+                      >
+                        DBA
+                      </Link>
+                    </div>
                   )}
                 </div>
-                <div className="ml-4">
-                  <Link
-                    to="/services/dba"
-                    className="block text-gray-600 hover:text-[#47216b] transition-colors duration-300 py-1"
-                    onClick={toggleMobileMenu}
+                {/* Solution Dropdown (Collapsible) */}
+                <div>
+                  <button
+                    type="button"
+                    className="w-full flex items-center justify-between px-2 py-3 text-gray-700 font-medium rounded hover:bg-gray-50 focus:outline-none"
+                    onClick={e => {
+                      e.stopPropagation();
+                      setSolutionDropdownOpen(!solutionDropdownOpen);
+                      setServiceDropdownOpen(false);
+                    }}
+                    aria-expanded={solutionDropdownOpen}
+                    aria-controls="mobile-solution-dropdown"
                   >
-                    DBA
-                  </Link>
-                </div>
-              </div>
-
-              {/* Mobile Solution Section */}
-              <div>
-                <div className={`font-medium mb-2 ${isActiveRoute('/solutions') ? 'text-[#47216b]' : 'text-gray-700'}`}>
-                  Solution
-                  {isActiveRoute('/solutions') && (
-                    <div className="w-4 h-0.5 bg-[#47216b] rounded-full mt-1 animate-pulse"></div>
+                    <span>Solution</span>
+                    <svg
+                      className={`w-5 h-5 ml-2 transition-transform ${solutionDropdownOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {solutionDropdownOpen && (
+                    <div id="mobile-solution-dropdown" className="ml-4 mt-1 space-y-1">
+                      <Link
+                        to="/solutions/our-products"
+                        className="block px-2 py-2 text-gray-600 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
+                        onClick={toggleMobileMenu}
+                      >
+                        Our Products
+                      </Link>
+                      <Link
+                        to="/solutions/custom-solutions"
+                        className="block px-2 py-2 text-gray-600 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
+                        onClick={toggleMobileMenu}
+                      >
+                        Custom Solutions
+                      </Link>
+                    </div>
                   )}
                 </div>
-                <div className="ml-4 space-y-1">
-                  <Link
-                    to="/solutions/our-products"
-                    className="block text-gray-600 hover:text-[#47216b] transition-colors duration-300 py-1"
-                    onClick={toggleMobileMenu}
-                  >
-                    Our Products
-                  </Link>
-                  <Link
-                    to="/solutions/custom-solutions"
-                    className="block text-gray-600 hover:text-[#47216b] transition-colors duration-300 py-1"
-                    onClick={toggleMobileMenu}
-                  >
-                    Custom Solutions
-                  </Link>
-                </div>
-              </div>
-
-              <Link
-                to="/about"
-                className={`${getLinkClasses('/about', 'block text-gray-700 hover:text-[#47216b] transition-colors duration-300')} relative`}
-              >
-                About
-                {isActiveRoute('/about') && (
-                  <div className="w-4 h-0.5 bg-[#47216b] rounded-full mt-1 animate-pulse"></div>
-                )}
-              </Link>
-              <Link
-                to="/blog"
-                className={`${getLinkClasses('/blog', 'block text-gray-700 hover:text-[#47216b] transition-colors duration-300')} relative`}
-                onClick={toggleMobileMenu}
-              >
-                Blog
-                {isActiveRoute('/blog') && (
-                  <div className="w-4 h-0.5 bg-[#47216b] rounded-full mt-1 animate-pulse"></div>
-                )}
-              </Link>
-              <Link
-                to="/contact"
-                className={`${getLinkClasses('/contact', 'block text-gray-700 hover:text-[#47216b] transition-colors duration-300')} relative`}
-                onClick={toggleMobileMenu}
-              >
-                Contact
-                {isActiveRoute('/contact') && (
-                  <div className="w-4 h-0.5 bg-[#47216b] rounded-full mt-1 animate-pulse"></div>
-                )}
-              </Link>
-
-              <div className="pt-6 border-t border-gray-200 space-y-4">
+                <Link
+                  to="/about"
+                  className="block px-2 py-3 text-gray-700 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
+                  onClick={toggleMobileMenu}
+                >
+                  About
+                </Link>
+                <Link
+                  to="/blog"
+                  className="block px-2 py-3 text-gray-700 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
+                  onClick={toggleMobileMenu}
+                >
+                  Blog
+                </Link>
+                <Link
+                  to="/contact"
+                  className="block px-2 py-3 text-gray-700 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
+                  onClick={toggleMobileMenu}
+                >
+                  Contact
+                </Link>
+              </nav>
+            </div>
+            {/* CTA Button at Bottom */}
+            <div className="px-6 pb-6 pt-4 border-t border-gray-200">
+              <Link to="/contact" onClick={toggleMobileMenu}>
                 <button className="w-full px-4 py-2 border border-[#47216b] text-[#47216b] rounded-lg hover:bg-[#47216b] hover:text-white transition-all duration-300">
                   Let us Think
                 </button>
-               
-              </div>
+              </Link>
             </div>
           </div>
         </div>
