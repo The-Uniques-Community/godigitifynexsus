@@ -15,7 +15,7 @@ const Service = () => {
       textColor: "text-white",
       hoverTextColor: "hover:text-gray-800",
       buttonText: "View",
-      link: "/services/dba/branding",
+      link: "/services/dba/branding-solutions",
       icon: "→",
     },
     {
@@ -54,7 +54,7 @@ const Service = () => {
       textColor: "text-gray-800",
       hoverTextColor: "hover:text-white",
       buttonText: "View",
-      link: "/services/dba/app",
+      link: "/services/dba/app-development",
       icon: "→",
     },
   ];
