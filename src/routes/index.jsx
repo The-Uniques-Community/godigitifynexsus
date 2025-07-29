@@ -12,7 +12,8 @@ import BlogDetail from "../pages/blog/BlogDetail";
 import DBA from "../pages/dba/index.jsx"
 import CustomSolution from "../pages/custom-solutions/index"
 import OurProduct from "../pages/our-products/index"
-import DbaDetailPage from "../pages/dba/dbaDetail.jsx";
+import DBADetail from "../pages/dba/dbaDetail.jsx";
+import NotFound from "../pages/NotFound"; 
 
 // Auth pages
 import AdminLogin from "../pages/auth/AdminLogin";
@@ -63,7 +64,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/services/dba/:slug",
-        element: <DbaDetailPage />,
+        element: <DBADetail />,
       },
       {
         path: "/solutions/our-products",
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog/:id",
         element: <BlogDetail />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
@@ -132,7 +137,15 @@ export const router = createBrowserRouter([
         path: "manage-services",
         element: <CMSServices />,
       },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

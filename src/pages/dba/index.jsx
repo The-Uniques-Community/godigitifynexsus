@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import {
   categoryStats,
   serviceOfferings,
-  getCategoryDescription
+  getCategoryDescription,
+  categories as fallbackCategories
 } from './data/dbaData.js';
 import { 
   fetchAllCategories, 
@@ -24,30 +25,90 @@ const Index = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [categoryDetails, setCategoryDetails] = useState({});
+    const [isUsingFallback, setIsUsingFallback] = useState(false);
 
   // Fetch categories from API
+  // useEffect(() => {
+  //   const getCategories = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const data = await fetchAllCategories();
+  //       setCategories(mapApiToUiFormat(data));
+  //       setError(null);
+  //     } catch (err) {
+  //       console.error('Failed to fetch categories:', err);
+  //       setError('Failed to load service categories. Please try again later.');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   getCategories();
+  // }, []);
   useEffect(() => {
     const getCategories = async () => {
       try {
         setLoading(true);
-        const data = await fetchAllCategories();
-        setCategories(mapApiToUiFormat(data));
         setError(null);
+        
+        // Try to fetch from API first
+        const data = await fetchAllCategories();
+        
+        if (data && data.length > 2) {
+          setCategories(mapApiToUiFormat(data));
+          setIsUsingFallback(false);
+        } else {
+          // If API returns empty data, use fallback
+          throw new Error('API returned empty data');
+        }
+        
       } catch (err) {
-        console.error('Failed to fetch categories:', err);
-        setError('Failed to load service categories. Please try again later.');
+        console.warn('API failed, using fallback data:', err);
+        
+        // Use fallback data from dbaData.js
+        setCategories(fallbackCategories);
+        setIsUsingFallback(true);
+        setError(null); // Don't show error since we have fallback
+        
       } finally {
         setLoading(false);
       }
-    };
+      };
 
     getCategories();
   }, []);
 
   // Fetch category details when a category is opened
+  // useEffect(() => {
+  //   if (openCategory) {
+  //     const getCategoryDetails = async () => {
+  //       try {
+  //         const data = await fetchCategoryBySlug(openCategory);
+  //         if (data) {
+  //           setCategoryDetails(prev => ({
+  //             ...prev,
+  //             [openCategory]: data
+  //           }));
+  //         }
+  //       } catch (err) {
+  //         console.error(`Failed to fetch details for ${openCategory}:`, err);
+  //       }
+  //     };
+
+  //     // Only fetch if we don't already have the details
+  //     if (!categoryDetails[openCategory]) {
+  //       getCategoryDetails();
+  //     }
+  //   }
+  // }, [openCategory]);
   useEffect(() => {
     if (openCategory) {
       const getCategoryDetails = async () => {
+        // Skip API call if we're already using fallback data
+        if (isUsingFallback) {
+          return;
+        }
+
         try {
           const data = await fetchCategoryBySlug(openCategory);
           if (data) {
@@ -57,16 +118,17 @@ const Index = () => {
             }));
           }
         } catch (err) {
-          console.error(`Failed to fetch details for ${openCategory}:`, err);
+          console.warn(`Failed to fetch details for ${openCategory}, using fallback:`, err);
+          // Details will come from the fallback categories data
         }
       };
 
-      // Only fetch if we don't already have the details
-      if (!categoryDetails[openCategory]) {
+      // Only fetch if we don't already have the details and not using fallback
+      if (!categoryDetails[openCategory] && !isUsingFallback) {
         getCategoryDetails();
       }
     }
-  }, [openCategory]);
+  }, [openCategory, isUsingFallback, categoryDetails]);
 
   // Handle scroll progress
   useEffect(() => {
@@ -113,8 +175,10 @@ const Index = () => {
     }, 500);
   };
 
+  
   return (
     <div className="min-h-screen bg-white font-sans">
+      
       {/* Progress bar */}
       {/* <div className="fixed top-0 left-0 w-full h-1 z-50">
         <div
