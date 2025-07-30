@@ -372,114 +372,65 @@ const OurProducts = () => {
         </div>
       </section>
 
-      {/* Enhanced Contact Section - Full Width, Modern & Minimalistic */}
+      {/* Streamlined Custom Solution Section */}
       <section className="relative py-20 md:py-32 overflow-hidden border-t border-gray-100">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-white pointer-events-none"></div>
         <div className="absolute right-0 top-0 w-1/2 h-full bg-gray-100 -skew-x-12 transform -translate-x-20 pointer-events-none"></div>
         
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Content Side */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-5xl font-bold text-[#47216b] mb-6">
-                Need a <span className="border-b-4 border-[#47216b]/50 pb-1">Custom Solution?</span>
-              </h2>
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-xl">
-                Looking for a product that matches your exact needs? We offer fully customizable, 
-                white-label digital solutions tailored for businesses, startups, and institutions.
-              </p>
-              
-              <div className="space-y-4 mb-10">
-                <div className="flex items-start">
-                  <div className="w-10 h-10 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg className="w-5 h-5 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">Tailored to Your Business</h3>
-                    <p className="text-gray-600">Built from scratch to match your specific workflows and requirements</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-10 h-10 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg className="w-5 h-5 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">White-Label Ready</h3>
-                    <p className="text-gray-600">Fully branded with your company's identity and design language</p>
-                  </div>
-                </div>
-              </div>
-              
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center px-8 py-4 bg-[#47216b] text-white font-semibold text-lg hover:bg-black transition-colors duration-300 shadow-lg"
-              >
-                Get in Touch
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-[#47216b] mb-6">
+              Need a <span className="border-b-4 border-[#47216b]/50 pb-1">Custom Solution?</span>
+            </h2>
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto">
+              Looking for a product that matches your exact needs? We offer fully customizable, 
+              white-label digital solutions tailored for businesses, startups, and institutions.
+            </p>
             
-            {/* Form Side */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white p-8 md:p-10 shadow-xl"
-            >
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Tell us about your project</h3>
-              <form className="space-y-5">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-gray-200 focus:ring-[#47216b] focus:border-[#47216b] outline-none"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 border border-gray-200 focus:ring-[#47216b] focus:border-[#47216b] outline-none"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">What are you looking for?</label>
-                  <textarea 
-                    className="w-full px-4 py-3 border border-gray-200 focus:ring-[#47216b] focus:border-[#47216b] outline-none"
-                    rows={4}
-                    placeholder="Briefly describe your project or requirements..."
-                  ></textarea>
-                </div>
-                <button 
-                  type="submit" 
-                  className="w-full py-3 px-4 bg-[#47216b] hover:bg-[#371955] text-white font-medium transition-colors duration-300 flex items-center justify-center"
-                >
-                  Send Message
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <div className="flex flex-wrap justify-center gap-6 mb-10">
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-gray-100 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                </button>
-                <p className="text-xs text-center text-gray-500 mt-4">
-                  We'll get back to you within 24 hours to discuss your project in detail.
-                </p>
-              </form>
-            </motion.div>
-          </div>
+                </div>
+                <span className="ml-3 text-gray-700">Tailored to Your Business</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-gray-100 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="ml-3 text-gray-700">White-Label Ready</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-gray-100 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="ml-3 text-gray-700">Full Customization</span>
+              </div>
+            </div>
+            
+            <Link 
+              to="/solutions/custom-solutions" 
+              className="inline-flex items-center px-8 py-4 bg-[#47216b] text-white font-semibold text-lg hover:bg-[#371955] transition-colors duration-300 shadow-lg rounded-lg"
+            >
+              Explore Custom Solutions
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>
