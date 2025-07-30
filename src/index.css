@@ -13,7 +13,44 @@ body {
 
 
 body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: thin; /* Chrome, Safari */
+
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px; /* Very thin scrollbar */
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Transparent background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #47216b; /* Purple bar color */
+  border-radius: 2px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38134f; /* Darker purple on hover */
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent; /* Transparent corner */
+}
+
+/* Remove scrollbar arrows (buttons) in WebKit browsers */
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #47216b transparent;
 }
 
 .input {
