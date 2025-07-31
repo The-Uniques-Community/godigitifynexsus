@@ -44,7 +44,7 @@ const CompanyLogos = () => {
         </div>
 
         {/* Company Logos Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
           {companies.map((company, index) => (
             <Link
               key={company.id}

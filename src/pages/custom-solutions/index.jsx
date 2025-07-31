@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import Customsolution from '../../assets/customSolution.png'
 
 const CustomSolutions = () => {
   // Form state
@@ -501,29 +502,46 @@ const CustomSolutions = () => {
         <div className="absolute -right-40 top-20 w-96 h-96 rounded-full bg-[#47216b]/5 blur-3xl pointer-events-none"></div>
         
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="max-w-3xl"
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-[#47216b] mb-6 leading-tight">
-              Your Idea, Our Expertise: <br />
-              <span className="text-black">Let's Build Together</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
-              We turn your product vision into reality. Tell us what you want to create—your product, your goals, your audience—and we'll translate it into a digital solution. From branding and website development to execution, our end-to-end service ensures you're completely taken care of.
-            </p>
-            <a
-              href="#get-started"
-              className="inline-flex items-center px-8 py-4 bg-[#47216b] text-white rounded-full font-semibold hover:bg-[#371955] transition-colors duration-300"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text */}
+            <motion.div 
+              className="max-w-3xl"
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
             >
-              Start Your Project
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
-          </motion.div>
+              <h1 className="text-4xl md:text-6xl font-bold text-[#47216b] mb-6 leading-tight">
+                Your Idea, Our Expertise: <br />
+                <span className="text-black">Let's Build Together</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
+                We turn your product vision into reality. Tell us what you want to create—your product, your goals, your audience—and we'll translate it into a digital solution. From branding and website development to execution, our end-to-end service ensures you're completely taken care of.
+              </p>
+              <a
+                href="#get-started"
+                className="inline-flex items-center px-8 py-4 bg-[#47216b] text-white rounded-full font-semibold hover:bg-[#371955] transition-colors duration-300"
+              >
+                Start Your Project
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </a>
+            </motion.div>
+            {/* Right: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="flex justify-center md:justify-end"
+            >
+              <img
+                src={Customsolution}
+                alt="Custom Solution Illustration"
+                className="w-full max-w-md h-auto rounded-xl "
+                loading="lazy"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
       
