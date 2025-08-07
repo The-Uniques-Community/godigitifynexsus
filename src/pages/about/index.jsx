@@ -18,7 +18,7 @@ const About = () => {
     name: "Abhishek Mishra",
     role: "Project Delivery Manager",
     image:
-      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum1KD1qD4kpAumlKRoP358NM1qUYtia2nF6sTd",
+      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumR0pTg4mu2iQAmoaFD3d9eMskP7J6LXV4IRly",
     bio: "Expert in executing complex projects with a focus on agile methodologies and cross-team collaboration.",
     linkedin: "https://www.linkedin.com/in/abhishek-mishra-b6a80224a/", // Replace with real URL
   },
