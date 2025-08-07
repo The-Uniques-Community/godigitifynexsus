@@ -180,7 +180,7 @@ const Contact = () => {
               </h1>
               <p className="text-gray-600 mb-4">
                 We're excited to work with you soon! Please drop an email with your details & 
-                requirements to <a href="mailto:bd@godigitify.com" className="text-[#47216b] hover:underline">bd@godigitify.com</a>.
+                requirements to <a href="mailto:ceo@godigitify.com" className="text-[#47216b] hover:underline">ceo@godigitify.com</a>.
               </p>
               <p className="text-gray-600">
                 You can also fill this form & we'll get back in 2 business days.
@@ -459,17 +459,17 @@ const Contact = () => {
                   />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Mumbai</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Chandigarh</h3>
                   <div className="space-y-2 text-gray-600">
-                    <p>Kamala Mills Compound, 301/302 Trade World,</p>
-                    <p>Tower D, Lower Parel, Mumbai, Maharashtra 400013</p>
+                    <p> Tower-7, 709 C, Trishla City, Zirakpur,</p>
+                    <p>Bhabat, Punjab 140603</p>
                   </div>
                   <div className="mt-4">
                     <a 
-                      href="mailto:bd@godigitify.com" 
+                      href="mailto:ceo@godigitify.com" 
                       className="text-[#47216b] hover:underline font-medium"
                     >
-                      bd@godigitify.com
+                      ceo@godigitify.com
                     </a>
                   </div>
                 </div>
