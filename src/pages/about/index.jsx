@@ -3,53 +3,54 @@ import { Link } from "react-router";
 const About = () => {
   const [activeTab, setActiveTab] = useState("mission");
 
-  const teamMembers = [
+const teamMembers = [
   {
     id: 1,
     name: "Niraj Gupta",
-    role: "Head of Business & Partnerships",
+    role: "Chief Marketing & Growth Officer",
     image:
       "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumjhrHKDEKYdovOsGfC3D9tNMk6nXaAzRVqy05",
-    bio: "Strategic leader driving innovation, partnerships, and sustainable business growth.",
-    linkedin: "https://www.linkedin.com/in/niraj-gupta-04b3ba255/", // Replace with real URL
+    bio: "Visionary marketing leader spearheading brand growth, strategic partnerships, and digital transformation to drive business expansion and global presence.",
+    linkedin: "https://www.linkedin.com/in/niraj-gupta-04b3ba255/",
   },
   {
     id: 2,
     name: "Abhishek Mishra",
-    role: "Project Delivery Manager",
+    role: "Head Of Operations",
     image:
       "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumR0pTg4mu2iQAmoaFD3d9eMskP7J6LXV4IRly",
-    bio: "Expert in executing complex projects with a focus on agile methodologies and cross-team collaboration.",
-    linkedin: "https://www.linkedin.com/in/abhishek-mishra-b6a80224a/", // Replace with real URL
+    bio: "Operational strategist ensuring seamless project execution, organizational efficiency, and alignment between innovation and execution excellence.",
+    linkedin: "https://www.linkedin.com/in/abhishek-mishra-b6a80224a/",
   },
   {
     id: 3,
     name: "Kumar Sujal",
-    role: "Product Strategy Lead",
+    role: "Head of Product Strategy & Development",
     image:
       "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum4BvIOmxnuBQDwqki5StcHL06KrMghUGEalm7",
-    bio: "Driven product leader blending user feedback with market research to craft winning digital solutions.",
-    linkedin: "https://www.linkedin.com/in/kumar-sujal/", // Replace with real URL
+    bio: "Dynamic product strategist blending user insights with market intelligence to design scalable, impactful digital solutions that define the future.",
+    linkedin: "https://www.linkedin.com/in/kumar-sujal/",
   },
   {
     id: 4,
     name: "Aryan Kamboj",
-    role: "Lead - Research & Innovation",
+    role: "Head of Research & Innovation",
     image:
       "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumDfpkrmc3imC02hJzTjuAPrdk64eXYnEVlBgZ",
-    bio: "Pioneering researcher exploring next-gen tech for real-world impact and scalable innovation.",
-    linkedin: "https://www.linkedin.com/in/aryan-kammboz-110521252/", // Replace with real URL
+    bio: "Innovative technologist leading research initiatives in emerging technologies to create transformative solutions with measurable real-world impact.",
+    linkedin: "https://www.linkedin.com/in/aryan-kammboz-110521252/",
   },
   {
     id: 5,
     name: "Aman Deep",
-    role: "Head of Design & Creativity",
+    role: "Creative Head – Design & Brand Experience",
     image:
       "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum2oN0nZyWvT53OZ1aHF8mkfdPiU0cDoMlRG9z",
-    bio: "Design visionary shaping immersive digital experiences with user-first creative thinking.",
-    linkedin: "https://www.linkedin.com/in/aman-deep-720390247/", // Replace with real URL
+    bio: "Creative powerhouse driving visual storytelling, user-centered design, and brand innovation that deliver emotionally engaging digital experiences.",
+    linkedin: "https://www.linkedin.com/in/aman-deep-720390247/",
   },
 ];
+
 
 
   const values = [
