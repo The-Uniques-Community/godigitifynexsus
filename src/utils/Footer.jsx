@@ -11,10 +11,10 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: <FaLinkedin />, href: "https://linkedin.com" },
-  { icon: <FaInstagram />, href: "https://instagram.com" },
+  { icon: <FaLinkedin />, href: "https://www.linkedin.com/company/godigitifyofficial/" },
+  { icon: <FaInstagram />, href: "https://www.instagram.com/godigitify/" },
   { icon: <FaYoutube />, href: "https://youtube.com" },
-  { icon: <FaFacebook />, href: "https://facebook.com" },
+  { icon: <FaFacebook />, href: "https://www.facebook.com/godigitify" },
 ];
 
 const Footer = () => {
