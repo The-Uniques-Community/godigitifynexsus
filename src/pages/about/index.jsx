@@ -104,7 +104,7 @@ const teamMembers = [
                 <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed py-4 md:py-6">
                   At{" "}
                   <span className="font-semibold text-[#47216b]">
-                    GoDigitify Nexus
+                    Godigitify
                   </span>
                   , we are more than just a digital agency. We are your
                   strategic partner in navigating the complex world of digital
@@ -472,7 +472,7 @@ const teamMembers = [
                 <div className="relative bg-white rounded-xl p-6 shadow-lg">
                   <img
                     src="https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum9g425VoJQ5AcTPoua6UY3sS7XMiGqmnIVwtL"
-                    alt="CEO - GoDigitify Nexus"
+                    alt="CEO - Godigitify"
                     className="w-full h-96 object-cover rounded-lg"
                   />
                 </div>
@@ -483,7 +483,7 @@ const teamMembers = [
                 <div className="space-y-2">
                   <div className="space-y-1">
                     <p className="text-lg text-gray-700 leading-relaxed italic text-justify">
-  "At GoDigitify Nexus, we believe technology should empower possibilities and ignite progress. 
+  "At Godigitify, we believe technology should empower possibilities and ignite progress. 
   Our mission is to transform ideas into impact through inclusive, innovative, and intelligent solutions."
 </p>
 
@@ -494,7 +494,7 @@ const teamMembers = [
 </p>
 
 <p className="text-gray-600 leading-relaxed text-justify">
-  Under his guidance, GoDigitify Nexus has delivered 50+ successful projects, 
+  Under his guidance, Godigitify has delivered 50+ successful projects, 
   empowering institutions and enterprises to achieve their digital goals while 
   championing access, creativity, and long-term impact.
 </p>

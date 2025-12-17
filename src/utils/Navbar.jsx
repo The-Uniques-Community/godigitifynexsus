@@ -81,7 +81,7 @@ const Navbar = () => {
               <Link to={"/"}>
                 <img
                   src={Logo}
-                  alt="Godigitify Nexus"
+                  alt="Godigitify"
                   className="relative z-10 transition-all duration-300 "
                 />
               </Link>
@@ -261,7 +261,7 @@ const Navbar = () => {
             {/* Header: Logo + Close Button */}
             <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-100">
               <Link to="/" onClick={toggleMobileMenu} className="flex items-center space-x-2">
-                <img src={Logo} alt="Godigitify Nexus" className="w-24 h-auto" />
+                <img src={Logo} alt="Godigitify" className="w-24 h-auto" />
               </Link>
               <button
                 className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
