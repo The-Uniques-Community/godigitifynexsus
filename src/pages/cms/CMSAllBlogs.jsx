@@ -33,14 +33,14 @@ const CMSAllBlogs = () => {
     try {
       setLoading(true);
       setError('');
-      
+
       const queryParams = new URLSearchParams({
         page: page.toString(),
         limit: pagination.limit.toString(),
         ...Object.fromEntries(Object.entries(filters).filter(([_, value]) => value))
       });
 
-      const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?${queryParams}`, {
+      const response = await axios.get(`https://Godigitify-backend.vercel.app/api/blogs/get-all-blogs?${queryParams}`, {
         withCredentials: true
       });
 
@@ -68,7 +68,7 @@ const CMSAllBlogs = () => {
   const handleFilterChange = (key, value) => {
     const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
-    
+
     // Update URL params
     const newSearchParams = new URLSearchParams();
     Object.entries(newFilters).forEach(([k, v]) => {
@@ -93,7 +93,7 @@ const CMSAllBlogs = () => {
 
     try {
       setDeleting(blogId);
-      const response = await axios.delete(`https://godigitify-backend.vercel.app/api/blogs/delete/${blogId}`, {
+      const response = await axios.delete(`https://Godigitify-backend.vercel.app/api/blogs/delete/${blogId}`, {
         withCredentials: true
       });
 
@@ -328,7 +328,7 @@ const CMSAllBlogs = () => {
                             {blog.mainHeading}
                           </h3>
                         </Link>
-                        
+
                         <p className="text-gray-600 text-sm mb-2">
                           {truncateText(blog.description)}
                         </p>
@@ -435,7 +435,7 @@ const CMSAllBlogs = () => {
               Next
             </button>
           </div>
-          
+
           <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
               <p className="text-sm text-gray-700">
@@ -451,7 +451,7 @@ const CMSAllBlogs = () => {
                 <span className="font-medium">{pagination.totalBlogs}</span> results
               </p>
             </div>
-            
+
             <div>
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                 {/* Previous */}
@@ -482,11 +482,10 @@ const CMSAllBlogs = () => {
                     <button
                       key={pageNum}
                       onClick={() => handlePageChange(pageNum)}
-                      className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
-                        pageNum === pagination.currentPage
-                          ? 'z-10 bg-[#47216b] border-[#47216b] text-white'
-                          : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
-                      }`}
+                      className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${pageNum === pagination.currentPage
+                        ? 'z-10 bg-[#47216b] border-[#47216b] text-white'
+                        : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
+                        }`}
                     >
                       {pageNum}
                     </button>

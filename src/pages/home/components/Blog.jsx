@@ -7,16 +7,21 @@ export default function Blog() {
   const [currentPostIndex, setCurrentPostIndex] = useState(0)
   const [blogPosts, setBlogPosts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?limit=6')
+        setError(null)
+        const response = await axios.get('https://Godigitify-backend.vercel.app/api/blogs/get-all-blogs?limit=6')
         if (response.data.success) {
           setBlogPosts(response.data.blogs)
+        } else {
+          setError('Failed to load blogs')
         }
       } catch (error) {
         console.error('Failed to fetch blogs:', error)
+        setError(error.message || 'Failed to fetch blogs')
       } finally {
         setLoading(false)
       }
@@ -34,7 +39,7 @@ export default function Blog() {
     }
   }, [blogPosts])
 
-  if (loading || blogPosts.length === 0) {
+  if (loading) {
     return (
       <section className="w-full py-16 mb-4 md:py-24 lg:py-32 bg-gray-50">
         <div className="container px-4 md:px-6 lg:px-8 mx-auto">
@@ -46,6 +51,54 @@ export default function Blog() {
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
               Loading blog posts...
             </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section className="w-full py-16 mb-4 md:py-24 lg:py-32 bg-gray-50">
+        <div className="container px-4 md:px-6 lg:px-8 mx-auto">
+          <div className="max-w-5xl mb-12 md:mb-20">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">OUR BLOG</h3>
+            <h1 className="text-4xl md:text-7xl pb-5 w-full font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-2 text-[#47216b]">
+              Insights and Innovations
+            </h1>
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+              Unable to load blog posts. Please try again later.
+            </p>
+            <Link
+              to="/blog"
+              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#47216b] text-white rounded-full font-semibold shadow hover:bg-black transition-colors duration-300 inline-block text-center"
+            >
+              VIEW BLOG
+            </Link>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (blogPosts.length === 0) {
+    return (
+      <section className="w-full py-16 mb-4 md:py-24 lg:py-32 bg-gray-50">
+        <div className="container px-4 md:px-6 lg:px-8 mx-auto">
+          <div className="max-w-5xl mb-12 md:mb-20">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">OUR BLOG</h3>
+            <h1 className="text-4xl md:text-7xl pb-5 w-full font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-2 text-[#47216b]">
+              Insights and Innovations
+            </h1>
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+              No blog posts available at the moment.
+            </p>
+            <Link
+              to="/blog"
+              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#47216b] text-white rounded-full font-semibold shadow hover:bg-black transition-colors duration-300 inline-block text-center"
+            >
+              VIEW BLOG
+            </Link>
           </div>
         </div>
       </section>
@@ -78,16 +131,15 @@ export default function Blog() {
       <div className="container px-4 md:px-6 lg:px-8  mx-auto">
         {/* Top Section: Headings and Description */}
         <div className="max-w-5xl mb-12 md:mb-20">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">OUR BLOG</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">INSIGHTS & INTELLIGENCE</h3>
           <h1 className="text-4xl md:text-7xl pb-5 w-full font-bold leading-tight sm:text-5xl xl:text-6xl/none mb-2 text-[#47216b]">
-            Insights and Innovations
+            Systems Thinking
           </h1>
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-            Stay updated with our latest articles, industry trends, and expert opinions. We share our knowledge to help
-            you succeed and navigate the evolving landscape of technology and business.
+            Strategic insights on building scalable digital infrastructure, AI-driven automation, and predictable growth systems. For leaders who think in systems, not campaigns.
           </p>
-          <Link 
-            to="/blog" 
+          <Link
+            to="/blog"
             className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#47216b] text-white rounded-full font-semibold shadow hover:bg-black transition-colors duration-300 inline-block text-center"
           >
             READ MORE
@@ -101,7 +153,7 @@ export default function Blog() {
             {/* Vertical line for desktop */}
             <div className="hidden md:block absolute left-[20px] top-0 bottom-0 w-0.5 bg-gray-300 -translate-x-1/2" />
             {blogPosts.map((post, index) => (
-             <button
+              <button
                 key={post._id}
                 onClick={() => handleCounterClick(index)}
                 className="relative z-10 flex flex-col items-center flex-shrink-0 mb-0 md:mb-8 mr-4 md:mr-0 last:mr-0 focus:outline-none"
@@ -109,9 +161,8 @@ export default function Blog() {
                 type="button"
               >
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold transition-colors duration-300 ${
-                    currentPostIndex === index ? "bg-[#47216b] text-white" : "bg-gray-300 text-[#47216b]"
-                  }`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold transition-colors duration-300 ${currentPostIndex === index ? "bg-[#47216b] text-white" : "bg-gray-300 text-[#47216b]"
+                    }`}
                   style={{
                     boxShadow: currentPostIndex === index ? "0 4px 16px 0 rgba(71,33,107,0.15)" : undefined,
                     transition: "background 0.3s, color 0.3s"
@@ -143,9 +194,9 @@ export default function Blog() {
                 </p>
                 <h3 className="text-3xl font-bold leading-tight text-[#47216b]">{currentPost.mainHeading}</h3>
                 <p className="text-gray-700 text-lg leading-relaxed flex-grow text-justify">
-                   {getTrimmedDescription(currentPost.description, 380)}
+                  {getTrimmedDescription(currentPost.description, 380)}
                 </p>
-                <Link 
+                <Link
                   to={`/blog/${currentPost._id}`}
                   className="flex items-center gap-2 px-0 py-2 text-[#47216b] hover:text-black font-semibold transition-colors duration-200 bg-transparent"
                 >

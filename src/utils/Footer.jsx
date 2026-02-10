@@ -3,10 +3,10 @@ import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import Logo from '../assets/GodigitifyCropWhite.png';
 
 const navLinks = [
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Our Approach", href: "/about" },
+  { label: "Start Diagnostic", href: "/contact" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Blog", href: "/blog" },
+  { label: "Insights", href: "/blog" },
   { label: "Privacy", href: "/privacy" },
 ];
 
@@ -19,7 +19,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="w-full fixed bottom-0 z-0 bg-[#47216b] pt-16 pb-12 px-4 md:px-0 flex flex-col items-center" style={{minHeight: '340px'}}>
+    <footer className="w-full fixed bottom-0 z-0 bg-[#47216b] pt-16 pb-12 px-4 md:px-0 flex flex-col items-center" style={{ minHeight: '340px' }}>
       {/* Logo Image */}
       <div className="flex justify-center items-center mb-8 md:mb-16 pt-32 md:pt-64">
         <img src={Logo} alt="GoDigitify Logo" className="w-64 md:w-[1000px] h-auto object-contain" />

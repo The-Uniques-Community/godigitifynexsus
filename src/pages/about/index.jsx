@@ -3,83 +3,83 @@ import { Link } from "react-router";
 const About = () => {
   const [activeTab, setActiveTab] = useState("mission");
 
-const teamMembers = [
-  {
-    id: 1,
-    name: "Niraj Gupta",
-    role: "Chief Marketing & Growth Officer",
-    image:
-      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumjhrHKDEKYdovOsGfC3D9tNMk6nXaAzRVqy05",
-    bio: "Visionary marketing leader spearheading brand growth, strategic partnerships, and digital transformation to drive business expansion and global presence.",
-    linkedin: "https://www.linkedin.com/in/niraj-gupta-04b3ba255/",
-  },
-  {
-    id: 2,
-    name: "Abhishek Mishra",
-    role: "Head Of Operations",
-    image:
-      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumR0pTg4mu2iQAmoaFD3d9eMskP7J6LXV4IRly",
-    bio: "Operational strategist ensuring seamless project execution, organizational efficiency, and alignment between innovation and execution excellence.",
-    linkedin: "https://www.linkedin.com/in/abhishek-mishra-b6a80224a/",
-  },
-  {
-    id: 3,
-    name: "Kumar Sujal",
-    role: "Head of Product Strategy & Development",
-    image:
-      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum4BvIOmxnuBQDwqki5StcHL06KrMghUGEalm7",
-    bio: "Dynamic product strategist blending user insights with market intelligence to design scalable, impactful digital solutions that define the future.",
-    linkedin: "https://www.linkedin.com/in/kumar-sujal/",
-  },
-  {
-    id: 4,
-    name: "Aryan Kamboj",
-    role: "Head of Research & Innovation",
-    image:
-      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumDfpkrmc3imC02hJzTjuAPrdk64eXYnEVlBgZ",
-    bio: "Innovative technologist leading research initiatives in emerging technologies to create transformative solutions with measurable real-world impact.",
-    linkedin: "https://www.linkedin.com/in/aryan-kammboz-110521252/",
-  },
-  {
-    id: 5,
-    name: "Aman Deep",
-    role: "Creative Head – Design & Brand Experience",
-    image:
-      "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum2oN0nZyWvT53OZ1aHF8mkfdPiU0cDoMlRG9z",
-    bio: "Creative powerhouse driving visual storytelling, user-centered design, and brand innovation that deliver emotionally engaging digital experiences.",
-    linkedin: "https://www.linkedin.com/in/aman-deep-720390247/",
-  },
-];
+  const teamMembers = [
+    {
+      id: 1,
+      name: "Niraj Gupta",
+      role: "Chief Marketing & Growth Officer",
+      image:
+        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumjhrHKDEKYdovOsGfC3D9tNMk6nXaAzRVqy05",
+      bio: "Visionary marketing leader spearheading brand growth, strategic partnerships, and digital transformation to drive business expansion and global presence.",
+      linkedin: "https://www.linkedin.com/in/niraj-gupta-04b3ba255/",
+    },
+    {
+      id: 2,
+      name: "Abhishek Mishra",
+      role: "Head Of Operations",
+      image:
+        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumR0pTg4mu2iQAmoaFD3d9eMskP7J6LXV4IRly",
+      bio: "Operational strategist ensuring seamless project execution, organizational efficiency, and alignment between innovation and execution excellence.",
+      linkedin: "https://www.linkedin.com/in/abhishek-mishra-b6a80224a/",
+    },
+    {
+      id: 3,
+      name: "Kumar Sujal",
+      role: "Head of Product Strategy & Development",
+      image:
+        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum4BvIOmxnuBQDwqki5StcHL06KrMghUGEalm7",
+      bio: "Dynamic product strategist blending user insights with market intelligence to design scalable, impactful digital solutions that define the future.",
+      linkedin: "https://www.linkedin.com/in/kumar-sujal/",
+    },
+    {
+      id: 4,
+      name: "Aryan Kamboj",
+      role: "Head of Research & Innovation",
+      image:
+        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumDfpkrmc3imC02hJzTjuAPrdk64eXYnEVlBgZ",
+      bio: "Innovative technologist leading research initiatives in emerging technologies to create transformative solutions with measurable real-world impact.",
+      linkedin: "https://www.linkedin.com/in/aryan-kammboz-110521252/",
+    },
+    {
+      id: 5,
+      name: "Aman Deep",
+      role: "Creative Head – Design & Brand Experience",
+      image:
+        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum2oN0nZyWvT53OZ1aHF8mkfdPiU0cDoMlRG9z",
+      bio: "Creative powerhouse driving visual storytelling, user-centered design, and brand innovation that deliver emotionally engaging digital experiences.",
+      linkedin: "https://www.linkedin.com/in/aman-deep-720390247/",
+    },
+  ];
 
 
 
   const values = [
     {
       id: 1,
-      title: "Innovation First",
+      title: "Systems Over Services",
       description:
-        "We embrace cutting-edge technologies and creative solutions to stay ahead of the curve.",
-      icon: "💡",
+        "We build integrated infrastructure, not isolated deliverables. Every solution connects to drive measurable, compounding growth.",
+      icon: "🔗",
     },
     {
       id: 2,
-      title: "Client Success",
+      title: "Outcomes Over Output",
       description:
-        "Your success is our success. We're committed to delivering results that exceed expectations.",
-      icon: "🎯",
+        "We measure success by business impact — revenue, efficiency, and scale — not hours logged or assets delivered.",
+      icon: "📊",
     },
     {
       id: 3,
-      title: "Quality Excellence",
+      title: "Automation Over Effort",
       description:
-        "We maintain the highest standards in everything we do, from code to customer service.",
-      icon: "⭐",
+        "We eliminate manual bottlenecks through intelligent automation, freeing your team to focus on strategy and growth.",
+      icon: "⚡",
     },
     {
       id: 4,
-      title: "Collaborative Spirit",
+      title: "Partnership Over Projects",
       description:
-        "We believe in the power of collaboration, both within our team and with our clients.",
+        "We embed as a strategic extension of your team, not a vendor delivering handoffs. Your growth is our growth.",
       icon: "🤝",
     },
   ];
@@ -94,22 +94,18 @@ const teamMembers = [
             <div className="lg:col-span-4">
               <div className="space-y-4 md:space-y-6">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-4">
-                  ABOUT US
+                  AI-ALIGNED GROWTH SYSTEMS PARTNER
                 </h3>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#47216b] font-bold leading-tight">
-                  Shaping
-                  <span className="font-medium text-black"> Digital</span>{" "}
-                  Futures
+                  Building
+                  <span className="font-medium text-black"> Scalable</span>{" "}
+                  Infrastructure
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed py-4 md:py-6">
-                  At{" "}
                   <span className="font-semibold text-[#47216b]">
                     Godigitify
-                  </span>
-                  , we are more than just a digital agency. We are your
-                  strategic partner in navigating the complex world of digital
-                  transformation, creating innovative solutions that drive real
-                  business results.
+                  </span>{" "}
+                  is not a traditional agency. We're a digital growth systems partner that helps established companies move from effort-based tactics to predictable, scalable execution infrastructure. We architect, build, and optimize the systems that power sustainable business growth.
                 </p>
               </div>
 
@@ -119,19 +115,19 @@ const teamMembers = [
                   <div className="text-3xl md:text-4xl font-bold text-[#47216b]">
                     7+
                   </div>
-                  <div className="text-gray-600">Years Experience</div>
+                  <div className="text-gray-600">Years Building Systems</div>
                 </div>
                 <div className="text-center lg:text-left">
                   <div className="text-3xl md:text-4xl font-bold text-[#47216b]">
                     500+
                   </div>
-                  <div className="text-gray-600">Projects Completed</div>
+                  <div className="text-gray-600">Systems Deployed</div>
                 </div>
                 <div className="text-center lg:text-left">
                   <div className="text-3xl md:text-4xl font-bold text-[#47216b]">
-                    50+
+                    3.2x
                   </div>
-                  <div className="text-gray-600">Team Members</div>
+                  <div className="text-gray-600">Avg. Efficiency Gain</div>
                 </div>
               </div>
             </div>
@@ -164,11 +160,10 @@ const teamMembers = [
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 mx-2 mb-4 font-semibold transition-all duration-300 border-b-2 ${
-                    activeTab === tab.id
-                      ? "text-[#47216b] border-[#47216b]"
-                      : "text-gray-600 border-transparent hover:text-[#47216b]"
-                  }`}
+                  className={`px-6 py-3 mx-2 mb-4 font-semibold transition-all duration-300 border-b-2 ${activeTab === tab.id
+                    ? "text-[#47216b] border-[#47216b]"
+                    : "text-gray-600 border-transparent hover:text-[#47216b]"
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -184,15 +179,10 @@ const teamMembers = [
                       Our Mission
                     </h2>
                     <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                      To empower businesses with innovative digital solutions
-                      that drive growth, efficiency, and competitive advantage.
-                      We believe in transforming ideas into reality through
-                      cutting-edge technology and creative excellence.
+                      To replace fragmented digital tactics with integrated growth systems. We exist to help established businesses stop treating digital as a series of disconnected projects and start building the infrastructure that compounds growth over time.
                     </p>
                     <p className="text-md text-gray-600 leading-relaxed">
-                      Every project we undertake is guided by our commitment to
-                      deliver exceptional value, exceed expectations, and build
-                      lasting partnerships with our clients.
+                      <strong>The Gap We Fill:</strong> Most businesses have websites, run marketing, and use various tools — but nothing connects. Strategy sits in decks, execution fragments across vendors, and growth remains unpredictable. We close that gap by architecting systems where every component drives measurable outcomes.
                     </p>
                   </div>
                   <div className="relative">
@@ -219,15 +209,10 @@ const teamMembers = [
                       Our Vision
                     </h2>
                     <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                      To be the leading digital transformation partner that
-                      businesses trust to navigate the future. We envision a
-                      world where technology seamlessly integrates with human
-                      creativity to solve complex challenges.
+                      To become the standard for how scaling companies approach digital infrastructure. We envision a future where businesses don't hire agencies for campaigns — they partner with systems architects who build the foundation for predictable, sustainable growth.
                     </p>
                     <p className="text-md text-gray-600 leading-relaxed">
-                      By 2030, we aim to be recognized globally as innovators
-                      who don't just follow trends—we create them, setting new
-                      standards for digital excellence and client satisfaction.
+                      By 2030, we aim to have transformed 1,000+ businesses from effort-driven operations to system-powered growth engines — proving that the difference between struggling and scaling is infrastructure, not more hustle.
                     </p>
                   </div>
                 </div>
@@ -236,7 +221,7 @@ const teamMembers = [
               {activeTab === "values" && (
                 <div>
                   <h2 className="text-3xl md:text-5xl font-bold text-[#47216b] mb-12 text-center">
-                    Our Core Values
+                    Our Operating Principles
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {values.map((value) => (
@@ -267,11 +252,10 @@ const teamMembers = [
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold text-[#47216b] mb-4">
-                Why Choose Us
+                Why Partner With Us
               </h2>
               <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                We combine expertise, innovation, and dedication to deliver
-                exceptional digital solutions that drive your business forward.
+                We're not the right fit for everyone — and that's intentional. Here's what separates us from traditional agencies and service providers.
               </p>
             </div>
 
@@ -295,12 +279,10 @@ const teamMembers = [
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    Lightning Fast Delivery
+                    Integration-First Architecture
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Our agile development process ensures rapid delivery without
-                    compromising on quality. Get your projects launched faster
-                    than ever.
+                    Every system we build connects to your existing stack. No isolated tools, no data silos, no manual workarounds — just unified infrastructure.
                   </p>
                 </div>
               </div>
@@ -324,12 +306,10 @@ const teamMembers = [
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    Proven Track Record
+                    Measurable ROI Focus
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    With 500+ successful projects and 99% client satisfaction
-                    rate, our results speak for themselves. Trust in our proven
-                    expertise.
+                    We track revenue impact, not vanity metrics. Custom dashboards show exactly how your infrastructure investment translates to business outcomes.
                   </p>
                 </div>
               </div>
@@ -353,12 +333,10 @@ const teamMembers = [
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    Expert Team
+                    Systems Engineers, Not Vendors
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Our multidisciplinary team of designers, developers, and
-                    strategists brings diverse expertise to every project we
-                    undertake.
+                    Our team combines technical architecture, growth strategy, and automation expertise — the rare intersection that builds systems, not just deliverables.
                   </p>
                 </div>
               </div>
@@ -382,12 +360,10 @@ const teamMembers = [
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    24/7 Support
+                    Enterprise-Grade Security
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We're here when you need us. Our dedicated support team
-                    ensures your digital solutions run smoothly around the
-                    clock.
+                    Every system is built with security-first principles. Data protection, compliance readiness, and infrastructure hardening are standard, not optional.
                   </p>
                 </div>
               </div>
@@ -411,12 +387,10 @@ const teamMembers = [
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    Scalable Solutions
+                    Scale-Ready Infrastructure
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Our solutions grow with your business. Built with
-                    scalability in mind to adapt to your evolving needs and
-                    market demands.
+                    Built for 10x growth without 10x complexity. Our systems handle increasing load, users, and data without requiring proportional team expansion.
                   </p>
                 </div>
               </div>
@@ -483,21 +457,21 @@ const teamMembers = [
                 <div className="space-y-2">
                   <div className="space-y-1">
                     <p className="text-lg text-gray-700 leading-relaxed italic text-justify">
-  "At Godigitify, we believe technology should empower possibilities and ignite progress. 
-  Our mission is to transform ideas into impact through inclusive, innovative, and intelligent solutions."
-</p>
+                      "At Godigitify, we believe technology should empower possibilities and ignite progress.
+                      Our mission is to transform ideas into impact through inclusive, innovative, and intelligent solutions."
+                    </p>
 
-<p className="text-gray-600 leading-relaxed text-justify">
-  With over a decade of leadership across education, research, and business strategy, 
-  our CEO, Ankur Gill, has cultivated a future-focused approach that bridges academia with industry. 
-  His vision drives our dedication to innovation, equity, and meaningful transformation.
-</p>
+                    <p className="text-gray-600 leading-relaxed text-justify">
+                      With over a decade of leadership across education, research, and business strategy,
+                      our CEO, Ankur Gill, has cultivated a future-focused approach that bridges academia with industry.
+                      His vision drives our dedication to innovation, equity, and meaningful transformation.
+                    </p>
 
-<p className="text-gray-600 leading-relaxed text-justify">
-  Under his guidance, Godigitify has delivered 50+ successful projects, 
-  empowering institutions and enterprises to achieve their digital goals while 
-  championing access, creativity, and long-term impact.
-</p>
+                    <p className="text-gray-600 leading-relaxed text-justify">
+                      Under his guidance, Godigitify has delivered 50+ successful projects,
+                      empowering institutions and enterprises to achieve their digital goals while
+                      championing access, creativity, and long-term impact.
+                    </p>
 
                   </div>
 
@@ -525,7 +499,7 @@ const teamMembers = [
                         className="w-8 h-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center hover:bg-[#47216b] hover:text-white transition-all duration-300 transform hover:scale-110"
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                       </a>
                       <a
@@ -533,7 +507,7 @@ const teamMembers = [
                         className="w-8 h-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center hover:bg-[#47216b] hover:text-white transition-all duration-300 transform hover:scale-110"
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg>
                       </a>
                     </div>
@@ -609,22 +583,16 @@ const teamMembers = [
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#47216b]">
-              Ready to Transform Your Business?
+              Ready to Move From Effort to Infrastructure?
             </h2>
             <p className="text-lg md:text-xl mb-8 text-gray-700 opacity-90">
-              Let's work together to create digital solutions that drive your
-              business forward. Our team is ready to turn your vision into
-              reality.
+              Start with a Growth Systems Diagnostic. We'll audit your current digital ecosystem, identify bottlenecks, and outline what unified growth infrastructure could look like for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to='/contact'>
-              <button className="px-8 py-4 bg-[#47216b] text-white font-semibold hover:bg-[#371955] transition-colors duration-300">
-                Start Your Project
-              </button></Link>
-            {/* <Link to=''>
-              <button className="px-8 py-4 border-2 border-[#47216b] text-[#47216b] font-semibold hover:bg-[#47216b] hover:text-white transition-colors duration-300">
-                Schedule a Call
-              </button></Link> */}
+                <button className="px-8 py-4 bg-[#47216b] text-white font-semibold hover:bg-[#371955] transition-colors duration-300">
+                  Start Growth Diagnostic
+                </button></Link>
             </div>
           </div>
         </div>

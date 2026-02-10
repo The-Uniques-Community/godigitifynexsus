@@ -25,10 +25,10 @@ const Project = () => {
         isDesktop: width >= 1024
       });
     };
-    
+
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
-    
+
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
@@ -37,22 +37,22 @@ const Project = () => {
     {
       id: 1,
       webUrl: "https://www.theuniques.in/",
-      title: "The Uniques - Premium Digital Solutions",
-      description: "Explore how The Uniques transforms businesses with innovative digital strategies and cutting-edge web solutions.",
+      title: "The Uniques - Integrated Growth System",
+      description: "See how we architected an end-to-end digital ecosystem connecting brand, technology, and automation for scalable growth.",
       overlays: true
     },
     {
       id: 2,
       webUrl: "https://www.metropolitanfence.ca/",
-      title: "Metropolitan Fence - Quality Solutions",
-      description: "Discover how Metropolitan Fence combines craftsmanship with technology to deliver premium fencing solutions.",
+      title: "Metropolitan Fence - E-Commerce Infrastructure",
+      description: "Explore the scalable platform we built to handle complex product configurations and automated lead processing.",
       overlays: true
     },
     {
       id: 3,
       webUrl: "https://www.sviet.ac.in/",
-      title: "SVIET - Excellence in Education",
-      description: "Learn how SVIET is revolutionizing technical education with modern infrastructure and industry-focused curriculum.",
+      title: "SVIET - Educational Systems Platform",
+      description: "Discover the institutional infrastructure powering admissions, communications, and student management at scale.",
       overlays: true
     }
   ];
@@ -91,12 +91,12 @@ const Project = () => {
       duration: 0.8,
       ease: "power2.out"
     })
-    .to(cardsContainer, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.4");
+      .to(cardsContainer, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.4");
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -106,7 +106,7 @@ const Project = () => {
   // Handle carousel navigation
   const handleNextSlide = () => {
     if (currentSlide === totalSlides - 1) return;
-    
+
     const cardsContainer = cardsContainerRef.current;
 
     // Animate the transition
@@ -117,7 +117,7 @@ const Project = () => {
       ease: "power2.in",
       onComplete: () => {
         setCurrentSlide((prev) => (prev + 1) % totalSlides);
-        
+
         gsap.to(cardsContainer, {
           opacity: 1,
           scale: 1,
@@ -130,7 +130,7 @@ const Project = () => {
 
   const handlePrevSlide = () => {
     if (currentSlide === 0) return;
-    
+
     const cardsContainer = cardsContainerRef.current;
 
     // Animate the transition
@@ -141,7 +141,7 @@ const Project = () => {
       ease: "power2.in",
       onComplete: () => {
         setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-        
+
         gsap.to(cardsContainer, {
           opacity: 1,
           scale: 1,
@@ -157,7 +157,7 @@ const Project = () => {
     return slides.map((slide, slideIndex) => {
       // Determine slide position relative to current slide
       let position = "hidden";
-      
+
       if (slideIndex === currentSlide) {
         position = "current";
       } else if (slideIndex === (currentSlide - 1 + totalSlides) % totalSlides) {
@@ -189,20 +189,20 @@ const Project = () => {
       const slideContent = (
         <div className="w-full max-w-full overflow-hidden">
           <div className={`
-            ${screenSize.isMobile ? 'flex flex-col space-y-4' : 
-              screenSize.isTablet ? 'flex flex-col space-y-5' : 
-              'grid grid-cols-2 gap-8'} 
+            ${screenSize.isMobile ? 'flex flex-col space-y-4' :
+              screenSize.isTablet ? 'flex flex-col space-y-5' :
+                'grid grid-cols-2 gap-8'} 
             h-full
           `}>
             {/* Web Content Side - Increased Heights */}
             <div className={`
               rounded-lg overflow-hidden flex-shrink-0
-              ${screenSize.isMobile ? 'h-72 w-full' : 
-                screenSize.isTablet ? 'h-80 w-full' : 
-                'h-full w-full min-h-[480px]'}
+              ${screenSize.isMobile ? 'h-72 w-full' :
+                screenSize.isTablet ? 'h-80 w-full' :
+                  'h-full w-full min-h-[480px]'}
             `}>
               <div className="relative w-full h-full">
-                <iframe 
+                <iframe
                   src={slide.webUrl}
                   className="w-full h-full border-0 rounded-lg"
                   title={`Web content for ${slide.title}`}
@@ -210,78 +210,78 @@ const Project = () => {
                   loading="lazy"
                   allowFullScreen
                 />
-                
+
                 {/* Overlay for branding/controls */}
                 {slide.overlays && (
                   <div className="absolute inset-0 pointer-events-none">
                     {/* Brand Logo */}
                     <div className={`
                       absolute bg-black/80 rounded flex items-center justify-center backdrop-blur-sm
-                      ${screenSize.isMobile ? 'bottom-2 left-2 p-2' : 
-                        screenSize.isTablet ? 'bottom-3 left-3 p-2.5' : 
-                        'bottom-4 left-4 p-3'}
+                      ${screenSize.isMobile ? 'bottom-2 left-2 p-2' :
+                        screenSize.isTablet ? 'bottom-3 left-3 p-2.5' :
+                          'bottom-4 left-4 p-3'}
                     `}>
                       <div className={`
                         bg-pink-500 transform rotate-45
-                        ${screenSize.isMobile ? 'w-3 h-3' : 
-                          screenSize.isTablet ? 'w-4 h-4' : 
-                          'w-5 h-5'}
+                        ${screenSize.isMobile ? 'w-3 h-3' :
+                          screenSize.isTablet ? 'w-4 h-4' :
+                            'w-5 h-5'}
                       `}></div>
                     </div>
-                    
+
                     {/* Web Indicator */}
                     <div className={`
                       absolute bg-pink-500/90 rounded-full backdrop-blur-sm
-                      ${screenSize.isMobile ? 'top-2 right-2 px-3 py-1' : 
-                        screenSize.isTablet ? 'top-3 right-3 px-3 py-1' : 
-                        'top-4 right-4 px-4 py-2'}
+                      ${screenSize.isMobile ? 'top-2 right-2 px-3 py-1' :
+                        screenSize.isTablet ? 'top-3 right-3 px-3 py-1' :
+                          'top-4 right-4 px-4 py-2'}
                     `}>
                       <span className={`
                         text-white font-medium
-                        ${screenSize.isMobile ? 'text-xs' : 
-                          screenSize.isTablet ? 'text-sm' : 
-                          'text-sm'}
+                        ${screenSize.isMobile ? 'text-xs' :
+                          screenSize.isTablet ? 'text-sm' :
+                            'text-sm'}
                       `}>Live Web</span>
                     </div>
                   </div>
                 )}
               </div>
             </div>
-            
+
             {/* Text Side - Increased Heights */}
             <div className={`
               bg-gray-100 rounded-lg flex flex-col justify-center
-              ${screenSize.isMobile ? 'p-4 min-h-[250px]' : 
-                screenSize.isTablet ? 'p-5 min-h-[280px]' : 
-                'p-8 h-full min-h-[480px]'}
+              ${screenSize.isMobile ? 'p-4 min-h-[250px]' :
+                screenSize.isTablet ? 'p-5 min-h-[280px]' :
+                  'p-8 h-full min-h-[480px]'}
             `}>
               {/* Main Title */}
               <h3 className={`
                 font-bold leading-tight
-                ${screenSize.isMobile ? 'text-lg mb-4' : 
-                  screenSize.isTablet ? 'text-xl mb-5' : 
-                  'text-2xl xl:text-3xl 2xl:text-4xl mb-6'}
+                ${screenSize.isMobile ? 'text-lg mb-4' :
+                  screenSize.isTablet ? 'text-xl mb-5' :
+                    'text-2xl xl:text-3xl 2xl:text-4xl mb-6'}
               `} style={{ color: '#47216b' }}>
                 {slide.title}
               </h3>
-              
+
               {/* Description */}
               <p className={`
                 text-gray-600 leading-relaxed
-                ${screenSize.isMobile ? 'text-sm mb-4' : 
-                  screenSize.isTablet ? 'text-base mb-5' : 
-                  'text-lg mb-8'}
+                ${screenSize.isMobile ? 'text-sm mb-4' :
+                  screenSize.isTablet ? 'text-base mb-5' :
+                    'text-lg mb-8'}
               `}>
                 {slide.description}
               </p>
-              
+
               {/* Visit Website Button */}
-              <button 
+              <button
                 className={`
                   rounded-lg font-semibold text-white transition-all duration-300 hover:shadow-lg self-start
-                  ${screenSize.isMobile ? 'px-4 py-2 text-sm' : 
-                    screenSize.isTablet ? 'px-5 py-2.5 text-base' : 
-                    'px-6 py-3 text-base'}
+                  ${screenSize.isMobile ? 'px-4 py-2 text-sm' :
+                    screenSize.isTablet ? 'px-5 py-2.5 text-base' :
+                      'px-6 py-3 text-base'}
                 `}
                 style={{ backgroundColor: '#47216b' }}
                 onMouseEnter={(e) => {
@@ -300,8 +300,8 @@ const Project = () => {
       );
 
       return (
-        <div 
-          key={slide.id} 
+        <div
+          key={slide.id}
           className={`absolute top-0 transition-all duration-500 ease-in-out w-full ${positionStyles[position]}`}
         >
           {slideContent}
@@ -317,38 +317,38 @@ const Project = () => {
   };
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className={`
         min-h-screen bg-white flex items-center justify-center relative overflow-hidden
-        ${screenSize.isMobile ? 'py-6 px-3' : 
-          screenSize.isTablet ? 'py-8 px-4' : 
-          'py-16 px-4'}
+        ${screenSize.isMobile ? 'py-6 px-3' :
+          screenSize.isTablet ? 'py-8 px-4' :
+            'py-16 px-4'}
       `}
     >
       <div className="max-w-7xl w-full mx-auto">
         {/* Title */}
-        <h1 
+        <h1
           ref={titleRef}
           className={`
             font-bold text-center leading-tight
-            ${screenSize.isMobile ? 'text-lg mb-6 px-2' : 
-              screenSize.isTablet ? 'text-2xl mb-8 px-3' : 
-              'text-4xl xl:text-5xl 2xl:text-6xl mb-16 px-2'}
+            ${screenSize.isMobile ? 'text-lg mb-6 px-2' :
+              screenSize.isTablet ? 'text-2xl mb-8 px-3' :
+                'text-4xl xl:text-5xl 2xl:text-6xl mb-16 px-2'}
           `}
           style={{ color: '#47216b' }}
         >
-          {screenSize.isMobile ? 'Marketing in the AI era' : 'Discovery to Decisions: Marketing in the AI era'}
+          {screenSize.isMobile ? 'Systems We\'ve Built' : 'Systems in Action: Infrastructure That Scales'}
         </h1>
-        
+
         {/* Cards Container - Increased Heights */}
-        <div 
+        <div
           ref={cardsContainerRef}
           className={`
             relative overflow-hidden
-            ${screenSize.isMobile ? 'mb-6' : 
-              screenSize.isTablet ? 'mb-8' : 
-              'mb-16'}
+            ${screenSize.isMobile ? 'mb-6' :
+              screenSize.isTablet ? 'mb-8' :
+                'mb-16'}
           `}
           style={{ minHeight: getContainerHeight() }}
         >
@@ -358,19 +358,19 @@ const Project = () => {
         {/* Pagination */}
         <div className={`
           flex items-center justify-center
-          ${screenSize.isMobile ? 'gap-3' : 
-            screenSize.isTablet ? 'gap-4' : 
-            'gap-6'}
+          ${screenSize.isMobile ? 'gap-3' :
+            screenSize.isTablet ? 'gap-4' :
+              'gap-6'}
         `}>
           {/* Previous button */}
           {currentSlide > 0 && (
-            <button 
+            <button
               onClick={handlePrevSlide}
               className={`
                 rounded-full border-2 border-gray-400 bg-white flex items-center justify-center text-gray-600 hover:text-white transition-all duration-300 hover:-translate-x-1 group cursor-pointer
-                ${screenSize.isMobile ? 'w-10 h-10' : 
-                  screenSize.isTablet ? 'w-11 h-11' : 
-                  'w-12 h-12'}
+                ${screenSize.isMobile ? 'w-10 h-10' :
+                  screenSize.isTablet ? 'w-11 h-11' :
+                    'w-12 h-12'}
               `}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = '#47216b';
@@ -382,40 +382,40 @@ const Project = () => {
               }}
               aria-label="Previous slide"
             >
-              <svg 
+              <svg
                 className={`
                   transform group-hover:-translate-x-0.5 transition-transform
-                  ${screenSize.isMobile ? 'w-4 h-4' : 
-                    screenSize.isTablet ? 'w-5 h-5' : 
-                    'w-5 h-5'}
+                  ${screenSize.isMobile ? 'w-4 h-4' :
+                    screenSize.isTablet ? 'w-5 h-5' :
+                      'w-5 h-5'}
                 `}
-                fill="none" 
-                stroke="currentColor" 
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
           )}
-          
+
           <span className={`
             font-medium text-gray-600
-            ${screenSize.isMobile ? 'text-base' : 
-              screenSize.isTablet ? 'text-lg' : 
-              'text-lg'}
+            ${screenSize.isMobile ? 'text-base' :
+              screenSize.isTablet ? 'text-lg' :
+                'text-lg'}
           `}>
             {currentSlide + 1} / {totalSlides}
           </span>
-          
+
           {/* Next button */}
           {currentSlide < totalSlides - 1 && (
-            <button 
+            <button
               onClick={handleNextSlide}
               className={`
                 rounded-full border-2 bg-white flex items-center justify-center text-white transition-all duration-300 hover:translate-x-1 group cursor-pointer
-                ${screenSize.isMobile ? 'w-10 h-10' : 
-                  screenSize.isTablet ? 'w-11 h-11' : 
-                  'w-12 h-12'}
+                ${screenSize.isMobile ? 'w-10 h-10' :
+                  screenSize.isTablet ? 'w-11 h-11' :
+                    'w-12 h-12'}
               `}
               style={{
                 backgroundColor: '#47216b',
@@ -431,15 +431,15 @@ const Project = () => {
               }}
               aria-label="Next slide"
             >
-              <svg 
+              <svg
                 className={`
                   transform group-hover:translate-x-0.5 transition-transform
-                  ${screenSize.isMobile ? 'w-4 h-4' : 
-                    screenSize.isTablet ? 'w-5 h-5' : 
-                    'w-5 h-5'}
+                  ${screenSize.isMobile ? 'w-4 h-4' :
+                    screenSize.isTablet ? 'w-5 h-5' :
+                      'w-5 h-5'}
                 `}
-                fill="none" 
-                stroke="currentColor" 
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

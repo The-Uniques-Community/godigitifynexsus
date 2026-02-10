@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }) => {
     const checkAuth = async () => {
       try {
         setIsLoading(true);
-        
+
         // Check if we have admin info in localStorage
         const adminInfo = localStorage.getItem('adminInfo');
         if (!adminInfo) {
@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
 
         // Verify session with backend
         try {
-          const response = await axios.get('https://godigitify-backend.vercel.app/api/admin/verify-session', {
+          const response = await axios.get('https://Godigitify-backend.vercel.app/api/admin/verify-session', {
             withCredentials: true // Important for session cookie
           });
 
@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children }) => {
 
           if (response.data.success && response.data.isAuthenticated) {
             setIsAuthenticated(true);
-            
+
             // Update admin info if it's different
             if (response.data.admin) {
               localStorage.setItem('adminInfo', JSON.stringify(response.data.admin));
@@ -44,7 +44,7 @@ const ProtectedRoute = ({ children }) => {
           }
         } catch (sessionError) {
           console.error('Session verification endpoint error:', sessionError);
-          
+
           // If the verify-session endpoint doesn't exist or server is down,
           // temporarily allow access if we have localStorage info (for development)
           if (sessionError.response?.status === 404 || sessionError.code === 'ECONNREFUSED') {
@@ -61,7 +61,7 @@ const ProtectedRoute = ({ children }) => {
         }
       } catch (error) {
         console.error('Auth verification failed:', error);
-        
+
         // For network errors, try to use localStorage as fallback
         const adminInfo = localStorage.getItem('adminInfo');
         setIsAuthenticated(!!adminInfo);

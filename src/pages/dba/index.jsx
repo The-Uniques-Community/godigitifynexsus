@@ -12,32 +12,32 @@ import {
   mapApiToUiFormat,
 } from "./data/apiService.js";
 
-// Default category stats as a fallback
+// Default category stats as a fallback - Systems focused
 const defaultCategoryStats = {
-  branding: [
-    { value: "50+", label: "Brand Identities" },
-    { value: "85%", label: "Increased Recognition" },
-    { value: "40+", label: "Industries Served" },
+  'digital-growth-systems': [
+    { value: "500+", label: "Systems Deployed" },
+    { value: "3.2x", label: "Avg. Efficiency Gain" },
+    { value: "97%", label: "Client Retention" },
   ],
-  marketing: [
-    { value: "200+", label: "Campaigns" },
-    { value: "35%", label: "Average ROI Increase" },
-    { value: "1M+", label: "Customer Reach" },
+  'ai-automation': [
+    { value: "70%", label: "Manual Work Reduced" },
+    { value: "24/7", label: "Automated Operations" },
+    { value: "5x", label: "Processing Speed" },
   ],
-  web: [
-    { value: "100+", label: "Websites Launched" },
-    { value: "45%", label: "Conversion Rate Boost" },
-    { value: "99.9%", label: "Uptime" },
+  'platform-engineering': [
+    { value: "99.9%", label: "Uptime Guarantee" },
+    { value: "10x", label: "Scale Capacity" },
+    { value: "<2s", label: "Load Time" },
   ],
-  app: [
-    { value: "70+", label: "Mobile Apps" },
-    { value: "4.8", label: "Average Rating" },
-    { value: "50K+", label: "Daily Active Users" },
+  'brand-systems': [
+    { value: "100%", label: "Brand Consistency" },
+    { value: "40+", label: "Integration Points" },
+    { value: "2x", label: "Recognition Lift" },
   ],
-  graphic: [
-    { value: "300+", label: "Design Projects" },
-    { value: "90%", label: "Client Satisfaction" },
-    { value: "25+", label: "Design Awards" },
+  'ecommerce-infrastructure': [
+    { value: "150%", label: "Avg. Conversion Lift" },
+    { value: "₹100Cr+", label: "Revenue Processed" },
+    { value: "99.99%", label: "Transaction Security" },
   ],
 };
 
@@ -219,9 +219,8 @@ const Index = () => {
 
       {/* Floating contact button */}
       <div
-        className={`fixed bottom-8 right-8 z-40 transition-all duration-500 ${
-          isScrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
+        className={`fixed bottom-8 right-8 z-40 transition-all duration-500 ${isScrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
       >
         <Link
           to="/contact"
@@ -259,24 +258,24 @@ const Index = () => {
                 transition={{ duration: 0.6 }}
               >
                 <div className="inline-block px-4 py-1 rounded-full bg-[#47216b]/10 text-[#47216b] text-sm font-medium mb-4">
-                  Digital Brand Solutions
+                  Digital Growth Systems Partner
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#47216b] to-[#8344c5]">
-                    Digital Brand
+                    Systems That
                   </span>
-                  <span className="text-gray-900"> Architect</span>
+                  <span className="text-gray-900"> Scale</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mt-6">
-                  We architect complete digital ecosystems that transform
-                  businesses into industry leaders.
+                  We build digital infrastructure that connects your strategy,
+                  technology, and data into unified growth machines.
                 </p>
                 <div className="flex flex-wrap gap-4 mt-8">
                   <Link
                     to="/contact"
                     className="px-8 py-4 bg-[#47216b] text-white rounded-full font-semibold shadow-md transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
                   >
-                    Get in Touch
+                    Start Growth Diagnostic
                   </Link>
                 </div>
               </motion.div>
@@ -300,7 +299,7 @@ const Index = () => {
                   </div>
 
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    Explore Our Services
+                    Explore Our Systems
                   </h2>
 
                   {loading ? (
@@ -404,13 +403,13 @@ const Index = () => {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#47216b] to-[#8344c5]">
-                Comprehensive
+                Integrated
               </span>{" "}
-              Digital Solutions
+              Growth Infrastructure
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We offer end-to-end digital transformation services that help
-              businesses thrive in today's competitive landscape.
+              We build unified digital systems that connect every aspect of your
+              business — strategy, technology, and data working as one.
             </p>
           </motion.div>
 
@@ -421,11 +420,10 @@ const Index = () => {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-3 rounded-full font-medium transition-all duration-300 ${
-                    activeTab === tab
+                  className={`px-5 py-3 rounded-full font-medium transition-all duration-300 ${activeTab === tab
                       ? "bg-[#47216b] text-white shadow-md"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
+                    }`}
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </button>
@@ -447,20 +445,19 @@ const Index = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        Complete Brand Architecture
+                        Unified Growth Architecture
                       </h3>
                       <p className="text-gray-700 mb-6">
-                        We build comprehensive digital ecosystems that connect
-                        all aspects of your brand's online presence. From
-                        website to social media, SEO to CRM, we ensure a
-                        cohesive experience that drives results.
+                        We build integrated digital ecosystems that connect
+                        every aspect of your business. From acquisition to retention,
+                        marketing to operations — one unified system that scales.
                       </p>
                       <ul className="space-y-3">
                         {[
-                          "Brand Identity Development",
-                          "Digital Strategy",
-                          "Customer Experience Design",
-                          "Marketing Integration",
+                          "End-to-End System Integration",
+                          "Data-Driven Growth Strategy",
+                          "Automated Operations",
+                          "Real-Time Performance Visibility",
                         ].map((item, index) => (
                           <li key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 rounded-full bg-[#47216b]/10 text-[#47216b] flex items-center justify-center flex-shrink-0 mt-1">
@@ -475,7 +472,7 @@ const Index = () => {
                       <div className="absolute -inset-4 bg-[#47216b]/5 rounded-xl transform rotate-3"></div>
                       <img
                         src="https://images.unsplash.com/photo-1529119513315-c7c361862fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Digital Brand Architecture"
+                        alt="Growth Architecture"
                         className="rounded-xl shadow-lg relative z-10 w-full h-64 md:h-80 object-cover"
                       />
                     </div>
@@ -488,26 +485,25 @@ const Index = () => {
                       <div className="absolute -inset-4 bg-[#8344c5]/5 rounded-xl transform -rotate-2"></div>
                       <img
                         src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Digital Strategy"
+                        alt="System Strategy"
                         className="rounded-xl shadow-lg relative z-10 w-full h-64 md:h-80 object-cover"
                       />
                     </div>
                     <div className="order-1 md:order-2">
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        Data-Driven Strategy
+                        Systems-First Strategy
                       </h3>
                       <p className="text-gray-700 mb-6">
-                        Our strategic approach combines market research,
-                        competitor analysis, and consumer insights to create
-                        targeted digital strategies that deliver measurable
-                        results and sustainable growth.
+                        Our strategic approach maps your entire digital ecosystem,
+                        identifies bottlenecks, and architects solutions that
+                        create measurable efficiency gains and revenue impact.
                       </p>
                       <ul className="space-y-3">
                         {[
-                          "Market & Competitor Analysis",
-                          "Customer Journey Mapping",
-                          "Growth Planning",
-                          "Performance Metrics",
+                          "Growth Systems Audit",
+                          "Bottleneck Identification",
+                          "Integration Architecture",
+                          "Revenue Impact Modeling",
                         ].map((item, index) => (
                           <li key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 rounded-full bg-[#8344c5]/10 text-[#8344c5] flex items-center justify-center flex-shrink-0 mt-1">
@@ -525,19 +521,19 @@ const Index = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        User-Centered Design
+                        Experience Architecture
                       </h3>
                       <p className="text-gray-700 mb-6">
-                        Our design team creates stunning, intuitive interfaces
-                        that captivate your audience while ensuring optimal user
-                        experience across all devices and touchpoints.
+                        Our design systems ensure brand consistency at scale while
+                        accelerating development. Component-based architecture that
+                        maintains integrity across every touchpoint.
                       </p>
                       <ul className="space-y-3">
                         {[
-                          "UI/UX Design",
-                          "Responsive Web Design",
-                          "Brand Identity",
-                          "Visual Storytelling",
+                          "Scalable Design Systems",
+                          "Brand Infrastructure",
+                          "Component Libraries",
+                          "Multi-Channel Consistency",
                         ].map((item, index) => (
                           <li key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 rounded-full bg-[#47216b]/10 text-[#47216b] flex items-center justify-center flex-shrink-0 mt-1">
@@ -552,7 +548,7 @@ const Index = () => {
                       <div className="absolute -inset-4 bg-[#47216b]/5 rounded-xl transform rotate-2"></div>
                       <img
                         src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="UI/UX Design"
+                        alt="Design Systems"
                         className="rounded-xl shadow-lg relative z-10 w-full h-64 md:h-80 object-cover"
                       />
                     </div>
@@ -565,26 +561,25 @@ const Index = () => {
                       <div className="absolute -inset-4 bg-[#8344c5]/5 rounded-xl transform -rotate-3"></div>
                       <img
                         src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Technology Solutions"
+                        alt="Platform Engineering"
                         className="rounded-xl shadow-lg relative z-10 w-full h-64 md:h-80 object-cover"
                       />
                     </div>
                     <div className="order-1 md:order-2">
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        Cutting-Edge Technology
+                        Platform Engineering
                       </h3>
                       <p className="text-gray-700 mb-6">
-                        We leverage the latest technologies to build scalable,
-                        secure, and high-performance digital platforms that give
-                        your business a competitive edge in the digital
-                        landscape.
+                        We build scalable, secure platforms architected for 10x
+                        growth. Modular infrastructure with built-in automation
+                        and integration capabilities from day one.
                       </p>
                       <ul className="space-y-3">
                         {[
-                          "Custom Web Development",
-                          "E-Commerce Solutions",
-                          "CRM Integration",
-                          "Cloud Infrastructure",
+                          "Scalable Web Platforms",
+                          "API & Integration Architecture",
+                          "AI & Automation Integration",
+                          "Enterprise Security & Compliance",
                         ].map((item, index) => (
                           <li key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 rounded-full bg-[#8344c5]/10 text-[#8344c5] flex items-center justify-center flex-shrink-0 mt-1">
@@ -602,20 +597,19 @@ const Index = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        Performance Analytics
+                        Measurement & Optimization
                       </h3>
                       <p className="text-gray-700 mb-6">
-                        Our data analytics approach provides clear insights into
-                        your digital performance, enabling informed
-                        decision-making and continuous optimization of your
-                        digital strategy.
+                        Real-time visibility into revenue impact, efficiency gains,
+                        and growth metrics. AI-driven recommendations that continuously
+                        optimize your systems for better outcomes.
                       </p>
                       <ul className="space-y-3">
                         {[
-                          "Conversion Optimization",
-                          "User Behavior Analysis",
-                          "ROI Tracking",
-                          "Competitive Benchmarking",
+                          "Revenue Attribution Dashboards",
+                          "Efficiency Metrics Tracking",
+                          "AI-Driven Optimization",
+                          "Predictive Growth Modeling",
                         ].map((item, index) => (
                           <li key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 rounded-full bg-[#47216b]/10 text-[#47216b] flex items-center justify-center flex-shrink-0 mt-1">
@@ -652,11 +646,11 @@ const Index = () => {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Our Proven Process
+              Our Systems Approach
             </h2>
             <p className="text-lg text-gray-600">
-              We follow a structured methodology that ensures consistent,
-              high-quality results across all our projects.
+              We follow a proven methodology that builds scalable
+              infrastructure delivering measurable outcomes.
             </p>
           </motion.div>
 
@@ -668,33 +662,33 @@ const Index = () => {
               {[
                 {
                   step: 1,
-                  title: "Discovery & Strategy",
+                  title: "Discovery & Audit",
                   description:
-                    "We dive deep into your business goals, target audience, and market positioning to develop a customized digital strategy.",
+                    "We map your entire digital ecosystem, identify bottlenecks, and quantify the efficiency gaps costing you growth.",
                   image:
                     "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80",
                 },
                 {
                   step: 2,
-                  title: "Design & Development",
+                  title: "System Blueprinting",
                   description:
-                    "Our creative and technical teams collaborate to bring your digital presence to life through stunning design and robust functionality.",
+                    "We architect unified infrastructure connecting all your operations with clear data flows and automation touchpoints.",
                   image:
                     "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80",
                 },
                 {
                   step: 3,
-                  title: "Launch & Optimize",
+                  title: "Implementation & Integration",
                   description:
-                    "We execute a strategic launch and continuously monitor performance, making data-driven optimizations to maximize results.",
+                    "We deploy modular components that integrate seamlessly with your existing stack — no rip-and-replace disruption.",
                   image:
                     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80",
                 },
                 {
                   step: 4,
-                  title: "Scale & Evolve",
+                  title: "Measurement & Optimization",
                   description:
-                    "As your business grows, we scale your digital presence, continuously evolving your strategy to stay ahead of the competition.",
+                    "We track revenue impact, efficiency gains, and continuously optimize with AI-driven recommendations.",
                   image:
                     "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80",
                 },
@@ -705,14 +699,12 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`flex flex-col md:flex-row items-center gap-8 ${
-                    index % 2 === 1 ? "md:flex-row-reverse" : ""
-                  }`}
+                  className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+                    }`}
                 >
                   <div
-                    className={`md:w-1/2 relative ${
-                      index % 2 === 0 ? "md:text-right" : ""
-                    }`}
+                    className={`md:w-1/2 relative ${index % 2 === 0 ? "md:text-right" : ""
+                      }`}
                   >
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
                       <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#47216b] to-[#8344c5]">
@@ -723,40 +715,38 @@ const Index = () => {
                       {step.description}
                     </p>
                     <ul
-                      className={`space-y-2 ${
-                        index % 2 === 0 ? "md:ml-auto" : ""
-                      }`}
+                      className={`space-y-2 ${index % 2 === 0 ? "md:ml-auto" : ""
+                        }`}
                     >
                       {[
                         index === 0
                           ? [
-                              "Research & Analysis",
-                              "Target Audience Definition",
-                              "Strategic Planning",
-                            ]
+                            "Ecosystem Mapping",
+                            "Bottleneck Analysis",
+                            "Gap Quantification",
+                          ]
                           : index === 1
-                          ? [
-                              "UI/UX Design",
-                              "Content Creation",
-                              "Technical Development",
+                            ? [
+                              "Integration Architecture",
+                              "Data Flow Design",
+                              "Automation Planning",
                             ]
-                          : index === 2
-                          ? [
-                              "Quality Assurance",
-                              "Performance Monitoring",
-                              "Continuous Improvement",
-                            ]
-                          : [
-                              "Growth Strategy",
-                              "New Feature Rollout",
-                              "Long-term Support",
-                            ],
+                            : index === 2
+                              ? [
+                                "Modular Deployment",
+                                "Stack Integration",
+                                "Zero-Disruption Launch",
+                              ]
+                              : [
+                                "Revenue Attribution",
+                                "AI Optimization",
+                                "Continuous Improvement",
+                              ],
                       ].map((item, idx) => (
                         <li
                           key={idx}
-                          className={`flex items-center gap-2 ${
-                            index % 2 === 0 ? "justify-end" : ""
-                          }`}
+                          className={`flex items-center gap-2 ${index % 2 === 0 ? "justify-end" : ""
+                            }`}
                         >
                           {index % 2 === 1 && (
                             <div className="w-1 h-1 bg-[#47216b] rounded-full"></div>
@@ -805,13 +795,13 @@ const Index = () => {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#47216b] to-[#8344c5]">
-                Specialized
+                Growth
               </span>{" "}
-              Solutions
+              Systems
             </h2>
             <p className="text-lg text-gray-600">
-              Explore our range of specialized digital services designed to
-              address specific business challenges.
+              Explore our integrated digital systems designed to
+              solve specific growth challenges at scale.
             </p>
           </motion.div>
 
@@ -861,10 +851,9 @@ const Index = () => {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ delay: index * 0.1 }}
                   className={`bg-white rounded-xl overflow-hidden transition-all duration-300 ease-out
-                    ${
-                      openCategory === category.slug
-                        ? "shadow-xl ring-2 ring-[#47216b]/20"
-                        : "shadow-md hover:shadow-lg"
+                    ${openCategory === category.slug
+                      ? "shadow-xl ring-2 ring-[#47216b]/20"
+                      : "shadow-md hover:shadow-lg"
                     }`}
                 >
                   {/* Rest of category content */}
@@ -872,37 +861,33 @@ const Index = () => {
                   <div
                     onClick={() => handleCategoryClick(category.slug)}
                     className={`p-6 cursor-pointer transition-all duration-300 
-                    ${
-                      openCategory === category.slug
+                    ${openCategory === category.slug
                         ? "bg-gradient-to-r from-[#47216b] to-[#8344c5] text-white"
                         : "bg-gray-50 hover:bg-gray-100"
-                    }`}
+                      }`}
                   >
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-4">
                         <div
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                            openCategory === category.slug
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${openCategory === category.slug
                               ? "bg-white/20 text-white"
                               : "bg-[#47216b]/10 text-[#47216b]"
-                          }`}
+                            }`}
                         >
                           {category.icon}
                         </div>
                         <h3
-                          className={`text-xl font-bold ${
-                            openCategory === category.slug
+                          className={`text-xl font-bold ${openCategory === category.slug
                               ? "text-white"
                               : "text-gray-900"
-                          }`}
+                            }`}
                         >
                           {category.name}
                         </h3>
                       </div>
                       <div
-                        className={`transition-transform duration-300 ${
-                          openCategory === category.slug ? "rotate-180" : ""
-                        }`}
+                        className={`transition-transform duration-300 ${openCategory === category.slug ? "rotate-180" : ""
+                          }`}
                       >
                         <svg
                           className="w-6 h-6"
@@ -921,11 +906,10 @@ const Index = () => {
                     </div>
 
                     <p
-                      className={`mt-2 ${
-                        openCategory === category.slug
+                      className={`mt-2 ${openCategory === category.slug
                           ? "text-white/80"
                           : "text-gray-600"
-                      }`}
+                        }`}
                     >
                       {category.shortDesc}
                     </p>
@@ -955,12 +939,12 @@ const Index = () => {
                                 category.slug === "branding"
                                   ? "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                                   : category.slug === "marketing"
-                                  ? "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                                  : category.slug === "web"
-                                  ? "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                                  : category.slug === "app"
-                                  ? "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                                  : "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                                    ? "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                                    : category.slug === "web"
+                                      ? "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                                      : category.slug === "app"
+                                        ? "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                                        : "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                               }
                               alt={category.name}
                               className="w-full h-full object-cover"
@@ -1243,10 +1227,10 @@ const Index = () => {
                                         {idx === 0
                                           ? "Understanding your goals, audience, and market position to establish clear objectives."
                                           : idx === 1
-                                          ? "Developing a comprehensive plan with timelines, KPIs, and resource allocations."
-                                          : idx === 2
-                                          ? "Implementing the strategy with precision while maintaining constant communication."
-                                          : "Continuously refining the approach based on performance data and feedback."}
+                                            ? "Developing a comprehensive plan with timelines, KPIs, and resource allocations."
+                                            : idx === 2
+                                              ? "Implementing the strategy with precision while maintaining constant communication."
+                                              : "Continuously refining the approach based on performance data and feedback."}
                                       </p>
                                     </div>
                                   </motion.div>
@@ -1436,7 +1420,7 @@ const Index = () => {
                     </p>
                   </div>
 
-                  <Link 
+                  <Link
                     to="/contact"
                     className="w-full px-6 py-4 bg-gradient-to-r from-[#47216b] to-[#8344c5] text-white rounded-lg font-semibold shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center justify-center"
                   >
@@ -1469,18 +1453,18 @@ const Index = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#47216b]">
-              Ready to Transform Your Digital Brand?
+              Ready to Build Systems That Scale?
             </h2>
             <p className="text-xl text-gray-700 mb-10 leading-relaxed opacity-90">
-              Let's discuss how our DBA services can help you achieve your
-              business goals and stand out in the digital landscape.
+              Let's discuss how our growth systems can help you achieve your
+              business goals and build infrastructure for 10x scale.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 to="/contact"
                 className="px-8 py-4 bg-[#47216b] text-white font-semibold shadow-lg transition-all duration-300 hover:bg-[#38134f] hover:shadow-xl transform hover:-translate-y-1"
               >
-                Get in Touch
+                Start Growth Diagnostic
               </Link>
             </div>
           </motion.div>
@@ -1490,9 +1474,8 @@ const Index = () => {
       {/* Scroll to top button */}
       <div
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-8 left-8 z-40 transition-all duration-500 cursor-pointer ${
-          isScrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
+        className={`fixed bottom-8 left-8 z-40 transition-all duration-500 cursor-pointer ${isScrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
       >
         <div className="w-12 h-12 bg-[#47216b]/10 text-[#47216b] rounded-full flex items-center justify-center hover:bg-[#47216b]/20 transition-colors duration-300">
           <svg

@@ -11,14 +11,14 @@ const BlogDetailPage = () => {
   const [showTooltip, setShowTooltip] = useState({ edit: false, delete: false });
 
   useEffect(() => {
-    axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-blog/${id}`)
+    axios.get(`https://Godigitify-backend.vercel.app/api/blogs/get-blog/${id}`)
       .then(res => setBlog(res.data.blog))
       .catch(err => console.error(err));
   }, [id]);
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://godigitify-backend.vercel.app/api/blogs/delete-blog/${id}`);
+      await axios.delete(`https://Godigitify-backend.vercel.app/api/blogs/delete-blog/${id}`);
       setShowDeleteConfirm(false);
       navigate('/cms/blogs'); // Redirect to blogs list
     } catch (error) {
@@ -62,7 +62,7 @@ const BlogDetailPage = () => {
                 </div>
               )}
             </div>
-            
+
             <div className="relative">
               <button
                 onClick={() => setShowDeleteConfirm(true)}
@@ -87,7 +87,7 @@ const BlogDetailPage = () => {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               {blog.mainHeading}
             </h1>
-            
+
             <div className="flex items-center space-x-4 text-gray-200">
               <div className="flex items-center space-x-2">
                 <div className="w-10 h-10 bg-white bg-opacity-20 text-black rounded-full flex items-center justify-center">
@@ -96,10 +96,10 @@ const BlogDetailPage = () => {
                 <div>
                   <p className="font-medium">{blog.author}</p>
                   <div className="flex items-center space-x-2 text-sm text-gray-300">
-                    <span>{new Date(blog.publishedAt).toLocaleDateString('en-US', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
+                    <span>{new Date(blog.publishedAt).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
                     })}</span>
                     <span>•</span>
                     <span>{blog.readTime} min read</span>
@@ -114,9 +114,9 @@ const BlogDetailPage = () => {
       {/* Cover Image */}
       {blog.coverImage && (
         <div className="relative max-w-3xl mx-auto h-64 md:h-80 lg:h-96 overflow-hidden">
-          <img 
-            src={blog.coverImage} 
-            alt="Article cover" 
+          <img
+            src={blog.coverImage}
+            alt="Article cover"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
@@ -133,7 +133,7 @@ const BlogDetailPage = () => {
                   {section.subheading}
                 </h2>
               )}
-              
+
               <div className="space-y-6">
                 {section?.contentBlocks?.map((block, bIdx) => {
                   if (block.type === "paragraph") {
@@ -143,7 +143,7 @@ const BlogDetailPage = () => {
                       </p>
                     );
                   }
-                  
+
                   if (block.type === "bullet") {
                     return (
                       <div key={bIdx} className="bg-gray-50 rounded-lg p-6 border-l-4 border-[#47216b]">
@@ -158,7 +158,7 @@ const BlogDetailPage = () => {
                       </div>
                     );
                   }
-                  
+
                   if (block.type === "image") {
                     return (
                       <figure key={bIdx} className="my-8">
@@ -170,7 +170,7 @@ const BlogDetailPage = () => {
                       </figure>
                     );
                   }
-                  
+
                   return null;
                 })}
               </div>
@@ -205,8 +205,8 @@ const BlogDetailPage = () => {
                 <p className="text-[#b4b4b4] text-sm">Published on {new Date(blog.publishedAt).toLocaleDateString()}</p>
               </div>
             </div>
-            
-            <button 
+
+            <button
               onClick={() => navigate('/cms/blogs')}
               className="bg-[#47216b] hover:bg-[#001330] text-white px-6 py-2 rounded-full transition-colors duration-200 flex items-center space-x-2"
             >
@@ -231,7 +231,7 @@ const BlogDetailPage = () => {
               </div>
               <h3 className="text-xl font-bold text-[#001330] mb-2">Delete Article</h3>
               <p className="text-[#b4b4b4] mb-6">Are you sure you want to delete this article? This action cannot be undone.</p>
-              
+
               <div className="flex space-x-3">
                 <button
                   onClick={() => setShowDeleteConfirm(false)}

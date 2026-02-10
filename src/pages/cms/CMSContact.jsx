@@ -21,7 +21,7 @@ const CMSContact = () => {
   const fetchQueries = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://godigitify-backend.vercel.app/api/contact/get-all-queries', {
+      const response = await axios.get('https://Godigitify-backend.vercel.app/api/contact/get-all-queries', {
         withCredentials: true
       });
 
@@ -60,7 +60,7 @@ const CMSContact = () => {
 
     try {
       setDeleteLoading(queryId);
-      const response = await axios.delete(`https://godigitify-backend.vercel.app/api/contact/delete-query/${queryId}`, {
+      const response = await axios.delete(`https://Godigitify-backend.vercel.app/api/contact/delete-query/${queryId}`, {
         withCredentials: true
       });
 
@@ -206,7 +206,7 @@ const CMSContact = () => {
         <div className="px-6 py-4 border-b border-gray-200">
           <h3 className="text-lg font-medium text-gray-900">Recent Queries</h3>
         </div>
-        
+
         {queries.length === 0 ? (
           <div className="p-8 text-center">
             <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

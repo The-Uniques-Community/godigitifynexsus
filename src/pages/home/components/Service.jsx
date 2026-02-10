@@ -7,53 +7,53 @@ const Service = () => {
   const services = [
     {
       id: 1,
-      title: "Brand Solution",
+      title: "Digital Growth Systems",
       description:
-        "Build a powerful and memorable brand identity. We craft tailored branding strategies, from logo design to brand messaging, ensuring your business stands out and connects with your audience.",
+        "End-to-end growth infrastructure that connects strategy, technology, and data. We build the systems that replace manual execution with automated, measurable scaling — from lead generation to customer retention.",
       color: "bg-[#47216b]",
       hoverColor: "hover:bg-white",
       textColor: "text-white",
       hoverTextColor: "hover:text-gray-800",
-      buttonText: "View",
+      buttonText: "Explore System",
       link: "/services/dba/branding-solutions",
       icon: "→",
     },
     {
       id: 2,
-      title: "Marketing Solution",
+      title: "AI & Automation Architecture",
       description:
-        "Accelerate your growth with data-driven marketing. Our team delivers end-to-end digital marketing solutions, including SEO, social media, paid ads, and campaign analytics to maximize your reach and ROI.",
+        "Design and deploy intelligent automation across your marketing, sales, and operations. Reduce manual touchpoints by up to 70% while improving accuracy, speed, and customer experience.",
       color: "bg-gray-100",
       hoverColor: "hover:bg-[#47216b]",
       textColor: "text-gray-800",
       hoverTextColor: "hover:text-white",
-      buttonText: "View",
+      buttonText: "Explore System",
       link: "/services/dba/marketing",
       icon: "→",
     },
     {
       id: 3,
-      title: "Web Solution",
+      title: "Scalable Platform Engineering",
       description:
-        "Transform your online presence with custom web development. We design and build responsive, high-performance websites that engage visitors and drive business results.",
+        "Web platforms, applications, and infrastructure built for scale. We engineer systems that handle 10x growth without 10x complexity — secure, fast, and built to evolve with your business.",
       color: "bg-gray-100",
       hoverColor: "hover:bg-[#47216b]",
       textColor: "text-gray-800",
       hoverTextColor: "hover:text-white",
-      buttonText: "View",
+      buttonText: "Explore System",
       link: "/services/dba/web",
       icon: "→",
     },
     {
       id: 4,
-      title: "App Solution",
+      title: "E-Commerce Growth Infrastructure",
       description:
-        "Bring your ideas to life with innovative mobile and web apps. We develop user-friendly, scalable applications tailored to your business needs, from concept to launch and beyond.",
+        "Revenue-focused commerce systems that go beyond storefronts. Integrated inventory, automated fulfillment, conversion optimization, and analytics — designed to scale profitably.",
       color: "bg-gray-100",
       hoverColor: "hover:bg-[#47216b]",
       textColor: "text-gray-800",
       hoverTextColor: "hover:text-white",
-      buttonText: "View",
+      buttonText: "Explore System",
       link: "/services/dba/app-development",
       icon: "→",
     },
@@ -64,11 +64,14 @@ const Service = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#47216b] mb-2">
+            Growth Systems Architecture
+          </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Our <span className="text-[#47216b]">Services</span>
+            Our <span className="text-[#47216b]">Solutions</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Comprehensive solutions for your digital transformation journey
+            Integrated systems that replace fragmented tactics with predictable, automated growth infrastructure
           </p>
         </div>
 
@@ -77,11 +80,10 @@ const Service = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className={`relative group overflow-hidden rounded-2xl transition-all duration-500 ease-out transform  ${
-                service.id === 1 && hoveredCard && hoveredCard !== 1
+              className={`relative group overflow-hidden rounded-2xl transition-all duration-500 ease-out transform  ${service.id === 1 && hoveredCard && hoveredCard !== 1
                   ? "bg-gray-300"
                   : service.color
-              } ${service.hoverColor}`}
+                } ${service.hoverColor}`}
               onMouseEnter={() => setHoveredCard(service.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
@@ -90,26 +92,24 @@ const Service = () => {
                 {/* Title */}
                 <div>
                   <h3
-                    className={`text-2xl md:text-3xl font-bold mb-6 transition-colors duration-300 ${
-                      service.id === 1
+                    className={`text-2xl md:text-3xl font-bold mb-6 transition-colors duration-300 ${service.id === 1
                         ? hoveredCard && hoveredCard !== 1
                           ? "text-black"
                           : "text-white group-hover:text-gray-800"
                         : "text-gray-800 group-hover:text-white"
-                    }`}
+                      }`}
                   >
                     {service.title}
                   </h3>
 
                   {/* Description */}
                   <p
-                    className={`text-sm md:text-base leading-relaxed mb-8 transition-colors duration-300 ${
-                      service.id === 1
+                    className={`text-sm md:text-base leading-relaxed mb-8 transition-colors duration-300 ${service.id === 1
                         ? hoveredCard && hoveredCard !== 1
                           ? "text-black"
                           : "text-white group-hover:text-gray-800"
                         : "text-gray-800 group-hover:text-white"
-                    }`}
+                      }`}
                   >
                     {service.description}
                   </p>
@@ -120,13 +120,12 @@ const Service = () => {
                   <div className="space-y-4">
                     {/* Button */}
                     <button
-                      className={`w-full px-6 py-3 rounded-full border-2 transition-all duration-300 font-semibold ${
-                        service.id === 1
+                      className={`w-full px-6 py-3 rounded-full border-2 transition-all duration-300 font-semibold ${service.id === 1
                           ? hoveredCard && hoveredCard !== 1
                             ? "border-black text-black"
                             : "border-white text-white group-hover:border-gray-800 group-hover:text-gray-800 group-hover:bg-transparent"
                           : "border-gray-800 text-gray-800 group-hover:border-white group-hover:text-white group-hover:bg-white/10"
-                      }`}
+                        }`}
                     >
                       {service.buttonText}
                     </button>
@@ -134,24 +133,22 @@ const Service = () => {
                     {/* Link with Arrow */}
                     <div className="flex items-center justify-between">
                       <span
-                        className={`text-sm transition-colors duration-300 ${
-                          service.id === 1
+                        className={`text-sm transition-colors duration-300 ${service.id === 1
                             ? hoveredCard && hoveredCard !== 1
                               ? "text-black"
                               : "text-white group-hover:text-gray-800"
                             : "text-gray-800 group-hover:text-white"
-                        }`}
+                          }`}
                       >
                         {/* {service.link} */}
                       </span>
                       <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                          service.id === 1
+                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${service.id === 1
                             ? hoveredCard && hoveredCard !== 1
                               ? "bg-black text-white"
                               : "bg-white text-[#47216b] group-hover:bg-gray-800 group-hover:text-white"
                             : "bg-gray-800 text-white group-hover:bg-white group-hover:text-[#47216b]"
-                        }`}
+                          }`}
                       >
                         <span className="text-lg font-bold transform transition-transform duration-300 group-hover:translate-x-1">
                           {service.icon}

@@ -21,17 +21,17 @@ const CustomSolutions = () => {
     launchTimeline: '',
     files: []
   });
-  
+
   const [formStep, setFormStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  
+
   // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
+
   // Handle checkbox changes
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
@@ -43,7 +43,7 @@ const CustomSolutions = () => {
       }
     }));
   };
-  
+
   // Handle file uploads
   const handleFileChange = (e) => {
     setFormData(prev => ({
@@ -51,34 +51,34 @@ const CustomSolutions = () => {
       files: [...e.target.files]
     }));
   };
-  
+
   // Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       // Create form data for file upload
       const formDataToSend = new FormData();
-      
+
       // Add text fields
       Object.keys(formData).forEach(key => {
         if (key !== 'files' && key !== 'services') {
           formDataToSend.append(key, formData[key]);
         }
       });
-      
+
       // Add services as JSON string
       formDataToSend.append('services', JSON.stringify(formData.services));
-      
+
       // Add files
       formData.files.forEach(file => {
         formDataToSend.append('files', file);
       });
-      
+
       // Send to backend API
       const response = await axios.post(
-        'https://godigitify-backend.vercel.app/api/custom-solutions/submit',
+        'https://Godigitify-backend.vercel.app/api/custom-solutions/submit',
         formDataToSend,
         {
           headers: {
@@ -86,7 +86,7 @@ const CustomSolutions = () => {
           }
         }
       );
-      
+
       if (response.data.success) {
         setSubmitStatus('success');
         // Reset form after successful submission
@@ -116,13 +116,13 @@ const CustomSolutions = () => {
       setIsSubmitting(false);
     }
   };
-  
+
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
-  
+
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -132,7 +132,7 @@ const CustomSolutions = () => {
       }
     }
   };
-  
+
   const steps = [
     {
       number: 1,
@@ -170,11 +170,11 @@ const CustomSolutions = () => {
   const nextStep = () => {
     setFormStep(prev => Math.min(prev + 1, 4));
   };
-  
+
   const prevStep = () => {
     setFormStep(prev => Math.max(prev - 1, 0));
   };
-  
+
   const formSteps = [
     // Step 1: Business/Product Name
     <div key="step1">
@@ -206,7 +206,7 @@ const CustomSolutions = () => {
         </button>
       </div>
     </div>,
-    
+
     // Step 2: Problem & Target Audience
     <div key="step2">
       <h3 className="text-2xl font-semibold text-[#47216b] mb-6">2. The Problem & Audience</h3>
@@ -275,13 +275,13 @@ const CustomSolutions = () => {
         </button>
       </div>
     </div>,
-    
+
     // Step 3: Services Needed
     <div key="step3">
       <h3 className="text-2xl font-semibold text-[#47216b] mb-6">3. Services You Need</h3>
       <div className="mb-8 space-y-4">
         <p className="text-gray-700">Select all services that apply to your project:</p>
-        
+
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -295,7 +295,7 @@ const CustomSolutions = () => {
             Branding & Visual Identity
           </label>
         </div>
-        
+
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -309,7 +309,7 @@ const CustomSolutions = () => {
             Website Design & Development
           </label>
         </div>
-        
+
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -323,7 +323,7 @@ const CustomSolutions = () => {
             Printables (brochures, flyers, etc.)
           </label>
         </div>
-        
+
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -337,7 +337,7 @@ const CustomSolutions = () => {
             Event Planning & Execution
           </label>
         </div>
-        
+
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -375,7 +375,7 @@ const CustomSolutions = () => {
         </button>
       </div>
     </div>,
-    
+
     // Step 4: Budget & Timeline
     <div key="step4">
       <h3 className="text-2xl font-semibold text-[#47216b] mb-6">4. Budget & Timeline</h3>
@@ -429,12 +429,12 @@ const CustomSolutions = () => {
             <div className="flex text-sm text-gray-600">
               <label htmlFor="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-[#47216b] hover:text-[#371955] focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-[#47216b]">
                 <span>Upload files</span>
-                <input 
-                  id="file-upload" 
-                  name="files" 
-                  type="file" 
+                <input
+                  id="file-upload"
+                  name="files"
+                  type="file"
                   multiple
-                  className="sr-only" 
+                  className="sr-only"
                   onChange={handleFileChange}
                 />
               </label>
@@ -500,11 +500,11 @@ const CustomSolutions = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#47216b]/5 to-white pointer-events-none"></div>
         <div className="absolute -right-40 top-20 w-96 h-96 rounded-full bg-[#47216b]/5 blur-3xl pointer-events-none"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left: Text */}
-            <motion.div 
+            <motion.div
               className="max-w-3xl"
               initial="hidden"
               animate="visible"
@@ -544,11 +544,11 @@ const CustomSolutions = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Section 2 - Onboarding Flow */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -562,8 +562,8 @@ const CustomSolutions = () => {
               Stress-Free, End‑to‑End Service – We Digitfy Your Vision in 6 Simple Steps
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
             initial="hidden"
@@ -590,15 +590,15 @@ const CustomSolutions = () => {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Section 3 - Modern Full Width Form (Single Page) */}
       <section id="get-started" className="py-24 bg-gradient-to-br from-white to-[#47216b]/5 relative overflow-hidden">
         {/* Abstract background shapes */}
         <div className="absolute top-0 left-0 w-full h-64 bg-[#47216b]/3 -skew-y-6 transform -translate-y-32 z-0"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#47216b]/5 blur-3xl z-0"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -610,7 +610,7 @@ const CustomSolutions = () => {
             <p className="text-xl text-gray-700 text-center mb-12 max-w-xl mx-auto">
               A few simple details are all we need to get started. Your vision, stress‑free execution.
             </p>
-            
+
             {/* Form Status Messages */}
             {submitStatus === 'success' && (
               <div className="max-w-3xl mx-auto mb-12 p-6 bg-green-50 border border-green-200 text-green-800 rounded-lg text-center">
@@ -621,7 +621,7 @@ const CustomSolutions = () => {
                 <p className="text-base">We'll be in touch with you shortly to discuss your project.</p>
               </div>
             )}
-            
+
             {submitStatus === 'error' && (
               <div className="max-w-3xl mx-auto mb-12 p-6 bg-red-50 border border-red-200 text-red-800 rounded-lg text-center">
                 <svg className="w-12 h-12 mx-auto mb-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -631,7 +631,7 @@ const CustomSolutions = () => {
                 <p className="text-base">Please try again or contact us directly.</p>
               </div>
             )}
-            
+
             {/* Modern Single-Page Form */}
             <form onSubmit={handleSubmit} className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="p-1 bg-gradient-to-r from-[#47216b] via-purple-500 to-[#47216b]"></div>
@@ -654,7 +654,7 @@ const CustomSolutions = () => {
                         placeholder="What's the name of your product or business?"
                       />
                     </div>
-                    
+
                     {/* Problem Solved */}
                     <div>
                       <label htmlFor="problemSolved" className="block text-sm font-medium text-gray-700 mb-2">
@@ -670,7 +670,7 @@ const CustomSolutions = () => {
                         placeholder="Briefly describe the challenge your product addresses and why it matters"
                       ></textarea>
                     </div>
-                    
+
                     {/* Target Audience & Goals */}
                     <div>
                       <label htmlFor="targetAudience" className="block text-sm font-medium text-gray-700 mb-2">
@@ -696,7 +696,7 @@ const CustomSolutions = () => {
                       />
                     </div>
                   </div>
-                  
+
                   {/* Right Column */}
                   <div className="space-y-8">
                     {/* Services Needed */}
@@ -718,7 +718,7 @@ const CustomSolutions = () => {
                             Branding & Visual Identity
                           </label>
                         </div>
-                        
+
                         <div className="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                           <input
                             type="checkbox"
@@ -732,7 +732,7 @@ const CustomSolutions = () => {
                             Website & Development
                           </label>
                         </div>
-                        
+
                         <div className="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                           <input
                             type="checkbox"
@@ -746,7 +746,7 @@ const CustomSolutions = () => {
                             Printables
                           </label>
                         </div>
-                        
+
                         <div className="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                           <input
                             type="checkbox"
@@ -760,7 +760,7 @@ const CustomSolutions = () => {
                             Event Planning
                           </label>
                         </div>
-                        
+
                         <div className="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200 sm:col-span-2">
                           <input
                             type="checkbox"
@@ -776,7 +776,7 @@ const CustomSolutions = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Budget & Timeline */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
@@ -798,7 +798,7 @@ const CustomSolutions = () => {
                           <option value="$50,000+">$50,000+</option>
                         </select>
                       </div>
-                      
+
                       <div>
                         <label htmlFor="launchTimeline" className="block text-sm font-medium text-gray-700 mb-2">
                           6. Launch Timeline
@@ -819,7 +819,7 @@ const CustomSolutions = () => {
                         </select>
                       </div>
                     </div>
-                    
+
                     {/* File Upload */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -832,12 +832,12 @@ const CustomSolutions = () => {
                           </svg>
                           <span className="text-sm text-gray-500">Upload files or drag and drop</span>
                           <span className="text-xs text-gray-400 mt-1">PNG, JPG, PDF up to 10MB</span>
-                          <input 
-                            id="file-upload" 
-                            name="files" 
-                            type="file" 
+                          <input
+                            id="file-upload"
+                            name="files"
+                            type="file"
                             multiple
-                            className="hidden" 
+                            className="hidden"
                             onChange={handleFileChange}
                           />
                         </label>
@@ -853,7 +853,7 @@ const CustomSolutions = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Submit Button - Full Width */}
                 <div className="mt-10">
                   <button
@@ -895,10 +895,10 @@ const CustomSolutions = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-gray-50"></div>
           <div className="absolute bottom-0 right-0 w-full h-1/2 bg-[#47216b] clip-diagonal"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <motion.div 
+            <motion.div
               className="mb-16 text-center"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -910,10 +910,10 @@ const CustomSolutions = () => {
               </h2>
               <div className="w-16 h-1 bg-[#47216b] mx-auto"></div>
             </motion.div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {/* Left side - Why choose us points */}
-              <motion.div 
+              <motion.div
                 className="space-y-10"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -931,7 +931,7 @@ const CustomSolutions = () => {
                     <p className="text-gray-600">Share your vision once — we handle everything from branding to development to execution under one roof.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-5">
                   <div className="w-16 h-16 rounded-full bg-[#47216b]/10 flex items-center justify-center flex-shrink-0">
                     <svg className="w-8 h-8 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -943,7 +943,7 @@ const CustomSolutions = () => {
                     <p className="text-gray-600">Rapid execution with continuous updates. No confusion, no delays, just transparent progress.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-5">
                   <div className="w-16 h-16 rounded-full bg-[#47216b]/10 flex items-center justify-center flex-shrink-0">
                     <svg className="w-8 h-8 text-[#47216b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -956,7 +956,7 @@ const CustomSolutions = () => {
                   </div>
                 </div>
               </motion.div>
-              
+
               {/* Right side - CTA card */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -967,13 +967,13 @@ const CustomSolutions = () => {
               >
                 <div className="absolute -top-6 -left-6 w-20 h-20 bg-[#47216b]/10 rounded-full"></div>
                 <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#47216b]/5 rounded-full"></div>
-                
+
                 <div className="relative p-10 md:p-12 bg-white rounded-2xl shadow-xl border border-gray-100 z-10">
                   <h3 className="text-2xl font-bold text-[#47216b] mb-6">Ready to build your digital vision?</h3>
                   <p className="text-gray-600 mb-8">
                     Our end-to-end service ensures you're completely taken care of—from concept to execution and beyond.
                   </p>
-                  
+
                   <div className="space-y-4">
                     <div className="flex items-center">
                       <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
@@ -983,7 +983,7 @@ const CustomSolutions = () => {
                       </div>
                       <p className="ml-3 text-gray-700">Single point of contact</p>
                     </div>
-                    
+
                     <div className="flex items-center">
                       <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                         <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -992,7 +992,7 @@ const CustomSolutions = () => {
                       </div>
                       <p className="ml-3 text-gray-700">Complete confidentiality</p>
                     </div>
-                    
+
                     <div className="flex items-center">
                       <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                         <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1002,7 +1002,7 @@ const CustomSolutions = () => {
                       <p className="ml-3 text-gray-700">Ongoing technical support</p>
                     </div>
                   </div>
-                  
+
                   <div className="mt-10">
                     <a
                       href="#get-started"
@@ -1016,7 +1016,7 @@ const CustomSolutions = () => {
             </div>
           </div>
         </div>
-        
+
         {/* CSS for diagonal clip */}
         <style jsx>{`
           .clip-diagonal {

@@ -25,10 +25,10 @@ const Contact = () => {
       ...prev,
       [name]: value
     }))
-    
+
     // Clear error when user starts typing
     if (error) setError('')
-    
+
     // Validate email in real-time
     if (name === 'email') {
       validateEmail(value)
@@ -55,39 +55,39 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     // Reset states
     setError('')
     setEmailError('')
-    
+
     // Validate required fields
     if (!formData.name.trim()) {
       setError('Name is required')
       return
     }
-    
+
     if (!formData.email.trim()) {
       setError('Email is required')
       return
     }
-    
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
       setEmailError('Please enter a valid email address')
       return
     }
-    
+
     // Check if at least one service is selected
     if (formData.services.length === 0) {
       setError('Please select at least one service')
       return
     }
-    
+
     try {
       setLoading(true)
-      
-      const response = await axios.post('https://godigitify-backend.vercel.app/api/contact/create', {
+
+      const response = await axios.post('https://Godigitify-backend.vercel.app/api/contact/create', {
         name: formData.name.trim(),
         organization: formData.organization.trim(),
         email: formData.email.trim().toLowerCase(),
@@ -98,7 +98,7 @@ const Contact = () => {
         message: formData.message.trim(),
         source: formData.source
       })
-      
+
       if (response.data.success) {
         setSubmitted(true)
         // Reset form
@@ -133,23 +133,19 @@ const Contact = () => {
   }
 
   const services = [
-    'Branding',
-    'Social Media Management',
-    'Content Creation & Marketing',
-    'Ad Film/Video Production',
-    'SEO',
-    'Website Transformation',
-    'Mobile App Development & UI/UX',
-    'CRM/Sales Pipeline Development',
-    'Influencer Marketing',
-    'IP Creation',
-    'Email & SMS Marketing Automation',
-    'Performance Media',
-    'Growth via Media Buying',
-    'Social Listening & ORM',
-    'Consumer & Market Research',
-    'Integrated Campaigns',
-    'Others'
+    'Digital Growth Systems Audit',
+    'AI & Automation Architecture',
+    'Scalable Platform Engineering',
+    'E-Commerce Growth Infrastructure',
+    'Brand Systems Integration',
+    'Marketing Automation Setup',
+    'CRM & Sales Pipeline Systems',
+    'Data Integration & Analytics',
+    'Website Performance Optimization',
+    'Mobile App Infrastructure',
+    'Security & Compliance Review',
+    'Full Digital Ecosystem Build',
+    'Other Systems Need'
   ]
 
   const offices = ['Mumbai', 'Bangalore', 'Delhi', 'UK (London)', 'Amsterdam']
@@ -173,17 +169,16 @@ const Contact = () => {
             {/* Header */}
             <div>
               <p className="text-sm font-medium text-gray-500 mb-2 tracking-wider uppercase">
-                GOT AN IDEA?
+                READY TO SCALE?
               </p>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Drop Us A Message
+                Start Your Growth Diagnostic
               </h1>
               <p className="text-gray-600 mb-4">
-                We're excited to work with you soon! Please drop an email with your details & 
-                requirements to <a href="mailto:ceo@godigitify.com" className="text-[#47216b] hover:underline">ceo@godigitify.com</a>.
+                Tell us about your current digital infrastructure and growth challenges. We'll assess fit and outline how our systems approach can drive measurable outcomes for your business.
               </p>
               <p className="text-gray-600">
-                You can also fill this form & we'll get back in 2 business days.
+                <strong>Not ready for a call?</strong> Email us at <a href="mailto:ceo@Godigitify.com" className="text-[#47216b] hover:underline">ceo@Godigitify.com</a> with your situation. We respond within 2 business days.
               </p>
             </div>
 
@@ -261,9 +256,8 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full border-0 border-b-2 bg-transparent px-0 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-0 transition-colors duration-300 ${
-                    emailError ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#47216b]'
-                  }`}
+                  className={`w-full border-0 border-b-2 bg-transparent px-0 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-0 transition-colors duration-300 ${emailError ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#47216b]'
+                    }`}
                   required
                 />
                 {emailError && (
@@ -310,11 +304,10 @@ const Contact = () => {
                       key={service}
                       type="button"
                       onClick={() => handleCheckboxChange(service, 'services')}
-                      className={`px-4 py-2 rounded-full border-2 text-sm font-medium transition-all duration-300 ${
-                        formData.services.includes(service)
-                          ? 'bg-[#47216b] text-white border-[#47216b]'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-[#47216b] hover:text-[#47216b]'
-                      }`}
+                      className={`px-4 py-2 rounded-full border-2 text-sm font-medium transition-all duration-300 ${formData.services.includes(service)
+                        ? 'bg-[#47216b] text-white border-[#47216b]'
+                        : 'bg-white text-gray-700 border-gray-300 hover:border-[#47216b] hover:text-[#47216b]'
+                        }`}
                     >
                       {service}
                     </button>
@@ -336,11 +329,10 @@ const Contact = () => {
                       key={office}
                       type="button"
                       onClick={() => setFormData(prev => ({ ...prev, office }))}
-                      className={`px-4 py-2 rounded-full border-2 text-sm font-medium transition-all duration-300 ${
-                        formData.office === office
-                          ? 'bg-[#47216b] text-white border-[#47216b]'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-[#47216b] hover:text-[#47216b]'
-                      }`}
+                      className={`px-4 py-2 rounded-full border-2 text-sm font-medium transition-all duration-300 ${formData.office === office
+                        ? 'bg-[#47216b] text-white border-[#47216b]'
+                        : 'bg-white text-gray-700 border-gray-300 hover:border-[#47216b] hover:text-[#47216b]'
+                        }`}
                     >
                       {office}
                     </button>
@@ -373,11 +365,10 @@ const Contact = () => {
                       key={source}
                       type="button"
                       onClick={() => setFormData(prev => ({ ...prev, source }))}
-                      className={`px-4 py-2 rounded-full border-2 text-sm font-medium transition-all duration-300 ${
-                        formData.source === source
-                          ? 'bg-[#47216b] text-white border-[#47216b]'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-[#47216b] hover:text-[#47216b]'
-                      }`}
+                      className={`px-4 py-2 rounded-full border-2 text-sm font-medium transition-all duration-300 ${formData.source === source
+                        ? 'bg-[#47216b] text-white border-[#47216b]'
+                        : 'bg-white text-gray-700 border-gray-300 hover:border-[#47216b] hover:text-[#47216b]'
+                        }`}
                     >
                       {source}
                     </button>
@@ -390,11 +381,10 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading || emailError}
-                  className={`px-12 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center min-w-[140px] ${
-                    loading || emailError
-                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                      : 'bg-[#47216b] text-white hover:bg-gray-900'
-                  }`}
+                  className={`px-12 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center min-w-[140px] ${loading || emailError
+                    ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                    : 'bg-[#47216b] text-white hover:bg-gray-900'
+                    }`}
                 >
                   {loading ? (
                     <>
@@ -415,35 +405,35 @@ const Contact = () => {
             {/* Images Grid */}
             <div className="space-y-6">
               <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                <img 
-                  src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Tech workspace" 
+                <img
+                  src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Tech workspace"
                   className="w-full h-64 object-cover"
                 />
                 <div className="absolute bottom-4 right-4 text-white text-sm bg-black/20 px-3 py-1 rounded">
-                  Shot by GoDigitify Team
+                  Shot by Godigitify Team
                 </div>
               </div>
-              
+
               <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                <img 
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Creative workspace" 
+                <img
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Creative workspace"
                   className="w-full h-64 object-cover"
                 />
                 <div className="absolute bottom-4 right-4 text-white text-sm bg-black/20 px-3 py-1 rounded">
-                  Shot by GoDigitify Team
+                  Shot by Godigitify Team
                 </div>
               </div>
-              
+
               <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                <img 
-                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Digital marketing" 
+                <img
+                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Digital marketing"
                   className="w-full h-64 object-cover"
                 />
                 <div className="absolute bottom-4 right-4 text-white text-sm bg-black/20 px-3 py-1 rounded">
-                  Shot by GoDigitify Team
+                  Shot by Godigitify Team
                 </div>
               </div>
             </div>
@@ -452,9 +442,9 @@ const Contact = () => {
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="flex items-start space-x-6">
                 <div className="flex-shrink-0">
-                  <img 
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                    alt="Mumbai Office" 
+                  <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                    alt="Mumbai Office"
                     className="w-24 h-24 object-cover rounded-lg"
                   />
                 </div>
@@ -465,11 +455,11 @@ const Contact = () => {
                     <p>Bhabat, Punjab 140603</p>
                   </div>
                   <div className="mt-4">
-                    <a 
-                      href="mailto:ceo@godigitify.com" 
+                    <a
+                      href="mailto:ceo@Godigitify.com"
                       className="text-[#47216b] hover:underline font-medium"
                     >
-                      ceo@godigitify.com
+                      ceo@Godigitify.com
                     </a>
                   </div>
                 </div>

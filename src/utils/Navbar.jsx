@@ -57,26 +57,23 @@ const Navbar = () => {
     baseClasses = "text-gray-700 hover:text-[#47216b] transition-all duration-300"
   ) => {
     const isActive = isActiveRoute(route);
-    return `${baseClasses} ${
-      isActive ? "text-[#47216b] font-semibold relative" : ""
-    }`;
+    return `${baseClasses} ${isActive ? "text-[#47216b] font-semibold relative" : ""
+      }`;
   };
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-12 lg:px-24 py-4 transition-all duration-300 ease-in-out ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg py-3"
-            : "bg-gray-50 backdrop-blur-sm py-4"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-12 lg:px-24 py-4 transition-all duration-300 ease-in-out ${isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-lg py-3"
+          : "bg-gray-50 backdrop-blur-sm py-4"
+          }`}
       >
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-2">
             <div
-              className={`rounded-sm flex items-center justify-center relative overflow-hidden cursor-pointer transition-all duration-300 ${
-                isScrolled ? "w-32 sm:w-40 h-auto" : "w-40 sm:w-52 h-auto"
-              }`}
+              className={`rounded-sm flex items-center justify-center relative overflow-hidden cursor-pointer transition-all duration-300 ${isScrolled ? "w-32 sm:w-40 h-auto" : "w-40 sm:w-52 h-auto"
+                }`}
             >
               <Link to={"/"}>
                 <img
@@ -98,11 +95,10 @@ const Navbar = () => {
                   "/services"
                 )} flex items-center space-x-1`}
               >
-                <span>Service</span>
+                <span>Systems</span>
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    serviceDropdownOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-200 ${serviceDropdownOpen ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -125,7 +121,7 @@ const Navbar = () => {
                     className="block px-4 py-2 text-gray-700 hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
                     onClick={() => setServiceDropdownOpen(false)}
                   >
-                    DBA
+                    Growth Systems
                   </Link>
                 </div>
               )}
@@ -139,11 +135,10 @@ const Navbar = () => {
                   "/solutions"
                 )} flex items-center space-x-1`}
               >
-                <span>Solution</span>
+                <span>Solutions</span>
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    solutionDropdownOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-200 ${solutionDropdownOpen ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -183,13 +178,13 @@ const Navbar = () => {
               to="/about"
               className={`${getLinkClasses("/about")} relative`}
             >
-              About
+              Our Approach
               {isActiveRoute("/about") && (
                 <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#47216b] rounded-full animate-pulse"></div>
               )}
             </Link>
             <Link to="/blog" className={`${getLinkClasses("/blog")} relative`}>
-              Blog
+              Insights
               {isActiveRoute("/blog") && (
                 <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#47216b] rounded-full animate-pulse"></div>
               )}
@@ -210,11 +205,10 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-4">
           <Link to="/contact">
             <button
-              className={`px-4 py-2 border border-[#47216b] text-[#47216b] rounded-lg hover:bg-[#47216b] hover:text-white transition-all duration-300 ${
-                isScrolled ? "text-sm" : ""
-              }`}
+              className={`px-4 py-2 border border-[#47216b] text-[#47216b] rounded-lg hover:bg-[#47216b] hover:text-white transition-all duration-300 ${isScrolled ? "text-sm" : ""
+                }`}
             >
-              Let us Think
+              Start Diagnostic
             </button>
           </Link>
         </div>
@@ -225,37 +219,32 @@ const Navbar = () => {
           onClick={toggleMobileMenu}
         >
           <span
-            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-              isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
           ></span>
           <span
-            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-              isMobileMenuOpen ? "opacity-0" : ""
-            }`}
+            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${isMobileMenuOpen ? "opacity-0" : ""
+              }`}
           ></span>
           <span
-            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-              isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
           ></span>
         </button>
       </nav>
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-90 lg:hidden transition-all duration-300 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 z-90 lg:hidden transition-all duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
       >
         <div
           className="fixed inset-0 bg-black/50"
           onClick={toggleMobileMenu}
         ></div>
         <div
-          className={`fixed top-0 right-0 h-full w-full max-w-xs sm:max-w-sm bg-white shadow-xl transform transition-transform duration-300 ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed top-0 right-0 h-full w-full max-w-xs sm:max-w-sm bg-white shadow-xl transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="flex flex-col h-full">
             {/* Header: Logo + Close Button */}
@@ -289,7 +278,7 @@ const Navbar = () => {
                     aria-expanded={serviceDropdownOpen}
                     aria-controls="mobile-service-dropdown"
                   >
-                    <span>Service</span>
+                    <span>Systems</span>
                     <svg
                       className={`w-5 h-5 ml-2 transition-transform ${serviceDropdownOpen ? "rotate-180" : ""}`}
                       fill="none"
@@ -306,7 +295,7 @@ const Navbar = () => {
                         className="block px-2 py-2 text-gray-600 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
                         onClick={toggleMobileMenu}
                       >
-                        DBA
+                        Growth Systems
                       </Link>
                     </div>
                   )}
@@ -324,7 +313,7 @@ const Navbar = () => {
                     aria-expanded={solutionDropdownOpen}
                     aria-controls="mobile-solution-dropdown"
                   >
-                    <span>Solution</span>
+                    <span>Solutions</span>
                     <svg
                       className={`w-5 h-5 ml-2 transition-transform ${solutionDropdownOpen ? "rotate-180" : ""}`}
                       fill="none"
@@ -358,21 +347,21 @@ const Navbar = () => {
                   className="block px-2 py-3 text-gray-700 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
                   onClick={toggleMobileMenu}
                 >
-                  About
+                  Our Approach
                 </Link>
                 <Link
                   to="/blog"
                   className="block px-2 py-3 text-gray-700 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
                   onClick={toggleMobileMenu}
                 >
-                  Blog
+                  Insights
                 </Link>
                 <Link
                   to="/contact"
                   className="block px-2 py-3 text-gray-700 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
                   onClick={toggleMobileMenu}
                 >
-                  Contact
+                  Start Diagnostic
                 </Link>
               </nav>
             </div>
@@ -380,7 +369,7 @@ const Navbar = () => {
             <div className="px-6 pb-6 pt-4 border-t border-gray-200">
               <Link to="/contact" onClick={toggleMobileMenu}>
                 <button className="w-full px-4 py-2 border border-[#47216b] text-[#47216b] rounded-lg hover:bg-[#47216b] hover:text-white transition-all duration-300">
-                  Let us Think
+                  Start Growth Diagnostic
                 </button>
               </Link>
             </div>

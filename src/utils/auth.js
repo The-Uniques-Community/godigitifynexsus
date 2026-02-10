@@ -3,7 +3,7 @@ import axios from 'axios';
 export const logoutAdmin = async () => {
   try {
     // Call logout endpoint to destroy session on server
-    await axios.post('https://godigitify-backend.vercel.app/api/admin/logout', {}, {
+    await axios.post('https://Godigitify-backend.vercel.app/api/admin/logout', {}, {
       withCredentials: true
     });
   } catch (error) {
@@ -20,7 +20,7 @@ export const logoutAdmin = async () => {
 
 export const checkAuthStatus = async () => {
   try {
-    const response = await axios.get('https://godigitify-backend.vercel.app/api/admin/verify-session', {
+    const response = await axios.get('https://Godigitify-backend.vercel.app/api/admin/verify-session', {
       withCredentials: true
     });
     return response.data.success && response.data.isAuthenticated;

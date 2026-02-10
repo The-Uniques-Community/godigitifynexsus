@@ -174,7 +174,7 @@ const CMSBlogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?page=1&limit=3')
+    axios.get('https://Godigitify-backend.vercel.app/api/blogs/get-all-blogs?page=1&limit=3')
       .then(res => setBlogs(res.data.blogs))
       .catch(err => console.error(err));
   }, []);
@@ -182,7 +182,7 @@ const CMSBlogs = () => {
     <div>
       <div className='flex justify-between items-center'>
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Recent Blogs</h2>
-        <Link 
+        <Link
           to="/cms/all-blogs"
           className='bg-purple-700 hover:bg-purple-800 transition-colors duration-200 rounded-md text-white px-4 py-2 flex items-center'
         >
@@ -199,7 +199,7 @@ const CMSBlogs = () => {
       </div>
       <div className="bg-white shadow rounded-lg">
         <div className="p-6">
-          <DynamicBlogForm/>
+          <DynamicBlogForm />
         </div>
       </div>
     </div>

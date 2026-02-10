@@ -20,40 +20,40 @@ const CMSQueryResponse = () => {
 
   const emailTemplates = {
     acknowledgment: {
-      subject: "Thank you for your inquiry - GoDigitify",
+      subject: "Thank you for your inquiry - Godigitify",
       content: `Dear {{name}},
 
-Thank you for reaching out to GoDigitify. We have received your inquiry and appreciate your interest in our services.
+Thank you for reaching out to Godigitify. We have received your inquiry and appreciate your interest in our services.
 
 Our team will review your requirements and get back to you within 2 business days with a detailed response.
 
 Best regards,
-The GoDigitify Team`,
+The Godigitify Team`,
     },
     consultation: {
-      subject: "Let's schedule a consultation - GoDigitify",
+      subject: "Let's schedule a consultation - Godigitify",
       content: `Dear {{name}},
 
-Thank you for your interest in GoDigitify's services. We would love to discuss your {{services}} requirements in detail.
+Thank you for your interest in Godigitify's services. We would love to discuss your {{services}} requirements in detail.
 
 Would you be available for a consultation call this week? Please let us know your preferred time, and we'll schedule a meeting to understand your needs better.
 
 Best regards,
-The GoDigitify Team`,
+The Godigitify Team`,
     },
     quote: {
-      subject: "Proposal for your project - GoDigitify",
+      subject: "Proposal for your project - Godigitify",
       content: `Dear {{name}},
 
-Thank you for considering GoDigitify for your {{services}} needs. Based on your requirements, we have prepared a customized proposal for your organization.
+Thank you for considering Godigitify for your {{services}} needs. Based on your requirements, we have prepared a customized proposal for your organization.
 
 We would like to schedule a presentation to walk you through our approach and discuss the investment involved.
 
 Best regards,
-The GoDigitify Team`,
+The Godigitify Team`,
     },
     followup: {
-      subject: "Following up on your inquiry - GoDigitify",
+      subject: "Following up on your inquiry - Godigitify",
       content: `Dear {{name}},
 
 We wanted to follow up on your recent inquiry about our {{services}} services. 
@@ -63,7 +63,7 @@ We understand that choosing the right digital partner is an important decision, 
 Please feel free to reach out if you'd like to discuss your requirements further.
 
 Best regards,
-The GoDigitify Team`,
+The Godigitify Team`,
     },
   };
 
@@ -75,7 +75,7 @@ The GoDigitify Team`,
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://godigitify-backend.vercel.app/api/contact/get-query/${id}`,
+        `https://Godigitify-backend.vercel.app/api/contact/get-query/${id}`,
         {
           withCredentials: true,
         }
@@ -87,9 +87,8 @@ The GoDigitify Team`,
         if (!responseData.subject) {
           setResponseData((prev) => ({
             ...prev,
-            subject: `Re: Your inquiry about ${
-              response.data.data.services?.join(", ") || "our services"
-            }`,
+            subject: `Re: Your inquiry about ${response.data.data.services?.join(", ") || "our services"
+              }`,
           }));
         }
       } else {
@@ -134,7 +133,7 @@ The GoDigitify Team`,
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
+
     // If changing content, check for and process template variables
     if (name === 'content') {
       // Store the raw content with template variables intact
@@ -154,7 +153,7 @@ The GoDigitify Team`,
   // Function to process custom template content with dynamic variables
   const processCustomContent = (content) => {
     if (!content) return '';
-    
+
     return content
       .replace(/{{name}}/g, query?.name || "Valued Client")
       .replace(/{{services}}/g, query?.services?.join(", ") || "our services")
@@ -172,15 +171,15 @@ The GoDigitify Team`,
     try {
       setSending(true);
       setError("");
-      
+
       // Get the raw content or use the current content if no raw content exists
       const contentToProcess = responseData.rawContent || responseData.content;
-      
+
       // Process content to replace template variables
       const processedContent = processCustomContent(contentToProcess);
 
       const response = await axios.post(
-        `https://godigitify-backend.vercel.app/api/contact/respond-query/${id}`,
+        `https://Godigitify-backend.vercel.app/api/contact/respond-query/${id}`,
         {
           subject: responseData.subject.trim(),
           content: processedContent.trim(),
@@ -390,11 +389,10 @@ The GoDigitify Team`,
                   <button
                     type="button"
                     onClick={() => handleTemplateChange("acknowledgment")}
-                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${
-                      responseData.template === "acknowledgment"
-                        ? "border-[#47216b] bg-purple-50 text-[#47216b]"
-                        : "border-gray-300 hover:border-gray-400"
-                    }`}
+                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${responseData.template === "acknowledgment"
+                      ? "border-[#47216b] bg-purple-50 text-[#47216b]"
+                      : "border-gray-300 hover:border-gray-400"
+                      }`}
                   >
                     <div className="font-medium text-sm">Acknowledgment</div>
                     <div className="text-xs text-gray-500">
@@ -405,11 +403,10 @@ The GoDigitify Team`,
                   <button
                     type="button"
                     onClick={() => handleTemplateChange("consultation")}
-                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${
-                      responseData.template === "consultation"
-                        ? "border-[#47216b] bg-purple-50 text-[#47216b]"
-                        : "border-gray-300 hover:border-gray-400"
-                    }`}
+                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${responseData.template === "consultation"
+                      ? "border-[#47216b] bg-purple-50 text-[#47216b]"
+                      : "border-gray-300 hover:border-gray-400"
+                      }`}
                   >
                     <div className="font-medium text-sm">Consultation</div>
                     <div className="text-xs text-gray-500">
@@ -420,11 +417,10 @@ The GoDigitify Team`,
                   <button
                     type="button"
                     onClick={() => handleTemplateChange("quote")}
-                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${
-                      responseData.template === "quote"
-                        ? "border-[#47216b] bg-purple-50 text-[#47216b]"
-                        : "border-gray-300 hover:border-gray-400"
-                    }`}
+                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${responseData.template === "quote"
+                      ? "border-[#47216b] bg-purple-50 text-[#47216b]"
+                      : "border-gray-300 hover:border-gray-400"
+                      }`}
                   >
                     <div className="font-medium text-sm">Quote Request</div>
                     <div className="text-xs text-gray-500">Send proposal</div>
@@ -433,11 +429,10 @@ The GoDigitify Team`,
                   <button
                     type="button"
                     onClick={() => handleTemplateChange("custom")}
-                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${
-                      responseData.template === "custom"
-                        ? "border-[#47216b] bg-purple-50 text-[#47216b]"
-                        : "border-gray-300 hover:border-gray-400"
-                    }`}
+                    className={`p-3 text-left border rounded-lg transition-colors duration-200 ${responseData.template === "custom"
+                      ? "border-[#47216b] bg-purple-50 text-[#47216b]"
+                      : "border-gray-300 hover:border-gray-400"
+                      }`}
                   >
                     <div className="font-medium text-sm">Custom</div>
                     <div className="text-xs text-gray-500">Write your own</div>
@@ -466,28 +461,28 @@ The GoDigitify Team`,
               </div>
 
               {/* Content */}
-                <div>
-                  <label
-                    htmlFor="content"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Message Content *
-                  </label>
-                  <textarea
-                    id="content"
-                    name="content"
-                    rows="12"
-                    value={responseData.content}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#47216b] focus:border-transparent transition-all duration-200 resize-none"
-                    placeholder="Enter your response message"
-                  />
-                  
-                  <div className="text-xs text-gray-500 mt-1">
-                    Use <span className="font-mono">{'{{name}}'}</span>, <span className="font-mono">{'{{organization}}'}</span>, <span className="font-mono">{'{{services}}'}</span> for dynamic content
-                  </div>
+              <div>
+                <label
+                  htmlFor="content"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Message Content *
+                </label>
+                <textarea
+                  id="content"
+                  name="content"
+                  rows="12"
+                  value={responseData.content}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#47216b] focus:border-transparent transition-all duration-200 resize-none"
+                  placeholder="Enter your response message"
+                />
+
+                <div className="text-xs text-gray-500 mt-1">
+                  Use <span className="font-mono">{'{{name}}'}</span>, <span className="font-mono">{'{{organization}}'}</span>, <span className="font-mono">{'{{services}}'}</span> for dynamic content
                 </div>
+              </div>
 
               {/* Actions */}
               <div className="flex items-center justify-between pt-4 border-t border-gray-200">

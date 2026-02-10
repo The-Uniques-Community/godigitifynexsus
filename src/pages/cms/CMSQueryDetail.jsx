@@ -18,7 +18,7 @@ const CMSQueryDetail = () => {
   const fetchQuery = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`https://godigitify-backend.vercel.app/api/contact/get-query/${id}`, {
+      const response = await axios.get(`https://Godigitify-backend.vercel.app/api/contact/get-query/${id}`, {
         withCredentials: true
       });
 
@@ -43,13 +43,13 @@ const CMSQueryDetail = () => {
 
     try {
       setDeleting(true);
-      const response = await axios.delete(`https://godigitify-backend.vercel.app/api/contact/delete-query/${id}`, {
+      const response = await axios.delete(`https://Godigitify-backend.vercel.app/api/contact/delete-query/${id}`, {
         withCredentials: true
       });
 
       if (response.data.success) {
-        navigate('/cms/manage-queries', { 
-          state: { message: 'Query deleted successfully' } 
+        navigate('/cms/manage-queries', {
+          state: { message: 'Query deleted successfully' }
         });
       } else {
         setError(response.data.message || 'Failed to delete query');
@@ -69,9 +69,9 @@ const CMSQueryDetail = () => {
       responded: { bg: 'bg-green-100', text: 'text-green-800', label: 'Responded' },
       closed: { bg: 'bg-gray-100', text: 'text-gray-800', label: 'Closed' }
     };
-    
+
     const config = statusConfig[status] || statusConfig.pending;
-    
+
     return (
       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${config.bg} ${config.text}`}>
         {config.label}
@@ -147,7 +147,7 @@ const CMSQueryDetail = () => {
             <p className="text-gray-600">View and manage contact query</p>
           </div>
         </div>
-        
+
         <div className="flex items-center space-x-3">
           {getStatusBadge(query.status)}
         </div>
@@ -168,7 +168,7 @@ const CMSQueryDetail = () => {
                   <label className="block text-sm font-medium text-gray-500 mb-1">Full Name</label>
                   <p className="text-lg font-medium text-gray-900">{query.name}</p>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-500 mb-1">Email Address</label>
                   <div className="flex items-center space-x-2">
@@ -296,7 +296,7 @@ const CMSQueryDetail = () => {
                 <label className="block text-sm font-medium text-gray-500 mb-1">Query ID</label>
                 <p className="text-sm font-mono text-gray-900">{query._id}</p>
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-500 mb-1">Status</label>
                 {getStatusBadge(query.status)}
@@ -317,11 +317,10 @@ const CMSQueryDetail = () => {
               {query.priority && (
                 <div>
                   <label className="block text-sm font-medium text-gray-500 mb-1">Priority</label>
-                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                    query.priority === 'high' ? 'bg-red-100 text-red-800' :
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${query.priority === 'high' ? 'bg-red-100 text-red-800' :
                     query.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-green-100 text-green-800'
-                  }`}>
+                      'bg-green-100 text-green-800'
+                    }`}>
                     {query.priority.charAt(0).toUpperCase() + query.priority.slice(1)}
                   </span>
                 </div>
@@ -371,11 +370,10 @@ const CMSQueryDetail = () => {
                 <button
                   onClick={handleDelete}
                   disabled={deleting}
-                  className={`w-full px-4 py-2 rounded-lg transition-colors duration-200 flex items-center justify-center ${
-                    deleteConfirm
-                      ? 'bg-red-600 hover:bg-red-700 text-white'
-                      : 'bg-red-100 hover:bg-red-200 text-red-700'
-                  } disabled:opacity-50 disabled:cursor-not-allowed`}
+                  className={`w-full px-4 py-2 rounded-lg transition-colors duration-200 flex items-center justify-center ${deleteConfirm
+                    ? 'bg-red-600 hover:bg-red-700 text-white'
+                    : 'bg-red-100 hover:bg-red-200 text-red-700'
+                    } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   {deleting ? (
                     <>
@@ -398,7 +396,7 @@ const CMSQueryDetail = () => {
                     </>
                   )}
                 </button>
-                
+
                 {deleteConfirm && (
                   <button
                     onClick={() => setDeleteConfirm(false)}
@@ -423,7 +421,7 @@ const CMSQueryDetail = () => {
                   {query.services?.length || 0}
                 </span>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Responses Sent</span>
                 <span className="text-sm font-medium text-gray-900">

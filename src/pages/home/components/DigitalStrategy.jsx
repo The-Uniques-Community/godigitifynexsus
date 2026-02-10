@@ -10,67 +10,67 @@ gsap.registerPlugin(ScrollTrigger);
 const strategySteps = [
   {
     number: "01",
-    titleStart: "Understand the",
-    titleHighlight: "Vision",
+    titleStart: "Discovery &",
+    titleHighlight: "Audit",
     keywords: [
-      "Brand Discovery",
-      "Goal-Oriented Strategy",
-      "Audience Analysis",
-      "Digital Brand Clarity",
-      "Vision Alignment",
-      "Purpose-Driven Planning",
+      "Systems Analysis",
+      "Growth Bottleneck Mapping",
+      "Technology Stack Review",
+      "Data Flow Assessment",
+      "Integration Gaps",
+      "Performance Baseline",
     ],
     description:
-      "We begin by understanding your brand’s goals, audience, and purpose. Every digital journey starts with clarity — so we listen, learn, and uncover what success looks like for you.",
+      "We begin with a comprehensive audit of your current digital ecosystem. We identify disconnected systems, manual bottlenecks, and opportunities for automation — giving you a clear picture of what's working and what's holding you back.",
     image: vision
-      
+
   },
   {
     number: "02",
-    titleStart: "Strategize with",
-    titleHighlight: "Impact",
+    titleStart: "System",
+    titleHighlight: "Blueprinting",
     keywords: [
-      "Insight-Driven Planning",
-      "Data-Backed Strategies",
-      "Brand Voice Alignment",
-      "Market Needs Mapping",
-      "Creative Ideation",
-      "Actionable Strategy",
+      "Architecture Design",
+      "Integration Planning",
+      "Automation Workflows",
+      "Data Layer Mapping",
+      "Scalability Framework",
+      "Security Protocols",
     ],
     description:
-      "Our team transforms insights into ideas — crafting creative and data-backed strategies that align with your brand's voice and market needs.",
+      "We design a unified system architecture that connects your brand, technology, and data. Every component is planned for integration, automation, and measurable outcomes — no isolated solutions.",
     image: impact
   },
   {
     number: "03",
-    titleStart: "Execute Everything",
-    titleHighlight: "Seamlessly",
+    titleStart: "Implementation &",
+    titleHighlight: "Integration",
     keywords: [
-      "End-to-End Execution",
-      "Digital Branding",
-      "Website Creation",
-      "Social Media Management",
-      "Printables Design",
-      "Event Campaign Management",
+      "Platform Deployment",
+      "API Integration",
+      "Automation Setup",
+      "Data Pipeline Build",
+      "Security Hardening",
+      "Performance Optimization",
     ],
     description:
-      "Just tell us what your event or campaign is about — and we handle it all. From digital branding, website creation, social media management, to printables and complete event execution, we bring your vision to life with zero hassle.",
+      "We build and deploy your growth infrastructure — connecting platforms, automating workflows, and integrating data sources. Every system is stress-tested for security, speed, and scale before launch.",
     image: seamless
   },
   {
     number: "04",
-    titleStart: "Analyze, Refine,",
-    titleHighlight: "Growth",
+    titleStart: "Measurement &",
+    titleHighlight: "Optimization",
     keywords: [
-      "Performance Tracking",
-      "Optimization Strategy",
-      "Touchpoint Analysis",
-      "Growth Monitoring",
-      "ROI Evaluation",
-      "Digital Presence Scaling",
+      "Performance Dashboards",
+      "KPI Tracking",
+      "A/B System Testing",
+      "Continuous Improvement",
+      "ROI Reporting",
+      "Predictive Scaling",
     ],
     description:
-      "We track every touchpoint, evaluate performance, and continuously optimize your digital presence — ensuring results that grow with your brand.",
+      "We measure what matters. Custom dashboards track system performance, revenue impact, and efficiency gains. We continuously optimize based on real data — ensuring your infrastructure evolves with your growth.",
     image: growth,
   },
 ];
@@ -101,31 +101,31 @@ const Card = ({
       start: "top 70%",
       end: "bottom 20%",
       onEnter: () => {
-        gsap.to(card, { 
-          opacity: 1, 
-          duration: 1.5, 
-          ease: "power3.out" 
+        gsap.to(card, {
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out"
         });
       },
       onLeave: () => {
-        gsap.to(card, { 
-          opacity: 0.2, 
-          duration: 1.2, 
-          ease: "power3.inOut" 
+        gsap.to(card, {
+          opacity: 0.2,
+          duration: 1.2,
+          ease: "power3.inOut"
         });
       },
       onEnterBack: () => {
-        gsap.to(card, { 
-          opacity: 1, 
-          duration: 1.5, 
-          ease: "power3.out" 
+        gsap.to(card, {
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out"
         });
       },
       onLeaveBack: () => {
-        gsap.to(card, { 
-          opacity: 0, 
-          duration: 1.2, 
-          ease: "power3.inOut" 
+        gsap.to(card, {
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.inOut"
         });
       },
     });
@@ -238,7 +238,7 @@ const DigitalStrategy = () => {
         OUR BLOG
       </h3> */}
       <h2 className="text-3xl md:text-7xl pb-5 w-max font-bold leading-tight  lg:mb-32 md:mb-16 mb-4 text-[#47216b]">
-         How We Work at <br className="lg:hidden md:hidden" />GoDigitfy
+        How We Work at <br className="lg:hidden md:hidden" />Godigitfy
       </h2>
       {/* <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
         Stay updated with our latest articles, industry trends, and expert

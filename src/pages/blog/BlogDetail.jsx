@@ -17,7 +17,7 @@ const BlogDetail = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-blog/${id}`);
+        const response = await axios.get(`https://Godigitify-backend.vercel.app/api/blogs/get-blog/${id}`);
         if (response.data.success) {
           setBlog(response.data.blog);
         } else {
@@ -39,10 +39,10 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchRelatedBlogs = async () => {
       if (!blog) return;
-      
+
       try {
         setRelatedLoading(true);
-        const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/${id}/related?page=1&limit=3`);
+        const response = await axios.get(`https://Godigitify-backend.vercel.app/api/blogs/${id}/related?page=1&limit=3`);
         if (response.data.success) {
           setRelatedBlogs(response.data.relatedBlogs);
         }
@@ -74,7 +74,7 @@ const BlogDetail = () => {
           <div className="text-6xl mb-4">📄</div>
           <h2 className="text-2xl font-bold text-[#001330] mb-2">Article Not Found</h2>
           <p className="text-[#b4b4b4] mb-6">{error || 'The article you are looking for does not exist.'}</p>
-          <button 
+          <button
             onClick={() => navigate('/blog')}
             className="bg-[#47216b] hover:bg-[#001330] text-white px-6 py-3 rounded-full transition-colors duration-200"
           >
@@ -108,7 +108,7 @@ const BlogDetail = () => {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               {blog.mainHeading}
             </h1>
-            
+
             <div className="flex items-center space-x-4 text-gray-200">
               <div className="flex items-center space-x-2">
                 <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
@@ -117,14 +117,14 @@ const BlogDetail = () => {
                 <div>
                   <p className="font-medium">{blog.author}</p>
                   <div className="flex items-center space-x-2 text-sm text-gray-300">
-                    <span>{new Date(blog.publishedAt).toLocaleDateString('en-US', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
+                    <span>{new Date(blog.publishedAt).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
                     })}</span>
                     <span>•</span>
                     <span>{blog.readTime} min read</span>
-                    
+
                   </div>
                 </div>
               </div>
@@ -147,9 +147,9 @@ const BlogDetail = () => {
       {/* Cover Image */}
       {blog.coverImage && (
         <div className="relative max-w-3xl mx-auto h-64 md:h-80 lg:h-96 overflow-hidden">
-          <img 
-            src={blog.coverImage} 
-            alt="Article cover" 
+          <img
+            src={blog.coverImage}
+            alt="Article cover"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
@@ -173,7 +173,7 @@ const BlogDetail = () => {
                   {section.subheading}
                 </h2>
               )}
-              
+
               <div className="space-y-6">
                 {section?.contentBlocks?.map((block, bIdx) => {
                   if (block.type === "paragraph") {
@@ -183,7 +183,7 @@ const BlogDetail = () => {
                       </p>
                     );
                   }
-                  
+
                   if (block.type === "bullet") {
                     return (
                       <div key={bIdx} className="bg-gray-50 rounded-lg p-6 border-l-4 border-[#47216b]">
@@ -198,7 +198,7 @@ const BlogDetail = () => {
                       </div>
                     );
                   }
-                  
+
                   if (block.type === "image") {
                     return (
                       <figure key={bIdx} className="my-8">
@@ -210,7 +210,7 @@ const BlogDetail = () => {
                       </figure>
                     );
                   }
-                  
+
                   return null;
                 })}
               </div>
@@ -245,7 +245,7 @@ const BlogDetail = () => {
                 <p className="text-[#b4b4b4] text-sm">Published on {new Date(blog.publishedAt).toLocaleDateString()}</p>
               </div>
             </div>
-            
+
             <div className="flex space-x-3">
               <button className="bg-gray-100 hover:bg-gray-200 text-[#001330] px-4 py-2 rounded-full transition-colors duration-200 flex items-center space-x-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,8 +253,8 @@ const BlogDetail = () => {
                 </svg>
                 <span>Share</span>
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => navigate('/blog')}
                 className="bg-[#47216b] hover:bg-[#001330] text-white px-6 py-2 rounded-full transition-colors duration-200 flex items-center space-x-2"
               >
@@ -298,7 +298,7 @@ const BlogDetail = () => {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="p-6">
                     <div className="flex items-center text-sm text-gray-500 mb-3">
                       <span>{relatedBlog.author}</span>
@@ -307,15 +307,15 @@ const BlogDetail = () => {
                       <span className="mx-2">•</span>
                       <span>{relatedBlog.readTime} min read</span>
                     </div>
-                    
+
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#47216b] transition-colors duration-300 line-clamp-2">
                       {relatedBlog.mainHeading}
                     </h3>
-                    
+
                     <p className="text-gray-600 mb-4 line-clamp-3">
                       {relatedBlog.description}
                     </p>
-                    
+
                     {relatedBlog.tags && (
                       <div className="flex flex-wrap gap-2 mb-4">
                         {relatedBlog.tags.slice(0, 3).map((tag, index) => (
@@ -325,7 +325,7 @@ const BlogDetail = () => {
                         ))}
                       </div>
                     )}
-                    
+
                     <div className="flex items-center text-[#47216b] font-semibold group-hover:text-gray-900 transition-colors duration-300">
                       Read More
                       <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

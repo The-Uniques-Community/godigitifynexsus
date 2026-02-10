@@ -18,7 +18,7 @@ const Blog = () => {
     const fetchBlogs = async () => {
       try {
         setLoading(true)
-        const response = await axios.get(`https://godigitify-backend.vercel.app/api/blogs/get-all-blogs?page=${currentPage}&limit=6`)
+        const response = await axios.get(`https://Godigitify-backend.vercel.app/api/blogs/get-all-blogs?page=${currentPage}&limit=6`)
         if (response.data.success) {
           setBlogs(response.data.blogs)
           setTotalPages(response.data.totalPages)
@@ -37,13 +37,13 @@ const Blog = () => {
   // Filter blogs based on search and category
   const filteredBlogs = blogs.filter(blog => {
     const matchesSearch = blog.mainHeading.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         blog.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         blog.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-    
+      blog.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      blog.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+
     // For now, we'll filter by tags since the API doesn't return category field
-    const matchesCategory = selectedCategory === 'All' || 
-                           blog.tags?.some(tag => tag.toLowerCase().includes(selectedCategory.toLowerCase()))
-    
+    const matchesCategory = selectedCategory === 'All' ||
+      blog.tags?.some(tag => tag.toLowerCase().includes(selectedCategory.toLowerCase()))
+
     return matchesSearch && matchesCategory
   })
 
@@ -65,10 +65,10 @@ const Blog = () => {
                 Insights & <span className="text-gray-900">Innovations</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl">
-                Stay ahead of the curve with our latest articles, industry insights, and expert opinions. 
+                Stay ahead of the curve with our latest articles, industry insights, and expert opinions.
                 We share our knowledge to help you navigate the evolving landscape of technology and business.
               </p>
-              
+
               {/* Statistics */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
                 <div className="text-center lg:text-left">
@@ -85,13 +85,13 @@ const Blog = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Image Section - 3/8 */}
             <div className="lg:col-span-3 order-1 lg:order-2">
               <div className="relative">
-                <img 
-                  src={BlogImg} 
-                  alt="Innovation and Insights" 
+                <img
+                  src={BlogImg}
+                  alt="Innovation and Insights"
                   className="w-full h-auto "
                 />
               </div>
@@ -124,11 +124,10 @@ const Blog = () => {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                    selectedCategory === category
-                      ? 'bg-[#47216b] text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${selectedCategory === category
+                    ? 'bg-[#47216b] text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   {category}
                 </button>
@@ -161,8 +160,8 @@ const Blog = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredBlogs.map((blog) => (
-                <Link 
-                  key={blog._id} 
+                <Link
+                  key={blog._id}
                   to={`/blog/${blog._id}`}
                   className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
                 >
@@ -180,7 +179,7 @@ const Blog = () => {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="p-6">
                     <div className="flex items-center text-sm text-gray-500 mb-3">
                       <span>{blog.author}</span>
@@ -189,15 +188,15 @@ const Blog = () => {
                       <span className="mx-2">•</span>
                       <span>{blog.readTime} min read</span>
                     </div>
-                    
+
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#47216b] transition-colors duration-300 line-clamp-2">
                       {blog.mainHeading}
                     </h3>
-                    
+
                     <p className="text-gray-600 mb-4 line-clamp-3">
                       {blog.description}
                     </p>
-                    
+
                     {blog.tags && (
                       <div className="flex flex-wrap gap-2 mb-4">
                         {blog.tags.slice(0, 3).map((tag, index) => (
@@ -207,7 +206,7 @@ const Blog = () => {
                         ))}
                       </div>
                     )}
-                    
+
                     <div className="flex items-center text-[#47216b] font-semibold group-hover:text-gray-900 transition-colors duration-300">
                       Read More
                       <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,37 +233,34 @@ const Blog = () => {
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
-                  currentPage === 1
-                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
-                }`}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${currentPage === 1
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
+                  }`}
               >
                 Previous
               </button>
-              
+
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
-                    currentPage === page
-                      ? 'bg-[#47216b] text-white'
-                      : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
-                  }`}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${currentPage === page
+                    ? 'bg-[#47216b] text-white'
+                    : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
+                    }`}
                 >
                   {page}
                 </button>
               ))}
-              
+
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
-                  currentPage === totalPages
-                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
-                }`}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${currentPage === totalPages
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : 'bg-white text-[#47216b] hover:bg-[#47216b] hover:text-white border border-[#47216b]'
+                  }`}
               >
                 Next
               </button>

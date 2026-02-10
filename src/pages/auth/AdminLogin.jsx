@@ -20,7 +20,7 @@ const AdminLogin = () => {
   useEffect(() => {
     const cursor = cursorRef.current;
     const cursorDot = cursorDotRef.current;
-    
+
     if (!cursor || !cursorDot) return;
 
     let mouseX = 0;
@@ -88,7 +88,7 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://godigitify-backend.vercel.app/api/admin/login', {
+      const response = await axios.post('https://Godigitify-backend.vercel.app/api/admin/login', {
         email: formData.email,
         password: formData.password
       }, {
@@ -99,7 +99,7 @@ const AdminLogin = () => {
         // Store admin info in localStorage for UI purposes
         localStorage.setItem('adminInfo', JSON.stringify(response.data.admin));
         console.log('Login successful, admin info stored:', response.data.admin);
-        
+
         // Navigate to intended destination or dashboard
         const from = location.state?.from?.pathname || '/cms/dashboard';
         console.log('Navigating to:', from);
@@ -148,7 +148,7 @@ const AdminLogin = () => {
             <div className="text-[#47216b] font-bold text-2xl">GD</div>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-            GoDigitify
+            Godigitify
           </h1>
           <p className="text-gray-200 text-lg">
             Admin Login
@@ -237,7 +237,7 @@ const AdminLogin = () => {
               </div>
             </div>
 
-          
+
             {/* Submit Button */}
             <button
               type="submit"
@@ -254,7 +254,7 @@ const AdminLogin = () => {
               )}
             </button>
           </form>
-          
+
         </div>
 
         {/* Back to Website */}

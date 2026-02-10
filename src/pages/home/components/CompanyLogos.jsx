@@ -20,7 +20,7 @@ const CompanyLogos = () => {
       id: 3,
       name: "AbroadEducares",
       logo: "https://abroadeducares.com/_next/static/media/blackLogo.667801bb.png",
-      link:"https://abroadeducares.com/"
+      link: "https://abroadeducares.com/"
     },
     // {
     //   id: 4,
@@ -36,10 +36,10 @@ const CompanyLogos = () => {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Trusted by <span className="text-[#47216b]">Industry Leaders</span>
+            Trusted by <span className="text-[#47216b]">Growing Companies</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Join the companies that trust us with their digital transformation
+            Organizations that chose systems over services for sustainable growth
           </p>
         </div>
 
@@ -51,11 +51,10 @@ const CompanyLogos = () => {
               to={company.link}
               rel="noopener noreferrer"
               target="_blank"
-              className={`relative group flex items-center justify-center p-4 md:p-6 lg:p-8 transition-all duration-500 ease-out hover:bg-gray-50 hover:shadow-lg ${
-                (index + 1) % 5 !== 0 &&
+              className={`relative group flex items-center justify-center p-4 md:p-6 lg:p-8 transition-all duration-500 ease-out hover:bg-gray-50 hover:shadow-lg ${(index + 1) % 5 !== 0 &&
                 !(index === 3 && companies.length === 4) &&
                 "lg:border-r lg:border-[#47216b]/30"
-              }`}
+                }`}
             >
               <div>
                 <div className="flex items-center justify-center w-full h-full">
