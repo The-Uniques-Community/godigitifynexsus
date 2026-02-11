@@ -22,7 +22,7 @@ const Footer = () => {
     <footer className="w-full fixed bottom-0 z-0 bg-[#47216b] pt-16 pb-12 px-4 md:px-0 flex flex-col items-center" style={{ minHeight: '340px' }}>
       {/* Logo Image */}
       <div className="flex justify-center items-center mb-8 md:mb-16 pt-32 md:pt-64">
-        <img src={Logo} alt="GoDigitify Logo" className="w-64 md:w-[1000px] h-auto object-contain" />
+        <img src={Logo} alt="Godigitify Logo" className="w-64 md:w-[1000px] h-auto object-contain" />
       </div>
       {/* Social + Nav */}
       <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-between gap-8 mb-8">

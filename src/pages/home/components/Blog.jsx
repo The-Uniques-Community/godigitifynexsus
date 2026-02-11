@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import Blogmain from '../../../assets/innovation.png'
+import { getPaginatedBlogs } from '../../../data/blogData'
 
 export default function Blog() {
   const [currentPostIndex, setCurrentPostIndex] = useState(0)
@@ -20,8 +21,11 @@ export default function Blog() {
           setError('Failed to load blogs')
         }
       } catch (error) {
-        console.error('Failed to fetch blogs:', error)
-        setError(error.message || 'Failed to fetch blogs')
+        console.error('Failed to fetch blogs from API, using fallback data:', error)
+        // Use fallback data when API fails
+        const fallbackData = getPaginatedBlogs(1, 6)
+        setBlogPosts(fallbackData.blogs)
+        setError(null) // Clear error since we have fallback data
       } finally {
         setLoading(false)
       }

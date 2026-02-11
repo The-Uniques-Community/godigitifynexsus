@@ -556,10 +556,10 @@ const CustomSolutions = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-[#47216b] mb-4">
-              GoDigitfy Onboarding Flow
+              Godigitify Onboarding Flow
             </h2>
             <p className="text-xl text-gray-700">
-              Stress-Free, End‑to‑End Service – We Digitfy Your Vision in 6 Simple Steps
+              Stress-Free, End‑to‑End Service – We Digitize Your Vision in 6 Simple Steps
             </p>
           </motion.div>
 
@@ -906,7 +906,7 @@ const CustomSolutions = () => {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-4xl md:text-6xl font-bold mb-4">
-                Why Choose <span className="text-[#47216b]">GoDigitfy</span>
+                Why Choose <span className="text-[#47216b]">Godigitify</span>
               </h2>
               <div className="w-16 h-1 bg-[#47216b] mx-auto"></div>
             </motion.div>

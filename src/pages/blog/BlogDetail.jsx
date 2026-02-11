@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import { getBlogById, getRelatedBlogs } from '../../data/blogData';
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -24,8 +25,15 @@ const BlogDetail = () => {
           setError('Blog not found');
         }
       } catch (err) {
-        setError('Failed to fetch blog');
-        console.error(err);
+        console.error('Failed to fetch blog from API, using fallback data:', err);
+        // Use fallback data when API fails
+        const fallbackBlog = getBlogById(id);
+        if (fallbackBlog) {
+          setBlog(fallbackBlog);
+          setError(null);
+        } else {
+          setError('Blog not found');
+        }
       } finally {
         setLoading(false);
       }
@@ -47,7 +55,10 @@ const BlogDetail = () => {
           setRelatedBlogs(response.data.relatedBlogs);
         }
       } catch (err) {
-        console.error('Failed to fetch related blogs:', err);
+        console.error('Failed to fetch related blogs from API, using fallback data:', err);
+        // Use fallback data when API fails
+        const fallbackRelated = getRelatedBlogs(id, 3);
+        setRelatedBlogs(fallbackRelated);
       } finally {
         setRelatedLoading(false);
       }

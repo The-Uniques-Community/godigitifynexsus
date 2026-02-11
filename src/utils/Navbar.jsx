@@ -95,7 +95,7 @@ const Navbar = () => {
                   "/services"
                 )} flex items-center space-x-1`}
               >
-                <span>Systems</span>
+                <span>Services</span>
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${serviceDropdownOpen ? "rotate-180" : ""
                     }`}
@@ -121,7 +121,7 @@ const Navbar = () => {
                     className="block px-4 py-2 text-gray-700 hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
                     onClick={() => setServiceDropdownOpen(false)}
                   >
-                    Growth Systems
+                    System and Architecture
                   </Link>
                 </div>
               )}
@@ -278,7 +278,7 @@ const Navbar = () => {
                     aria-expanded={serviceDropdownOpen}
                     aria-controls="mobile-service-dropdown"
                   >
-                    <span>Systems</span>
+                    <span>Services</span>
                     <svg
                       className={`w-5 h-5 ml-2 transition-transform ${serviceDropdownOpen ? "rotate-180" : ""}`}
                       fill="none"
@@ -295,7 +295,7 @@ const Navbar = () => {
                         className="block px-2 py-2 text-gray-600 rounded hover:text-[#47216b] hover:bg-gray-50 transition-colors duration-300"
                         onClick={toggleMobileMenu}
                       >
-                        Growth Systems
+                        System and Architecture
                       </Link>
                     </div>
                   )}

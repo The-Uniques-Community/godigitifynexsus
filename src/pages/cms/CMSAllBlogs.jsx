@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import { getPaginatedBlogs } from '../../data/blogData';
 
 const CMSAllBlogs = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -58,8 +59,18 @@ const CMSAllBlogs = () => {
         setError('Failed to fetch blogs');
       }
     } catch (err) {
-      console.error('Error fetching blogs:', err);
-      setError('Failed to load blogs. Please try again.');
+      console.error('Error fetching blogs from API, using fallback data:', err);
+      // Use fallback data when API fails
+      const fallbackData = getPaginatedBlogs(page, pagination.limit);
+      setBlogs(fallbackData.blogs);
+      setPagination(prev => ({
+        ...prev,
+        currentPage: fallbackData.currentPage,
+        totalPages: fallbackData.totalPages,
+        totalBlogs: fallbackData.totalBlogs,
+        hasNext: fallbackData.currentPage < fallbackData.totalPages,
+        hasPrev: fallbackData.currentPage > 1
+      }));
     } finally {
       setLoading(false);
     }

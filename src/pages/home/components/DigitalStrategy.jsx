@@ -238,7 +238,7 @@ const DigitalStrategy = () => {
         OUR BLOG
       </h3> */}
       <h2 className="text-3xl md:text-7xl pb-5 w-max font-bold leading-tight  lg:mb-32 md:mb-16 mb-4 text-[#47216b]">
-        How We Work at <br className="lg:hidden md:hidden" />Godigitfy
+        How We Work at <br className="lg:hidden md:hidden" />Godigitify
       </h2>
       {/* <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
         Stay updated with our latest articles, industry trends, and expert

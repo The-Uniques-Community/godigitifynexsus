@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   servicePages,
-  categories
+  categories,
+  serviceOfferings
 } from './data/dbaData.js';
 import { fetchCategoryBySlug } from './data/apiService.js';
 import axios from 'axios';
@@ -36,26 +37,34 @@ const DBADetail = () => {
         setLoading(true);
         setError(null);
 
+        // Get the fallback data from servicePages for this slug
+        const fallbackData = servicePages[slug] || {};
+
         // Try to get data from the API endpoint
         const response = await axios.get(`${API_URL}/categories/${slug}`);
 
         if (response.data) {
-          // Process and enrich the data
+          // Process and enrich the data - merge API data with fallback
           const categoryData = {
-            ...response.data,
-            // Ensure all required properties exist, fill with defaults if not
-            name: response.data.name || categoryFallback.name,
+            ...fallbackData, // Start with fallback data (includes heroImage, overview, etc.)
+            ...response.data, // Override with API data if present
+            // Ensure all required properties exist
+            name: response.data.name || fallbackData.title || categoryFallback.name,
             color: '#47216b',
             slug: response.data.slug || slug,
             services: response.data.services || fallbackServiceList,
-            stats: response.data.stats || [],
-            whyChooseUs: response.data.whyChooseUs || [
-              "Industry Expertise",
-              "Cutting-Edge Technology",
-              "Dedicated Support",
-              "Proven Results"
+            heroImage: response.data.heroImage || fallbackData.heroImage || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1350&q=80',
+            overview: response.data.overview || fallbackData.overview || 'Comprehensive growth infrastructure solutions.',
+            stats: response.data.stats || fallbackData.stats || [],
+            whyChooseUs: response.data.whyChooseUs || fallbackData.whyChooseUs || [
+              "Systems-first architecture",
+              "Scalable infrastructure",
+              "Measurable outcomes",
+              "Continuous optimization"
             ],
-            testimonials: response.data.testimonials || []
+            process: response.data.process || fallbackData.process || [],
+            testimonials: response.data.testimonials || fallbackData.testimonials || [],
+            companies: response.data.companies || fallbackData.companies || []
           };
 
           setCategory(categoryData);
@@ -65,17 +74,18 @@ const DBADetail = () => {
       } catch (err) {
         console.error('Failed to fetch category details from new API:', err);
 
-        // Fallback to old API
-        try {
-          const data = await fetchCategoryBySlug(slug);
-          if (data) {
-            setCategory(data);
-          } else {
-            // If old API also fails, use static data
-            setCategory(categoryFallback);
-          }
-        } catch (fallbackErr) {
-          console.error('Fallback API also failed:', fallbackErr);
+        // Fallback to servicePages static data
+        const fallbackData = servicePages[slug];
+        if (fallbackData) {
+          setCategory({
+            ...fallbackData,
+            name: fallbackData.title,
+            slug: slug,
+            color: '#47216b',
+            services: fallbackServiceList
+          });
+        } else {
+          // Last resort: use category fallback
           setCategory(categoryFallback);
         }
       } finally {
@@ -119,61 +129,25 @@ const DBADetail = () => {
     { name: 'React', logo: 'https://via.placeholder.com/120x60/47216b/ffffff?text=React' }
   ];
 
-  // Fallback service list if API data is not available
-  const fallbackServiceList = [
+  // Get category-specific service list from serviceOfferings
+  const fallbackServiceList = serviceOfferings[slug] || [
     {
-      id: 'custom-web-dev',
-      title: 'Custom Web Development',
-      description: 'Tailored web solutions that meet your specific business needs and objectives.',
-      icon: 'code'
-    },
-    {
-      id: 'web-personalization',
-      title: 'Web Personalization',
-      description: 'Create unique user experiences based on visitor behavior and preferences.',
-      icon: 'person'
-    },
-    {
-      id: 'ui-ux-design',
-      title: 'UI/UX Design',
-      description: 'Intuitive, user-centered design that enhances engagement and conversions.',
-      icon: 'design'
-    },
-    {
-      id: 'seo',
-      title: 'Search Engine Optimization',
-      description: 'Improve your visibility online and drive more organic traffic to your website.',
+      id: 'growth-audit',
+      title: 'Growth Systems Audit',
+      description: 'Comprehensive analysis of your current digital infrastructure and growth opportunities.',
       icon: 'search'
     },
     {
-      id: 'crm-erp',
-      title: 'CRM & ERP Solutions',
-      description: 'Streamline your business operations with integrated management systems.',
-      icon: 'settings'
+      id: 'system-architecture',
+      title: 'System Architecture Design',
+      description: 'Blueprint development for unified growth infrastructure connecting all operations.',
+      icon: 'architecture'
     },
     {
-      id: 'ecommerce',
-      title: 'E-Commerce Development',
-      description: 'Build powerful online stores that drive sales and improve customer experience.',
-      icon: 'shopping'
-    },
-    {
-      id: 'email-marketing',
-      title: 'Email Marketing',
-      description: 'Connect with your audience through targeted, effective email campaigns.',
-      icon: 'mail'
-    },
-    {
-      id: 'marketing-automation',
-      title: 'Marketing Automation',
-      description: 'Save time and increase efficiency with automated marketing workflows.',
+      id: 'automation-setup',
+      title: 'Automation Implementation',
+      description: 'Deploy intelligent automation that eliminates manual bottlenecks and scales operations.',
       icon: 'automation'
-    },
-    {
-      id: 'ai-chatbots',
-      title: 'AI-Powered Chatbots',
-      description: 'Enhance customer service with intelligent, conversational AI solutions.',
-      icon: 'chat'
     }
   ];
 

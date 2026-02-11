@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getBlogById } from '../../data/blogData';
 
 const BlogDetailPage = () => {
   const { id } = useParams();
@@ -13,7 +14,14 @@ const BlogDetailPage = () => {
   useEffect(() => {
     axios.get(`https://Godigitify-backend.vercel.app/api/blogs/get-blog/${id}`)
       .then(res => setBlog(res.data.blog))
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error('Error fetching blog from API, using fallback data:', err);
+        // Use fallback data when API fails
+        const fallbackBlog = getBlogById(id);
+        if (fallbackBlog) {
+          setBlog(fallbackBlog);
+        }
+      });
   }, [id]);
 
   const handleDelete = async () => {

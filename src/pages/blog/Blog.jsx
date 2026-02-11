@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import BlogImg from '../../assets/innovation.png'
+import { getPaginatedBlogs } from '../../data/blogData'
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -25,7 +26,12 @@ const Blog = () => {
           setTotalBlogs(response.data.totalBlogs)
         }
       } catch (error) {
-        console.error('Failed to fetch blogs:', error)
+        console.error('Failed to fetch blogs from API, using fallback data:', error)
+        // Use fallback data when API fails
+        const fallbackData = getPaginatedBlogs(currentPage, 6)
+        setBlogs(fallbackData.blogs)
+        setTotalPages(fallbackData.totalPages)
+        setTotalBlogs(fallbackData.totalBlogs)
       } finally {
         setLoading(false)
       }
