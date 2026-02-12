@@ -19,6 +19,12 @@ const Contact = () => {
   const [error, setError] = useState('')
   const [emailError, setEmailError] = useState('')
 
+  const trackPixelEvent = (eventName) => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      window.fbq('track', eventName)
+    }
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -101,6 +107,8 @@ const Contact = () => {
 
       if (response.data.success) {
         setSubmitted(true)
+        trackPixelEvent('Contact')
+        trackPixelEvent('Lead')
         // Reset form
         setFormData({
           name: '',
