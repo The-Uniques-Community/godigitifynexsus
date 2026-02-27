@@ -38,7 +38,7 @@ const InitialLoader = ({ onComplete }) => {
   if (!started) {
     return (
       <div
-        className="fixed inset-0 bg-black text-white flex items-center justify-center z-[9999] cursor-pointer"
+        className="fixed inset-0 bg-white text-black flex items-center justify-center z-[9999] cursor-pointer"
         onClick={() => setStarted(true)}
       >
         <p className="text-2xl">Tap anywhere to begin</p>
@@ -50,7 +50,7 @@ const InitialLoader = ({ onComplete }) => {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 bg-black flex items-center justify-center z-[999]"
+      className="fixed inset-0 bg-white flex items-center justify-center z-[999]"
     >
       <video
         ref={videoRef}
