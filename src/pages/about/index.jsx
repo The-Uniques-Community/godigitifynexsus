@@ -22,15 +22,15 @@ const About = () => {
       bio: "Operational strategist ensuring seamless project execution, organizational efficiency, and alignment between innovation and execution excellence.",
       linkedin: "https://www.linkedin.com/in/abhishek-mishra-b6a80224a/",
     },
-    {
-      id: 3,
-      name: "Kumar Sujal",
-      role: "Head of Product Strategy & Development",
-      image:
-        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum4BvIOmxnuBQDwqki5StcHL06KrMghUGEalm7",
-      bio: "Dynamic product strategist blending user insights with market intelligence to design scalable, impactful digital solutions that define the future.",
-      linkedin: "https://www.linkedin.com/in/kumar-sujal/",
-    },
+    // {
+    //   id: 3,
+    //   name: "Kumar Sujal",
+    //   role: "Head of Product Strategy & Development",
+    //   image:
+    //     "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum4BvIOmxnuBQDwqki5StcHL06KrMghUGEalm7",
+    //   bio: "Dynamic product strategist blending user insights with market intelligence to design scalable, impactful digital solutions that define the future.",
+    //   linkedin: "https://www.linkedin.com/in/kumar-sujal/",
+    // },
     {
       id: 4,
       name: "Aryan Kamboj",
