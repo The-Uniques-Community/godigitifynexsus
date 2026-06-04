@@ -7,46 +7,56 @@ const About = () => {
     {
       id: 1,
       name: "Niraj Gupta",
-      role: "Chief Marketing & Growth Officer",
+      role: "Chief Revenue Officer",
       image:
         "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumjhrHKDEKYdovOsGfC3D9tNMk6nXaAzRVqy05",
-      bio: "Visionary marketing leader spearheading brand growth, strategic partnerships, and digital transformation to drive business expansion and global presence.",
+      bio: "Building North India's growth infrastructure company for D2C, EV, and real estate brands.
+Godigitify is not a digital agency. We build the systems, performance marketing, retention infrastructure, SEO, and tech, that make growth predictable, not just possible.",
       linkedin: "https://www.linkedin.com/in/niraj-gupta-04b3ba255/",
     },
     {
       id: 2,
       name: "Abhishek Mishra",
-      role: "Head Of Operations",
+      role: "Chief Marketing Officer",
       image:
         "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumR0pTg4mu2iQAmoaFD3d9eMskP7J6LXV4IRly",
-      bio: "Operational strategist ensuring seamless project execution, organizational efficiency, and alignment between innovation and execution excellence.",
+      bio: "Visionary marketing leader spearheading brand growth, strategic partnerships, and digital transformation to drive business expansion and global presence.",
       linkedin: "https://www.linkedin.com/in/abhishek-mishra-b6a80224a/",
     },
-    // {
-    //   id: 3,
-    //   name: "Kumar Sujal",
-    //   role: "Head of Product Strategy & Development",
-    //   image:
-    //     "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum4BvIOmxnuBQDwqki5StcHL06KrMghUGEalm7",
-    //   bio: "Dynamic product strategist blending user insights with market intelligence to design scalable, impactful digital solutions that define the future.",
-    //   linkedin: "https://www.linkedin.com/in/kumar-sujal/",
-    // },
+    {
+      id: 3,
+      name: "Kumar Sujal",
+      role: "Chief Technology Officer",
+      image:
+        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum4BvIOmxnuBQDwqki5StcHL06KrMghUGEalm7",
+      bio: "I am a results-oriented Software Engineering student specializing in full-stack development with the MERN/PERN stack. My goal is to build applications that are not only technically robust but also provide a seamless user experience.",
+      linkedin: "https://www.linkedin.com/in/kumar-sujal/",
+    },
     {
       id: 4,
       name: "Aryan Kamboj",
-      role: "Head of Research & Innovation",
+      role: "Chief Operating Officer",
       image:
         "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAumDfpkrmc3imC02hJzTjuAPrdk64eXYnEVlBgZ",
-      bio: "Innovative technologist leading research initiatives in emerging technologies to create transformative solutions with measurable real-world impact.",
+      bio: "As the COO of Godigitify I help businesses solve the problems that come with growth by looking at strategy , positioning , systems ,operations and digital transformation.",
       linkedin: "https://www.linkedin.com/in/aryan-kammboz-110521252/",
     },
     {
       id: 5,
       name: "Aman Deep",
-      role: "Creative Head – Design & Brand Experience",
+      role: "Chief Strategy Officer",
       image:
-        "https://bmnmsbiymz.ufs.sh/f/1V3V2P4kpAum2oN0nZyWvT53OZ1aHF8mkfdPiU0cDoMlRG9z",
-      bio: "Creative powerhouse driving visual storytelling, user-centered design, and brand innovation that deliver emotionally engaging digital experiences.",
+        "https://media.licdn.com/dms/image/v2/D5603AQFBwS4k_JQVWQ/profile-displayphoto-shrink_800_800/B56ZRzq4PiHsAc-/0/1737107413953?e=1782345600&v=beta&t=aAEkJuBq7ScuGtDpnWGzT-mwpsnThPuJHD-ENzWdsRA",
+      bio: "I work with businesses to decode what they actually need - not what they think they need - and translate that into digital products, SaaS platforms, and brand systems that drive measurable outcomes.",
+      linkedin: "https://www.linkedin.com/in/aman-deep-720390247/",
+    },
+      {
+      id: 6,
+      name: "Shreya Mishra",
+      role: "Chief Business Development Officer",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQG5ABlMcpdINA/profile-displayphoto-crop_800_800/B56Zp5ZY8pHQAI-/0/1762973292449?e=1782345600&v=beta&t=uBrCJbtPEqCHh7dhvNMXNGInT77IaOKOecZMiRMKzUY",
+      bio: "As Chief Business Development Officer at Godigitify, I help founders and growing businesses uncover growth opportunities, strengthen their market positioning, and build brands that customers trust.",
       linkedin: "https://www.linkedin.com/in/aman-deep-720390247/",
     },
   ];
